@@ -8,7 +8,7 @@ function App() {
         setState((c) => c + 1);
       }}
     >
-      hello world :+{state}
+      hello world2 :+{state}
     </div>
   );
 }
