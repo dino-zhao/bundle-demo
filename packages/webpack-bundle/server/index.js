@@ -16,6 +16,9 @@ app.use(
     log: console.log,
   })
 );
+app.use("/test", function (req, res, next) {
+  res.send("<p>some html</p>");
+});
 app.listen(3000, () => {
   console.log("Example app listening on port 3000!");
 });
