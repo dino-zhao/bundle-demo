@@ -5,7 +5,7 @@ const dist = path.resolve(__dirname, "www");
 module.exports = {
   entry: [
     "react-hot-loader/patch",
-    "./client/index.js",
+    "./client/index.tsx",
     "webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true",
   ],
   devtool: "inline-source-map",

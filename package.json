@@ -6,7 +6,7 @@
   "repository": "git@github.com:dino-zhao/bundle-demo.git",
   "author": "dino <dino.zhao@outlook.com>",
   "workspaces": [
-    "webpack"
+    "packages/*"
   ],
   "license": "MIT"
 }
