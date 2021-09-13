@@ -1,1 +1,1 @@
-
+- webpack/simply-hmr
