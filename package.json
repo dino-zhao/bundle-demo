@@ -8,7 +8,6 @@
   },
   "devDependencies": {
     "express": "^4.17.1",
-    "html-webpack-plugin": "^5.3.2",
     "webpack": "^5.52.1",
     "webpack-cli": "^4.8.0",
     "webpack-dev-middleware": "^5.1.0",
@@ -22,9 +21,7 @@
     "@babel/preset-react": "^7.14.5"
   },
   "dependencies": {
-    "@reduxjs/toolkit": "^1.6.1",
     "react": "^17.0.2",
-    "react-dom": "npm:@hot-loader/react-dom",
-    "react-redux": "^7.2.5"
+    "react-dom": "npm:@hot-loader/react-dom"
   }
 }
