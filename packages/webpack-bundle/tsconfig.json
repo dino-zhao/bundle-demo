@@ -8,8 +8,14 @@
     "moduleResolution": "node",
     "jsx": "preserve",
     "allowSyntheticDefaultImports": true,
-    "allowJs": true
+    "allowJs": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["client/*"],
+      "@redux/*": ["client/redux/*"]
+    }
   },
+
   "include": ["client/**/*"],
   "exclude": ["node_modules"]
 }

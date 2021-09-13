@@ -1,7 +1,7 @@
 const path = require("path");
 const webpack = require("webpack");
 const dist = path.resolve(__dirname, "www");
-
+const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
 module.exports = {
   entry: [
     "react-hot-loader/patch",
@@ -29,5 +29,10 @@ module.exports = {
   },
   resolve: {
     extensions: [".tsx", ".ts", ".js"],
+    plugins: [
+      new TsconfigPathsPlugin({
+        /* options: see below */
+      }),
+    ],
   },
 };

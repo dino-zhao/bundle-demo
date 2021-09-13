@@ -1,15 +1,7 @@
 import React, { useState } from "react";
 import { hot } from "react-hot-loader/root";
+import Counter from "./components/Counter";
 function App() {
-  const [state, setState] = useState(0);
-  return (
-    <div
-      onClick={() => {
-        setState((c) => c + 1);
-      }}
-    >
-      hello world555 :+{state}
-    </div>
-  );
+  return <Counter />;
 }
 export default hot(App);
