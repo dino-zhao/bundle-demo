@@ -7,6 +7,7 @@ const store = configureStore({
     counter: counterReducer,
     [pokemonApi.reducerPath]: pokemonApi.reducer,
   },
+  devTools: true,
   // and other useful features of `rtk-query`.
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(pokemonApi.middleware),

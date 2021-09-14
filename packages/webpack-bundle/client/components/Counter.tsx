@@ -1,17 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useAppSelector, useAppDispatch } from "@redux/store";
 import { decrement, increment } from "@redux/counter/slice";
-import { useGetPokemonByNameQuery, pokemonApi } from "../services/pokemon";
+import Query from "./Query";
 export default function Counter() {
   const count = useAppSelector((state) => state.counter.value);
   const dispatch = useAppDispatch();
-  const [skip, setSkip] = React.useState(true);
-  const { data, error, isLoading, refetch } = useGetPokemonByNameQuery(
-    "bulbasaur",
-    {
-      skip,
-    }
-  );
+
   return (
     <div>
       <div>
@@ -29,23 +23,7 @@ export default function Counter() {
           Decrement
         </button>
       </div>
-      <div>
-        {error ? (
-          <>Oh no, there was an error</>
-        ) : isLoading ? (
-          <>Loading...</>
-        ) : data ? (
-          <>
-            <h3>{data}</h3>
-          </>
-        ) : null}
-      </div>
-      <div>
-        <button onClick={refetch}>test</button>
-        <button onClick={() => setSkip((prev) => !prev)}>
-          Toggle Skip ({String(skip)})
-        </button>
-      </div>
+      {/* <Query /> */}
     </div>
   );
 }
