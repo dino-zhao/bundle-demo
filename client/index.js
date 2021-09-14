@@ -2,4 +2,4 @@ if (module.hot) {
   module.hot.accept();
 }
 
-console.log(3322);
+console.log(3);
