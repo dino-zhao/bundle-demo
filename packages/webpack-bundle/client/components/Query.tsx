@@ -17,7 +17,7 @@ export default function Query() {
           <>Loading...</>
         ) : data ? (
           <>
-            <h3>{data}</h3>
+            <h3>{JSON.stringify(data)}</h3>
           </>
         ) : null}
       </div>

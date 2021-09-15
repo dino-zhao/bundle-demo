@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { hot } from "react-hot-loader/root";
-import Counter from "./components/Counter";
+import Home from "./components/Home";
 function App() {
-  return <Counter />;
+  return <Home />;
 }
 export default hot(App);

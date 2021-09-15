@@ -17,8 +17,12 @@ app.use(
   })
 );
 app.use("/test", function (req, res, next) {
-  res.send("<p>some html</p>");
+  res.send({
+    code: 0,
+    ...req.query,
+  });
 });
+
 app.listen(3000, () => {
   console.log("Example app listening on port 3000!");
 });

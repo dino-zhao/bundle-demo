@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { useAppSelector, useAppDispatch } from "@redux/store";
-import { decrement, increment } from "@redux/counter/slice";
-import Query from "./Query";
+import { decrement, increment, testAsync } from "@redux/counter/slice";
 export default function Counter() {
-  const count = useAppSelector((state) => state.counter.value);
+  const { value, loading } = useAppSelector((state) => state.counter);
   const dispatch = useAppDispatch();
   const [state, setState] = useState(0);
   return (
@@ -15,7 +14,7 @@ export default function Counter() {
         >
           Increment111
         </button>
-        <span>{count}</span>
+        <span>{value}</span>
         <button
           aria-label="Decrement value"
           onClick={() => dispatch(decrement())}
@@ -27,7 +26,13 @@ export default function Counter() {
         <span onClick={() => setState((c) => c + 1)}>{state}</span>
         <input type="text" />
       </div>
-      {/* <Query /> */}
+      <div
+        onClick={() => {
+          dispatch(testAsync());
+        }}
+      >
+        异步调用 {loading ? "调用中" : "完成"}
+      </div>
     </div>
   );
 }
