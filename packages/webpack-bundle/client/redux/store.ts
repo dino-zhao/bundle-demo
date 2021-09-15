@@ -1,10 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
-import counterReducer from "./counter/slice";
+import counterReducer from "./countSlice";
 import { pokemonApi } from "../services/pokemon";
 import { TypedUseSelectorHook, useSelector, useDispatch } from "react-redux";
+import { booksSlice, selectBookById } from "./bookSlice";
+
 const store = configureStore({
   reducer: {
     counter: counterReducer,
+    books: booksSlice.reducer,
     [pokemonApi.reducerPath]: pokemonApi.reducer,
   },
   devTools: true,
@@ -20,4 +23,5 @@ export type AppDispatch = typeof store.dispatch;
 
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 export const useAppDispatch = () => useDispatch<AppDispatch>();
+
 export default store;

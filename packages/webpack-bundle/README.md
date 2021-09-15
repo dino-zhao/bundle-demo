@@ -5,8 +5,12 @@
 rtk
 https://www.jianshu.com/p/49aa25353c2e
 
-rtk query 内容太多，优先级延后
+rtk query
 
 - 主动发起请求,hook 中返回 [refetch](https://redux-toolkit.js.org/rtk-query/usage/queries)，[首次请求延迟](https://redux-toolkit.js.org/rtk-query/usage/conditional-fetching)
 - 拦截,注意调整@babel/preset-env 的 target 选项，'babel regeneratorRuntime is not defined' [文档](https://redux-toolkit.js.org/rtk-query/usage/customizing-queries)
 - 缓存
+
+todo
+
+- rtk store 部分的热更新没解决

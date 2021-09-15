@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useAppSelector, useAppDispatch } from "@redux/store";
-import { decrement, increment, testAsync } from "@redux/counter/slice";
+import { decrement, increment, testAsync } from "@/redux/countSlice";
 export default function Counter() {
   const { value, loading } = useAppSelector((state) => state.counter);
   const dispatch = useAppDispatch();
