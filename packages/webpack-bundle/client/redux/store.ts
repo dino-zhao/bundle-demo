@@ -11,7 +11,7 @@ const store = configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(pokemonApi.middleware),
 });
-
+//这个地方不能使用module.hot?.accept,否则无效
 if (process.env.NODE_ENV !== "production" && module.hot) {
   module.hot.accept("./reducers", () => store.replaceReducer(rootReducer));
 }
