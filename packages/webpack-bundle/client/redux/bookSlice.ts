@@ -41,7 +41,7 @@ export const simpleSelectors = booksAdapter.getSelectors();
 
 export const { selectById: selectBookById } = booksAdapter.getSelectors(
   (state: State) => {
-    console.log("test3");
+    console.log("test322");
     return state.books;
   }
 );
