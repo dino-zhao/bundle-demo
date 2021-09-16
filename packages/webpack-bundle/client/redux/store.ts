@@ -3,7 +3,7 @@ import counterReducer from "./countSlice";
 import { pokemonApi } from "../services/pokemon";
 import { TypedUseSelectorHook, useSelector, useDispatch } from "react-redux";
 import { booksSlice, selectBookById } from "./bookSlice";
-
+import { setupListeners } from "@reduxjs/toolkit/query";
 const store = configureStore({
   reducer: {
     counter: counterReducer,
@@ -25,3 +25,4 @@ export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 export const useAppDispatch = () => useDispatch<AppDispatch>();
 
 export default store;
+setupListeners(store.dispatch);

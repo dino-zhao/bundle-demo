@@ -23,6 +23,13 @@ app.use("/test", function (req, res, next) {
   });
 });
 
+app.use("/post", function (req, res) {
+  console.log(req.body);
+  res.send({
+    code: "1",
+  });
+});
+
 app.listen(3000, () => {
   console.log("Example app listening on port 3000!");
 });

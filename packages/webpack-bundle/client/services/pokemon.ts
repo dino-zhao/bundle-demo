@@ -9,18 +9,19 @@ const axiosBaseQuery =
       url: string;
       method?: AxiosRequestConfig["method"];
       data?: AxiosRequestConfig["data"];
+      params?: AxiosRequestConfig["params"];
     },
     unknown,
     unknown
   > =>
-  async ({ url, method, data }) => {
+  async ({ url, method, data, params }) => {
     try {
       const result = await axios({
         url: baseUrl + url,
         method: method,
         data,
+        params,
       });
-      console.log(result);
       return { data: result.data };
     } catch (axiosError) {
       let err = axiosError as AxiosError;
@@ -35,17 +36,25 @@ export const pokemonApi = createApi({
   }),
   tagTypes: [],
   reducerPath: "pokemonApi",
+  //   refetchOnMountOrArgChange: true, //不用缓存
+  //   refetchOnFocus: true, //window focus时自动fetch
   endpoints: (builder) => ({
     getPokemonByName: builder.query({
-      query: () => ({ url: "/test", method: "get" }),
-      transformResponse: (response) => {
-        console.log(response);
-        console.log("tag");
-        return response;
-      },
+      query: () => ({ url: "/test", method: "get", params: { a: 2 } }),
+      //   transformResponse: (response) => {
+      //     console.log(response);
+      //     return response;
+      //   },
+    }),
+    log: builder.mutation({
+      query: () => ({
+        url: "/post",
+        method: "POST",
+        data: { test: "post" },
+      }),
     }),
   }),
 });
 
 // Export hooks for usage in functional components
-export const { useGetPokemonByNameQuery } = pokemonApi;
+export const { useGetPokemonByNameQuery, useLogMutation } = pokemonApi;
