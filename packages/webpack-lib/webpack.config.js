@@ -1,6 +1,7 @@
 const path = require("path");
 const webpack = require("webpack");
 const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 module.exports = {
   entry: ["./src/index.ts"],
   output: {
@@ -23,5 +24,22 @@ module.exports = {
         /* options: see below */
       }),
     ],
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: "888",
+      template: "./public/index.html",
+    }),
+    new webpack.DllReferencePlugin({
+      manifest: require("./dist/main-manifest.json"), // eslint-disable-line
+    }),
+  ],
+  externals: {
+    lodash: {
+      commonjs: "lodash",
+      amd: "lodash",
+      root: "_",
+      commonjs2: "lodash",
+    },
   },
 };

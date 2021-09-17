@@ -1,2 +1,1 @@
-import log from "./log";
-export default log;
+export default function log(v: string): void;
