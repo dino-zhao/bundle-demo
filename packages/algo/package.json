@@ -1,0 +1,12 @@
+{
+  "name": "algo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "test:promise": "promises-aplus-tests ./jsHandwrite/promise"
+  },
+  "devDependencies": {
+    "promises-aplus-tests": "^2.1.2"
+  }
+}
