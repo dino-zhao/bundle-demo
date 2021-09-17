@@ -12,4 +12,4 @@ ReactDOM.render(
   document.getElementById("root")
 );
 
-webpackLog(33);
+webpackLog("33");
