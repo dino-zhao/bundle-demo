@@ -1,5 +1,1 @@
-function log(str) {
-  console.log(str);
-}
-
-log(222);
+var o;o=222,console.log(o);

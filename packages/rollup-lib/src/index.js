@@ -1,2 +1,3 @@
-import log from "./log";
-log(222);
+import("./log").then(({ default: log }) => {
+  log(222);
+});

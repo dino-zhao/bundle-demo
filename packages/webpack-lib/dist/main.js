@@ -8,25 +8,18 @@
     : (e.MyLibrary = o(e._));
 })(self, function (e) {
   return (() => {
+    "use strict";
     var o = {
-        663: (e, o, r) => {
-          e.exports = r(26)(221);
-        },
         720: (o) => {
-          "use strict";
           o.exports = e;
-        },
-        26: (e) => {
-          "use strict";
-          e.exports = main_1b121cf10190c72dabf7;
         },
       },
       r = {};
     function t(e) {
       var n = r[e];
       if (void 0 !== n) return n.exports;
-      var l = (r[e] = { exports: {} });
-      return o[e](l, l.exports, t), l.exports;
+      var u = (r[e] = { exports: {} });
+      return o[e](u, u.exports, t), u.exports;
     }
     (t.d = (e, o) => {
       for (var r in o)
@@ -44,15 +37,57 @@
     var n = {};
     return (
       (() => {
-        "use strict";
-        t.r(n), t.d(n, { default: () => r });
-        var e = t(720),
-          o = t(663);
-        function r(o) {
+        t.r(n), t.d(n, { default: () => i });
+        var e = t(720);
+        function o(e) {
+          return (
+            null != e &&
+            "object" == typeof e &&
+            !0 === e["@@functional/placeholder"]
+          );
+        }
+        function r(e) {
+          return function r(t) {
+            return 0 === arguments.length || o(t)
+              ? r
+              : e.apply(this, arguments);
+          };
+        }
+        var u,
+          l =
+            ((u = function (e, o) {
+              return Number(e) + Number(o);
+            }),
+            function e(t, n) {
+              switch (arguments.length) {
+                case 0:
+                  return e;
+                case 1:
+                  return o(t)
+                    ? e
+                    : r(function (e) {
+                        return u(t, e);
+                      });
+                default:
+                  return o(t) && o(n)
+                    ? e
+                    : o(t)
+                    ? r(function (e) {
+                        return u(e, n);
+                      })
+                    : o(n)
+                    ? r(function (e) {
+                        return u(t, e);
+                      })
+                    : u(t, n);
+              }
+            });
+        const c = l;
+        function i(o) {
           console.log((0, e.cloneDeep)(o + "啊啊1"));
         }
         console.log("副作用"),
-          console.log((0, o.add)(1, 2)),
+          console.log(c(1, 2)),
           console.log((2, console.log("使用到的代码"), 8));
       })(),
       n

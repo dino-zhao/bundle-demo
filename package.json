@@ -9,6 +9,9 @@
     "packages/*"
   ],
   "license": "MIT",
+  "scripts": {
+    "clean": "rm -rf node_modules"
+  },
   "devDependencies": {
     "lerna": "^4.0.0"
   }

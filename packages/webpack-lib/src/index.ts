@@ -1,7 +1,6 @@
 import { cloneDeep } from "lodash";
 import { add } from "ramda";
 import { cube } from "./math";
-
 export default function log(v: string) {
   console.log(cloneDeep(v + "啊啊1"));
 }
