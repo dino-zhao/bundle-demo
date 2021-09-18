@@ -1,11 +1,18 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
+
+export const testAsync = createAsyncThunk("test", async () => {
+  const res = await fetch("/test");
+  return await res.json();
+});
 
 export interface CounterState {
   value: number;
+  loading: boolean;
 }
 
 const initialState: CounterState = {
   value: 0,
+  loading: false,
 };
 
 export const counterSlice = createSlice({
@@ -20,11 +27,20 @@ export const counterSlice = createSlice({
       state.value += 1;
     },
     decrement: (state) => {
+      console.log("dec1");
       state.value -= 1;
     },
     incrementByAmount: (state, action: PayloadAction<number>) => {
       state.value += action.payload;
     },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(testAsync.pending, (state) => {
+      state.loading = true;
+    });
+    builder.addCase(testAsync.fulfilled, (state) => {
+      state.loading = false;
+    });
   },
 });
 
