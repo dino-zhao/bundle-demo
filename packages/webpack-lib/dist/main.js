@@ -25,19 +25,15 @@
     function t(e) {
       var n = r[e];
       if (void 0 !== n) return n.exports;
-      var a = (r[e] = { exports: {} });
-      return o[e](a, a.exports, t), a.exports;
+      var l = (r[e] = { exports: {} });
+      return o[e](l, l.exports, t), l.exports;
     }
-    (t.n = (e) => {
-      var o = e && e.__esModule ? () => e.default : () => e;
-      return t.d(o, { a: o }), o;
+    (t.d = (e, o) => {
+      for (var r in o)
+        t.o(o, r) &&
+          !t.o(e, r) &&
+          Object.defineProperty(e, r, { enumerable: !0, get: o[r] });
     }),
-      (t.d = (e, o) => {
-        for (var r in o)
-          t.o(o, r) &&
-            !t.o(e, r) &&
-            Object.defineProperty(e, r, { enumerable: !0, get: o[r] });
-      }),
       (t.o = (e, o) => Object.prototype.hasOwnProperty.call(e, o)),
       (t.r = (e) => {
         "undefined" != typeof Symbol &&
@@ -55,7 +51,9 @@
         function r(o) {
           console.log((0, e.cloneDeep)(o + "啊啊1"));
         }
-        console.log((0, o.add)(1, 2));
+        console.log("副作用"),
+          console.log((0, o.add)(1, 2)),
+          console.log((2, console.log("使用到的代码"), 8));
       })(),
       n
     );
