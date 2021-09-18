@@ -1,0 +1,25 @@
+{
+  "name": "demo-webpack",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "node build.js",
+    "debug": "node --inspect-brk  build.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-loader": "^8.1.0",
+    "prettier": "^2.2.1"
+  },
+  "dependencies": {
+    "@babel/core": "^7.12.13",
+    "@babel/parser": "^7.12.15",
+    "@babel/preset-env": "^7.12.13",
+    "@babel/traverse": "^7.12.13",
+    "ejs": "^3.1.6",
+    "loadsh": "^0.0.4",
+    "tapable": "^2.2.0"
+  }
+}
