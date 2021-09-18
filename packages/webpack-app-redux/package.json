@@ -1,5 +1,5 @@
 {
-  "name": "webpack-bundle",
+  "name": "webpack-app-redux",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
