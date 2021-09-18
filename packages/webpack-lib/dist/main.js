@@ -8,18 +8,25 @@
     : (e.MyLibrary = o(e._));
 })(self, function (e) {
   return (() => {
-    "use strict";
     var o = {
+        663: (e, o, r) => {
+          e.exports = r(26)(221);
+        },
         720: (o) => {
+          "use strict";
           o.exports = e;
+        },
+        26: (e) => {
+          "use strict";
+          e.exports = main_1b121cf10190c72dabf7;
         },
       },
       r = {};
     function t(e) {
       var n = r[e];
       if (void 0 !== n) return n.exports;
-      var l = (r[e] = { exports: {} });
-      return o[e](l, l.exports, t), l.exports;
+      var a = (r[e] = { exports: {} });
+      return o[e](a, a.exports, t), a.exports;
     }
     (t.n = (e) => {
       var o = e && e.__esModule ? () => e.default : () => e;
@@ -41,12 +48,14 @@
     var n = {};
     return (
       (() => {
-        t.r(n), t.d(n, { default: () => o });
-        var e = t(720);
-        function o(o) {
+        "use strict";
+        t.r(n), t.d(n, { default: () => r });
+        var e = t(720),
+          o = t(663);
+        function r(o) {
           console.log((0, e.cloneDeep)(o + "啊啊1"));
         }
-        console.log();
+        console.log((0, o.add)(1, 2));
       })(),
       n
     );
