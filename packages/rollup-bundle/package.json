@@ -1,0 +1,16 @@
+{
+  "name": "rollup-bundle",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "build": "rollup -c"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "rollup": "^2.56.3"
+  },
+  "dependencies": {}
+}
