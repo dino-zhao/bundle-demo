@@ -6,9 +6,9 @@ import Book from "./Book";
 export default function Home() {
   return (
     <div>
-      <Counter />
+      {/* <Counter /> */}
       <Query />
-      <Book />
+      {/* <Book /> */}
     </div>
   );
 }

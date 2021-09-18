@@ -1,13 +1,10 @@
 import React from "react";
-import { useGetPokemonByNameQuery } from "../services/pokemon";
+import { useGetPokemonByNameQuery, useLogMutation } from "../services/pokemon";
 export default function Query() {
-  const [skip, setSkip] = React.useState(true);
-  const { data, error, isLoading, refetch } = useGetPokemonByNameQuery(
-    "bulbasaur",
-    {
-      skip,
-    }
-  );
+  //   const [skip, setSkip] = React.useState(true);
+  const { data, error, isLoading, refetch } =
+    useGetPokemonByNameQuery(undefined);
+  const [doLog, { isLoading: isLoging }] = useLogMutation();
   return (
     <div>
       <div>
@@ -23,10 +20,34 @@ export default function Query() {
       </div>
       <div>
         <button onClick={refetch}>test</button>
-        <button onClick={() => setSkip((prev) => !prev)}>
+        {/* <button onClick={() => setSkip((prev) => !prev)}>
           Toggle Skip ({String(skip)})
-        </button>
+        </button> */}
       </div>
+      <div
+        onClick={() => {
+          doLog(undefined)
+            .unwrap()
+            .then((res) => {
+              console.log(res);
+            });
+        }}
+      >
+        log
+      </div>
+      <div>
+        <QueryOne></QueryOne>
+      </div>
+    </div>
+  );
+}
+
+function QueryOne() {
+  const { data } = useGetPokemonByNameQuery(undefined);
+
+  return (
+    <div>
+      <h3>{JSON.stringify(data)}</h3>
     </div>
   );
 }
