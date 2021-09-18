@@ -8,5 +8,8 @@
   "workspaces": [
     "packages/*"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "lerna": "^4.0.0"
+  }
 }
