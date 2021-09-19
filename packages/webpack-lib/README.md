@@ -1,4 +1,4 @@
-1. 生成声明文件用 tsc,也可以现在这样先用 ts-loader 处理，再给 babel-loader
+1. 生成声明文件用 tsc,要在打包后面命令加上
 2. [splitChunks](https://webpack.js.org/plugins/split-chunks-plugin/)
 3. [Externals](https://webpack.js.org/configuration/externals/)
 4. [DllPlugin](https://webpack.js.org/plugins/dll-plugin/#dllplugin)
