@@ -5,7 +5,7 @@
   "license": "MIT",
   "types": "dist/index.d.ts",
   "module": "dist/main.js",
-  "sideEffects": false,
+  "sideEffects": [],
   "devDependencies": {
     "@babel/core": "^7.15.5",
     "@babel/preset-env": "^7.15.6",
