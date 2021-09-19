@@ -4,6 +4,7 @@
   "main": "dist/main.js",
   "license": "MIT",
   "types": "dist/index.d.ts",
+  "module": "dist/main.js",
   "sideEffects": false,
   "devDependencies": {
     "@babel/core": "^7.15.5",
@@ -23,7 +24,7 @@
   },
   "scripts": {
     "start": "webpack serve --config webpack.dev.js",
-    "build": "webpack --config webpack.prod.js",
+    "build": "webpack --config webpack.prod.js && tsc",
     "vendor": "webpack --config webpack.vendor.js"
   },
   "dependencies": {
