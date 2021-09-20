@@ -7,13 +7,13 @@ module.exports = {
   },
   entry: "ramda",
   output: {
-    path: path.join(__dirname, "dist"),
+    path: path.join(__dirname, "vendor"),
     filename: "MyDll.[name].js",
     library: "[name]_[fullhash]",
   },
   plugins: [
     new webpack.DllPlugin({
-      path: path.join(__dirname, "dist", "[name]-manifest.json"),
+      path: path.join(__dirname, "vendor", "[name]-manifest.json"),
       name: "[name]_[fullhash]",
     }),
   ],

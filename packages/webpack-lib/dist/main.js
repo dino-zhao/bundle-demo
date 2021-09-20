@@ -1,41 +1,34 @@
-!(function (e, o) {
+!(function (e, r) {
   "object" == typeof exports && "object" == typeof module
-    ? (module.exports = o(require("lodash")))
+    ? (module.exports = r(require("lodash")))
     : "function" == typeof define && define.amd
-    ? define(["lodash"], o)
+    ? define(["lodash"], r)
     : "object" == typeof exports
-    ? (exports.MyLibrary = o(require("lodash")))
-    : (e.MyLibrary = o(e._));
+    ? (exports.MyLibrary = r(require("lodash")))
+    : (e.MyLibrary = r(e._));
 })(self, function (e) {
   return (() => {
-    var o = {
-        663: (e, o, r) => {
-          e.exports = r(26)(221);
-        },
-        720: (o) => {
-          "use strict";
-          o.exports = e;
-        },
-        26: (e) => {
-          "use strict";
-          e.exports = main_1b121cf10190c72dabf7;
+    "use strict";
+    var r = {
+        720: (r) => {
+          r.exports = e;
         },
       },
-      r = {};
-    function t(e) {
-      var n = r[e];
+      t = {};
+    function o(e) {
+      var n = t[e];
       if (void 0 !== n) return n.exports;
-      var l = (r[e] = { exports: {} });
-      return o[e](l, l.exports, t), l.exports;
+      var u = (t[e] = { exports: {} });
+      return r[e](u, u.exports, o), u.exports;
     }
-    (t.d = (e, o) => {
-      for (var r in o)
-        t.o(o, r) &&
-          !t.o(e, r) &&
-          Object.defineProperty(e, r, { enumerable: !0, get: o[r] });
+    (o.d = (e, r) => {
+      for (var t in r)
+        o.o(r, t) &&
+          !o.o(e, t) &&
+          Object.defineProperty(e, t, { enumerable: !0, get: r[t] });
     }),
-      (t.o = (e, o) => Object.prototype.hasOwnProperty.call(e, o)),
-      (t.r = (e) => {
+      (o.o = (e, r) => Object.prototype.hasOwnProperty.call(e, r)),
+      (o.r = (e) => {
         "undefined" != typeof Symbol &&
           Symbol.toStringTag &&
           Object.defineProperty(e, Symbol.toStringTag, { value: "Module" }),
@@ -44,16 +37,55 @@
     var n = {};
     return (
       (() => {
-        "use strict";
-        t.r(n), t.d(n, { default: () => r });
-        var e = t(720),
-          o = t(663);
-        function r(o) {
-          console.log((0, e.cloneDeep)(o + "啊啊1"));
+        o.r(n), o.d(n, { log: () => c });
+        var e = o(720);
+        function r(e) {
+          return (
+            null != e &&
+            "object" == typeof e &&
+            !0 === e["@@functional/placeholder"]
+          );
         }
-        console.log("副作用"),
-          console.log((0, o.add)(1, 2)),
-          console.log((2, console.log("使用到的代码"), 8));
+        function t(e) {
+          return function t(o) {
+            return 0 === arguments.length || r(o)
+              ? t
+              : e.apply(this, arguments);
+          };
+        }
+        function u(e) {
+          return function o(n, u) {
+            switch (arguments.length) {
+              case 0:
+                return o;
+              case 1:
+                return r(n)
+                  ? o
+                  : t(function (r) {
+                      return e(n, r);
+                    });
+              default:
+                return r(n) && r(u)
+                  ? o
+                  : r(n)
+                  ? t(function (r) {
+                      return e(r, u);
+                    })
+                  : r(u)
+                  ? t(function (r) {
+                      return e(n, r);
+                    })
+                  : e(n, u);
+            }
+          };
+        }
+        const i = u(function (e, r) {
+          return Number(e) + Number(r);
+        });
+        function c(r) {
+          console.log((0, e.cloneDeep)(r + "啊啊12"));
+        }
+        console.log(i(1, 2));
       })(),
       n
     );

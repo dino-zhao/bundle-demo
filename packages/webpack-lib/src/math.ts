@@ -3,8 +3,9 @@ export function square(x: number) {
   return x * x;
 }
 
-console.log("副作用");
 export function cube(x: number) {
   console.log("使用到的代码");
   return x * x * x;
 }
+
+console.log("副作用");
