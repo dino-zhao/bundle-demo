@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node server"
+    "start": "node server",
+    "build": "webpack --config webpack.prod.js"
   },
   "devDependencies": {
     "@babel/core": "^7.15.5",

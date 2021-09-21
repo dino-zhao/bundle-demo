@@ -1,19 +1,12 @@
 const path = require("path");
-const webpack = require("webpack");
-const dist = path.resolve(__dirname, "www");
 const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+
 module.exports = {
-  entry: [
-    "react-hot-loader/patch",
-    "./client/index.tsx",
-    "webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true",
-  ],
-  devtool: "inline-source-map",
-  plugins: [new webpack.HotModuleReplacementPlugin()],
-  mode: "development",
   output: {
-    filename: "bundle.js",
-    path: path.resolve(__dirname, dist),
+    filename: "[name].bundle.js",
+    path: path.resolve(__dirname, "dist"),
+    clean: true,
   },
   module: {
     rules: [
@@ -35,4 +28,5 @@ module.exports = {
       }),
     ],
   },
+  plugins: [new HtmlWebpackPlugin({ template: "./public/index.html" })],
 };
