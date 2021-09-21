@@ -15,4 +15,12 @@ module.exports = merge(common, {
     // },
   },
   plugins: [new HtmlWebpackPlugin({})],
+  externals: {
+    lodash: {
+      commonjs: "lodash",
+      amd: "lodash",
+      root: "_",
+      commonjs2: "lodash",
+    },
+  },
 });
