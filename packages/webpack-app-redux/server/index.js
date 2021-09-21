@@ -9,7 +9,7 @@ const app = express();
 
 const webpackCompiler = webpack(webpackconfig);
 const wpmw = webpackMiddleware(webpackCompiler, {});
-app.use(express.static("dist"));
+app.use(express.static("vendor"));
 app.use(wpmw);
 app.use(
   webpackHotMiddleware(webpackCompiler, {

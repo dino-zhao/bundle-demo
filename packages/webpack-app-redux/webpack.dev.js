@@ -9,5 +9,10 @@ module.exports = merge(common, {
     "./client/index.tsx",
     "webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true",
   ],
-  plugins: [new webpack.HotModuleReplacementPlugin()],
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.DllReferencePlugin({
+      manifest: require("./vendor/main-manifest.json"), // eslint-disable-line
+    }),
+  ],
 });
