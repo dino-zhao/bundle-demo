@@ -1,10 +1,10 @@
 const path = require("path");
 const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+
 module.exports = {
   entry: ["./src/index.ts"],
   output: {
-    filename: "main.js",
+    filename: "[name].bundle.js",
     path: path.resolve(__dirname, "dist"),
     clean: true,
   },
@@ -24,18 +24,15 @@ module.exports = {
       }),
     ],
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      title: "888",
-      template: "./public/index.html",
-    }),
-  ],
+
+  //为了试用splitchunk把这段注释
   externals: {
-    lodash: {
-      commonjs: "lodash",
-      amd: "lodash",
-      root: "_",
-      commonjs2: "lodash",
-    },
+    ramda: "ramda",
+    // lodash: {
+    //   commonjs: "lodash",
+    //   amd: "lodash",
+    //   root: "_",
+    //   commonjs2: "lodash",
+    // },
   },
 };

@@ -5,7 +5,7 @@ module.exports = {
   resolve: {
     extensions: [".js"],
   },
-  entry: "ramda",
+  entry: "lodash",
   output: {
     path: path.join(__dirname, "vendor"),
     filename: "MyDll.[name].js",

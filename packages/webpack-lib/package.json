@@ -1,10 +1,10 @@
 {
   "name": "webpack-lib",
   "version": "1.0.0",
-  "main": "dist/main.js",
+  "main": "dist/main.bundle.js",
   "license": "MIT",
   "types": "dist/index.d.ts",
-  "module": "dist/main.js",
+  "module": "dist/main.bundle.js",
   "sideEffects": [],
   "devDependencies": {
     "@babel/core": "^7.15.5",
@@ -28,9 +28,7 @@
   },
   "dependencies": {
     "@types/ramda": "^0.27.44",
-    "ramda": "^0.27.1"
-  },
-  "peerDependencies": {
+    "ramda": "^0.27.1",
     "lodash": "^4.17.21"
   }
 }

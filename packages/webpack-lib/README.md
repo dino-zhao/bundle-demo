@@ -1,6 +1,8 @@
 1. 生成声明文件用 tsc,要在打包后面命令加上
 2. [splitChunks](https://webpack.js.org/plugins/split-chunks-plugin/)
+   lib 不方便 split，因为拆分以后要在 html 中使用多个 script，而导出 lib 时不方便，因此还是 external 比较好
 3. [Externals](https://webpack.js.org/configuration/externals/)
+
 4. [DllPlugin](https://webpack.js.org/plugins/dll-plugin/#dllplugin)
    两个配置文件，先打包 dll 后，注意配置 devServer.static 为打包目录,用在开发环境，生产环境用 2,5
 
