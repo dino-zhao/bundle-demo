@@ -24,15 +24,4 @@ module.exports = {
       }),
     ],
   },
-
-  //为了试用splitchunk把这段注释
-  externals: {
-    ramda: "ramda",
-    // lodash: {
-    //   commonjs: "lodash",
-    //   amd: "lodash",
-    //   root: "_",
-    //   commonjs2: "lodash",
-    // },
-  },
 };

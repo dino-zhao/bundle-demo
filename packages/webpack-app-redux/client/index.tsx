@@ -4,7 +4,7 @@ import "./index.css";
 import App from "./App";
 import store from "./redux/store";
 import { Provider } from "react-redux";
-const { add } = require("webpack-lib"); //以commjs
+const { log } = require("webpack-lib"); //以commjs
 
 ReactDOM.render(
   <Provider store={store}>
@@ -16,5 +16,4 @@ ReactDOM.render(
 // if (module.hot) {
 //   module.hot.accept();
 // }
-
-console.log(add(33));
+log("99");
