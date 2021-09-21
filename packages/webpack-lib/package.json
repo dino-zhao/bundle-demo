@@ -23,8 +23,7 @@
   },
   "scripts": {
     "start": "webpack serve --config webpack.dev.js",
-    "build": "webpack --config webpack.prod.js && tsc",
-    "vendor": "webpack --config webpack.vendor.js"
+    "build": "webpack --config webpack.prod.js && tsc"
   },
   "dependencies": {
     "@types/ramda": "^0.27.44",
