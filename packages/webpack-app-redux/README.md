@@ -45,4 +45,4 @@ rtk query
 
 9. css 相关
    scss 和 css module, css module 在 css-loader 中处理，看 sass-loader 和 css-loader 文档即可
-   styled-components
+   styled-components https://styled-components.com/docs/basics
