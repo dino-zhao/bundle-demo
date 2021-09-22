@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Button } from "antd";
 import midImg from "@/assets/m.jpg";
+import styles from "./Counter.module.scss";
 
 import { useAppSelector, useAppDispatch } from "@redux/store";
 import { decrement, increment, testAsync } from "@/redux/countSlice";
@@ -19,7 +20,7 @@ export default function Counter() {
         >
           Increment12
         </Button>
-        <span>{value}</span>
+        <span className={styles.className}>{value}</span>
         <Button
           aria-label="Decrement value"
           onClick={() => dispatch(decrement())}

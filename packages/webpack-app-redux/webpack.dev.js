@@ -19,8 +19,19 @@ module.exports = merge(common, {
   module: {
     rules: [
       {
-        test: /\.css$/,
-        use: ["style-loader", "css-loader"],
+        test: /\.css|scss$/,
+        use: [
+          "style-loader",
+          {
+            loader: "css-loader",
+            options: {
+              modules: {
+                localIdentName: "[path]__[local]--[hash:base64:5]",
+              },
+            },
+          },
+          "sass-loader",
+        ],
       },
     ],
   },
