@@ -8,6 +8,7 @@ module.exports = {
     path: path.resolve(__dirname, "dist"),
     clean: true,
     pathinfo: false,
+    assetModuleFilename: "images/[hash][ext][query]",
   },
   module: {
     rules: [
@@ -15,6 +16,10 @@ module.exports = {
         test: /\.(js|jsx|tsx|ts)$/,
         use: ["babel-loader"],
         include: path.resolve(__dirname, "client"),
+      },
+      {
+        test: /\.jpg/,
+        type: "asset/resource",
       },
     ],
   },

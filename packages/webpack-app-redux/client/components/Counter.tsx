@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Button } from "antd";
+import midImg from "@/assets/m.jpg";
 
 import { useAppSelector, useAppDispatch } from "@redux/store";
 import { decrement, increment, testAsync } from "@/redux/countSlice";
@@ -10,6 +11,7 @@ export default function Counter() {
   const [state, setState] = useState(0);
   return (
     <div>
+      <img style={{ display: "none" }} src={midImg} alt="" />
       <div>
         <Button
           aria-label="Increment value"
