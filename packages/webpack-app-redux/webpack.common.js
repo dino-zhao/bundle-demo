@@ -7,12 +7,14 @@ module.exports = {
     filename: "[name].[contenthash].js",
     path: path.resolve(__dirname, "dist"),
     clean: true,
+    pathinfo: false,
   },
   module: {
     rules: [
       {
         test: /\.(js|jsx|tsx|ts)$/,
         use: ["babel-loader"],
+        include: path.resolve(__dirname, "client"),
       },
     ],
   },

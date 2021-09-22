@@ -4,5 +4,5 @@
 
 # dist stuff:
 /www/
-# **/dist/
+**/dist/
 **/.temp_cache/

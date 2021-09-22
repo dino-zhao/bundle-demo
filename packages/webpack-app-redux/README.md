@@ -30,3 +30,15 @@ rtk query
    下载 antd（不需要单独下 type），引入 css
    todo
    注意如果抽离样式的话，会包含所有，因此将 antd 的样式用 style-loader，其他的用 MiniCssExtractPlugin.loader
+
+5. 打包保证内容不变文件名不变，利用缓存
+   https://webpack.docschina.org/guides/caching/
+
+6. 构建性能
+
+- 将 loader 应用于最少数量的必要模块
+
+7. 抽离并压缩 css
+   const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+   const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+8. tree-shaking
