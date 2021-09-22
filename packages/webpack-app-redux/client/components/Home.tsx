@@ -1,8 +1,9 @@
 import React, { useContext, useEffect, useMemo } from "react";
 import Query from "./Query";
-import Counter from "./Counter";
+const Counter = React.lazy(() => import("./Counter"));
+// import Counter from "./Counter";
 import Book from "./Book";
-import ValidContext from "./ValidContext";
+// import ValidContext from "./ValidContext";
 
 export interface ContextType {
   state: { a: number };
@@ -19,8 +20,8 @@ export default function Home({ setObj, state }: ContextType) {
       <Counter />
       {/* <Query /> */}
       {/* <Book /> */}
-      <ValidContext />
-      <div onClick={() => console.log(state.a)}>{state.a}</div>
+      {/* <ValidContext /> */}
+      {/* <div onClick={() => console.log(state.a)}>{state.a}</div> */}
     </MyContext.Provider>
   );
 }

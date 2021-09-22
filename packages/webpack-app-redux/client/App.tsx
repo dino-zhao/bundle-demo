@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { hot } from "react-hot-loader/root";
-import { useStore } from "react-redux";
 import Home, { ContextType } from "./components/Home";
+import { Spin } from "antd";
 let store = {
   state: { a: 2 },
   setObj(v: number) {
@@ -14,6 +14,10 @@ function App() {
     store.setObj(v);
     setState((c) => c + 1);
   };
-  return <Home state={store.state} setObj={setObj} />;
+  return (
+    <React.Suspense fallback={<Spin />}>
+      <Home state={store.state} setObj={setObj} />
+    </React.Suspense>
+  );
 }
 export default hot(App);

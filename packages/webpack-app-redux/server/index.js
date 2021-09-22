@@ -1,6 +1,6 @@
 const express = require("express");
 const webpack = require("webpack");
-const webpackconfig = require("../webpack.config");
+const webpackconfig = require("../webpack.dev");
 const webpackMiddleware = require("webpack-dev-middleware");
 
 var webpackHotMiddleware = require("webpack-hot-middleware");
@@ -9,7 +9,7 @@ const app = express();
 
 const webpackCompiler = webpack(webpackconfig);
 const wpmw = webpackMiddleware(webpackCompiler, {});
-app.use(express.static("dist"));
+app.use(express.static("vendor"));
 app.use(wpmw);
 app.use(
   webpackHotMiddleware(webpackCompiler, {
