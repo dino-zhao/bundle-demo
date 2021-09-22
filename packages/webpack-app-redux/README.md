@@ -14,5 +14,9 @@ rtk query
 todo
 
 - rtk store 部分的热更新没解决
-
-webpack 5.53.0 compiled successfully in 5524 ms
+  冷启动
+  缓存前 webpack 5.53.0 compiled successfully in 6707 ms
+  缓存后 webpack 5.53.0 compiled successfully in 393 ms
+  hot
+  缓存后 webpack 5.53.0 compiled successfully in 3709 ms
+  缓存后 webpack 5.53.0 compiled successfully in 294 ms
