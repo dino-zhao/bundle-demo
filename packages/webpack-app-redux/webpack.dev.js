@@ -16,4 +16,12 @@ module.exports = merge(common, {
     allowCollectingMemory: true,
     cacheDirectory: path.resolve(__dirname, ".temp_cache"),
   },
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: ["style-loader", "css-loader"],
+      },
+    ],
+  },
 });

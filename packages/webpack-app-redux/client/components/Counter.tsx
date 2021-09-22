@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+import { Button } from "antd";
+
 import { useAppSelector, useAppDispatch } from "@redux/store";
 import { decrement, increment, testAsync } from "@/redux/countSlice";
+
 export default function Counter() {
   const { value, loading } = useAppSelector((state) => state.counter);
   const dispatch = useAppDispatch();
@@ -8,19 +11,19 @@ export default function Counter() {
   return (
     <div>
       <div>
-        <button
+        <Button
           aria-label="Increment value"
           onClick={() => dispatch(increment())}
         >
-          Increment9999
-        </button>
+          Increment
+        </Button>
         <span>{value}</span>
-        <button
+        <Button
           aria-label="Decrement value"
           onClick={() => dispatch(decrement())}
         >
           Decrement
-        </button>
+        </Button>
       </div>
       <div>
         <span onClick={() => setState((c) => c + 1)}>{state}</span>

@@ -13,6 +13,8 @@ rtk query
 
 todo
 
+1. cache
+
 - rtk store 部分的热更新没解决
   冷启动
   缓存前 webpack 5.53.0 compiled successfully in 6707 ms
@@ -20,3 +22,11 @@ todo
   hot
   缓存后 webpack 5.53.0 compiled successfully in 3709 ms
   缓存后 webpack 5.53.0 compiled successfully in 294 ms
+
+2. splitchunk
+
+3. 按需加载
+   React.Suspense+React.lazy+import()
+
+4. antd
+   下载 antd（不需要单独下 type），引入 css
