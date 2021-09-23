@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react'
 import { Button } from 'antd'
 import midImg from '@/assets/m.jpg'
-import styles from './Counter.module.scss'
+import styles from './Counter.module.scss';
 import styled from 'styled-components'
 
 import { useAppSelector, useAppDispatch } from '@redux/store'
