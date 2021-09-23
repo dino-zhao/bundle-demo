@@ -1,35 +1,35 @@
-const path = require("path");
-const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require('path')
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   output: {
-    filename: "[name].[contenthash].js",
-    path: path.resolve(__dirname, "dist"),
+    filename: '[name].[contenthash].js',
+    path: path.resolve(__dirname, 'dist'),
     clean: true,
     pathinfo: false,
-    assetModuleFilename: "images/[hash][ext][query]",
+    assetModuleFilename: 'images/[hash][ext][query]',
   },
   module: {
     rules: [
       {
         test: /\.(js|jsx|tsx|ts)$/,
-        use: ["babel-loader"],
-        include: path.resolve(__dirname, "client"),
+        use: ['babel-loader'],
+        include: path.resolve(__dirname, 'client'),
       },
       {
         test: /\.jpg/,
-        type: "asset/resource",
+        type: 'asset/resource',
       },
     ],
   },
   resolve: {
-    extensions: [".tsx", ".ts", ".js"],
+    extensions: ['.tsx', '.ts', '.js'],
     plugins: [
       new TsconfigPathsPlugin({
         /* options: see below */
       }),
     ],
   },
-  plugins: [new HtmlWebpackPlugin({ template: "./public/index.html" })],
-};
+  plugins: [new HtmlWebpackPlugin({ template: './public/index.html' })],
+}

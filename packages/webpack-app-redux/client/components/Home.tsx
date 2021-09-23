@@ -1,21 +1,21 @@
-import React from "react";
+import React from 'react'
 // import Query from "./Query";
-const Counter = React.lazy(() => import("./Counter"));
+const Counter = React.lazy(() => import('./Counter'))
 // import Counter from "./Counter";
 // import Book from "./Book";
 // import ValidContext from "./ValidContext";
 
 export interface ContextType {
-  state: { a: number };
-  setObj: (v: number) => void;
+  state: { a: number }
+  setObj: (v: number) => void
 }
 
 export const MyContext = React.createContext<ContextType>({
   state: { a: 1 },
   setObj: (v: number) => {
-    console.log(v);
+    console.log(v)
   },
-});
+})
 export default function Home({ setObj, state }: ContextType) {
   return (
     <MyContext.Provider value={{ setObj, state }}>
@@ -25,5 +25,5 @@ export default function Home({ setObj, state }: ContextType) {
       {/* <ValidContext /> */}
       {/* <div onClick={() => console.log(state.a)}>{state.a}</div> */}
     </MyContext.Provider>
-  );
+  )
 }

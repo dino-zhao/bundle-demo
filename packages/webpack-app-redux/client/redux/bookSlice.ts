@@ -1,21 +1,17 @@
-import {
-  createEntityAdapter,
-  createSlice,
-  EntityState,
-} from "@reduxjs/toolkit";
+import { createEntityAdapter, createSlice, EntityState } from '@reduxjs/toolkit'
 
-type Book = { id: string; title: string };
+type Book = { id: string; title: string }
 interface State {
-  books: EntityState<Book>;
+  books: EntityState<Book>
 }
 
 const booksAdapter = createEntityAdapter<Book>({
   // Keep the "all IDs" array sorted based on book titles
   sortComparer: (a, b) => a.title.localeCompare(b.title),
-});
+})
 
 export const booksSlice = createSlice({
-  name: "books",
+  name: 'books',
   initialState: booksAdapter.getInitialState({
     loading: false,
   }),
@@ -25,22 +21,22 @@ export const booksSlice = createSlice({
     bookAdded: booksAdapter.addOne,
     booksReceived(state, action) {
       // Or, call them as "mutating" helpers in a case reducer
-      state.loading = false;
-      booksAdapter.addMany(state, action.payload);
+      state.loading = false
+      booksAdapter.addMany(state, action.payload)
     },
     booksLoading(state) {
       // Can update the additional state field
-      state.loading = true;
+      state.loading = true
     },
     bookUpdated: booksAdapter.updateOne,
   },
-});
-export const bookAction = booksSlice.actions;
-export const simpleSelectors = booksAdapter.getSelectors();
+})
+export const bookAction = booksSlice.actions
+export const simpleSelectors = booksAdapter.getSelectors()
 
 export const { selectById: selectBookById } = booksAdapter.getSelectors(
   (state: State) => {
-    console.log("test322");
-    return state.books;
+    console.log('test322')
+    return state.books
   }
-);
+)

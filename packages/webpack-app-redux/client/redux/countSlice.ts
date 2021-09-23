@@ -1,22 +1,22 @@
-import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit'
 
-export const testAsync = createAsyncThunk("test", async () => {
-  const res = await fetch("/test");
-  return await res.json();
-});
+export const testAsync = createAsyncThunk('test', async () => {
+  const res = await fetch('/test')
+  return await res.json()
+})
 
 export interface CounterState {
-  value: number;
-  loading: boolean;
+  value: number
+  loading: boolean
 }
 
 const initialState: CounterState = {
   value: 0,
   loading: false,
-};
+}
 
 export const counterSlice = createSlice({
-  name: "counter",
+  name: 'counter',
   initialState,
   reducers: {
     increment: (state) => {
@@ -24,27 +24,27 @@ export const counterSlice = createSlice({
       // doesn't actually mutate the state because it uses the Immer library,
       // which detects changes to a "draft state" and produces a brand new
       // immutable state based off those changes
-      state.value += 1;
+      state.value += 1
     },
     decrement: (state) => {
-      console.log("dec1");
-      state.value -= 1;
+      console.log('dec1')
+      state.value -= 1
     },
     incrementByAmount: (state, action: PayloadAction<number>) => {
-      state.value += action.payload;
+      state.value += action.payload
     },
   },
   extraReducers: (builder) => {
     builder.addCase(testAsync.pending, (state) => {
-      state.loading = true;
-    });
+      state.loading = true
+    })
     builder.addCase(testAsync.fulfilled, (state) => {
-      state.loading = false;
-    });
+      state.loading = false
+    })
   },
-});
+})
 
 // Action creators are generated for each case reducer function
-export const { increment, decrement, incrementByAmount } = counterSlice.actions;
+export const { increment, decrement, incrementByAmount } = counterSlice.actions
 
-export default counterSlice.reducer;
+export default counterSlice.reducer

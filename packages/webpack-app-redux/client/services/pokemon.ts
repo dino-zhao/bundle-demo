@@ -1,15 +1,15 @@
-import { createApi, BaseQueryFn } from "@reduxjs/toolkit/query/react";
+import { createApi, BaseQueryFn } from '@reduxjs/toolkit/query/react'
 
-import axios, { AxiosRequestConfig, AxiosError } from "axios";
+import axios, { AxiosRequestConfig, AxiosError } from 'axios'
 const axiosBaseQuery =
   (
-    { baseUrl }: { baseUrl: string } = { baseUrl: "" }
+    { baseUrl }: { baseUrl: string } = { baseUrl: '' }
   ): BaseQueryFn<
     {
-      url: string;
-      method?: AxiosRequestConfig["method"];
-      data?: AxiosRequestConfig["data"];
-      params?: AxiosRequestConfig["params"];
+      url: string
+      method?: AxiosRequestConfig['method']
+      data?: AxiosRequestConfig['data']
+      params?: AxiosRequestConfig['params']
     },
     unknown,
     unknown
@@ -21,26 +21,26 @@ const axiosBaseQuery =
         method: method,
         data,
         params,
-      });
-      return { data: result.data };
+      })
+      return { data: result.data }
     } catch (axiosError) {
-      const err = axiosError as AxiosError;
+      const err = axiosError as AxiosError
       return {
         error: { status: err.response?.status, data: err.response?.data },
-      };
+      }
     }
-  };
+  }
 export const pokemonApi = createApi({
   baseQuery: axiosBaseQuery({
-    baseUrl: "http://localhost:3000",
+    baseUrl: 'http://localhost:3000',
   }),
   tagTypes: [],
-  reducerPath: "pokemonApi",
+  reducerPath: 'pokemonApi',
   //   refetchOnMountOrArgChange: true, //不用缓存
   //   refetchOnFocus: true, //window focus时自动fetch
   endpoints: (builder) => ({
     getPokemonByName: builder.query({
-      query: () => ({ url: "/test", method: "get", params: { a: 2 } }),
+      query: () => ({ url: '/test', method: 'get', params: { a: 2 } }),
       //   transformResponse: (response) => {
       //     console.log(response);
       //     return response;
@@ -48,13 +48,13 @@ export const pokemonApi = createApi({
     }),
     log: builder.mutation({
       query: () => ({
-        url: "/post",
-        method: "POST",
-        data: { test: "post" },
+        url: '/post',
+        method: 'POST',
+        data: { test: 'post' },
       }),
     }),
   }),
-});
+})
 
 // Export hooks for usage in functional components
-export const { useGetPokemonByNameQuery, useLogMutation } = pokemonApi;
+export const { useGetPokemonByNameQuery, useLogMutation } = pokemonApi
