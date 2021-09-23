@@ -7,7 +7,8 @@
   "scripts": {
     "start": "node server",
     "build": "webpack --config webpack.prod.js",
-    "lint": "eslint  --fix --ext .ts,.tsx,.js client"
+    "lint": "eslint  --fix --ext .ts,.tsx,.js client",
+    "prepare": "husky install"
   },
   "devDependencies": {
     "@babel/core": "^7.15.5",
@@ -29,6 +30,8 @@
     "eslint-plugin-react": "^7.26.0",
     "eslint-plugin-react-hooks": "^4.2.0",
     "express": "^4.17.1",
+    "husky": "^7.0.2",
+    "lint-staged": "^11.1.2",
     "mini-css-extract-plugin": "^2.3.0",
     "prettier": "2.4.1",
     "react-hot-loader": "^4.13.0",
@@ -53,5 +56,8 @@
     "react-redux": "^7.2.5",
     "styled-components": "^5.3.1",
     "webpack-lib": "1.0.0"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js}": "eslint --cache --fix"
   }
 }

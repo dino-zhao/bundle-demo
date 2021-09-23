@@ -23,6 +23,12 @@ module.exports = {
   rules: {
     '@typescript-eslint/explicit-module-boundary-types': ['off'],
     'prettier/prettier': 'error',
+    'react-hooks/exhaustive-deps': [
+      'warn',
+      {
+        enableDangerousAutofixThisMayCauseInfiniteLoops: true,
+      },
+    ],
   },
   settings: {
     react: {

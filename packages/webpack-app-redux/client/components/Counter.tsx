@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState, useCallback } from 'react'
 import { Button } from 'antd'
 import midImg from '@/assets/m.jpg'
 import styles from './Counter.module.scss'
@@ -15,6 +15,10 @@ export default function Counter() {
   const { value, loading } = useAppSelector((state) => state.counter)
   const dispatch = useAppDispatch()
   const [state, setState] = useState(0)
+
+  useCallback(() => {
+    return value
+  }, [value])
 
   return (
     <div>
