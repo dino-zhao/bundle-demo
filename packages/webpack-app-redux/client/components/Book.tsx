@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { bookAction, simpleSelectors, selectBookById } from "@redux/bookSlice";
+import React, { useState } from "react";
+import { bookAction, selectBookById } from "@redux/bookSlice";
 import { useAppSelector, useAppDispatch } from "@redux/store";
 const { bookAdded, booksLoading, booksReceived, bookUpdated } = bookAction;
 

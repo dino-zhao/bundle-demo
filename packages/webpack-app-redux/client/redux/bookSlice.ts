@@ -2,7 +2,6 @@ import {
   createEntityAdapter,
   createSlice,
   EntityState,
-  EntityId,
 } from "@reduxjs/toolkit";
 
 type Book = { id: string; title: string };

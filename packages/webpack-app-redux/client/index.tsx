@@ -6,7 +6,11 @@ import "./index.scss";
 import App from "./App";
 import store from "./redux/store";
 import { Provider } from "react-redux";
-const { log } = require("webpack-lib"); //以commjs
+/* eslint-disable */
+
+const { log } = require("webpack-lib"); //是用cmj的格式
+
+/* eslint-enable */
 
 ReactDOM.render(
   <Provider store={store}>

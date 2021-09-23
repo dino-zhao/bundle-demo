@@ -33,7 +33,7 @@ export default function Query() {
             });
         }}
       >
-        log
+        log{isLoging}
       </div>
       <div>
         <QueryOne></QueryOne>

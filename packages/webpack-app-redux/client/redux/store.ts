@@ -1,8 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
-import counterReducer from "./countSlice";
 import { pokemonApi } from "../services/pokemon";
 import { TypedUseSelectorHook, useSelector, useDispatch } from "react-redux";
-import { booksSlice, selectBookById } from "./bookSlice";
 import { setupListeners } from "@reduxjs/toolkit/query";
 import rootReducer from "./reducers";
 const store = configureStore({

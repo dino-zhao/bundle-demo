@@ -1,8 +1,8 @@
-import React, { useContext, useEffect, useMemo } from "react";
-import Query from "./Query";
+import React from "react";
+// import Query from "./Query";
 const Counter = React.lazy(() => import("./Counter"));
 // import Counter from "./Counter";
-import Book from "./Book";
+// import Book from "./Book";
 // import ValidContext from "./ValidContext";
 
 export interface ContextType {
@@ -12,7 +12,9 @@ export interface ContextType {
 
 export const MyContext = React.createContext<ContextType>({
   state: { a: 1 },
-  setObj: (v: number) => {},
+  setObj: (v: number) => {
+    console.log(v);
+  },
 });
 export default function Home({ setObj, state }: ContextType) {
   return (
