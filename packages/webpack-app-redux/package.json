@@ -7,8 +7,7 @@
   "scripts": {
     "start": "node server",
     "build": "webpack --config webpack.prod.js",
-    "lint": "eslint  --fix --ext .ts,.tsx,.js client",
-    "prepare": "husky install"
+    "lint": "eslint  --fix --ext .ts,.tsx,.js client"
   },
   "devDependencies": {
     "@babel/core": "^7.15.5",
@@ -56,8 +55,5 @@
     "react-redux": "^7.2.5",
     "styled-components": "^5.3.1",
     "webpack-lib": "1.0.0"
-  },
-  "lint-staged": {
-    "*.{ts,tsx,js}": "eslint --cache --fix"
   }
 }
