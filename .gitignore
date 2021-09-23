@@ -6,3 +6,4 @@
 /www/
 **/dist/
 **/.temp_cache/
+**/yarn-error.log
