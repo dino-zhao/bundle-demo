@@ -29,6 +29,7 @@ module.exports = {
         enableDangerousAutofixThisMayCauseInfiniteLoops: true,
       },
     ],
+    '@typescript-eslint/no-unused-vars': ['error'],
   },
   settings: {
     react: {

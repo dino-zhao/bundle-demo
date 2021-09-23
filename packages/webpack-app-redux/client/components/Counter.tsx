@@ -6,7 +6,6 @@ import styled from 'styled-components'
 
 import { useAppSelector, useAppDispatch } from '@redux/store'
 import { decrement, increment, testAsync } from '@/redux/countSlice'
-
 const Hello = styled.div`
   color: red;
 `
