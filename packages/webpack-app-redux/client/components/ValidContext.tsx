@@ -1,8 +1,8 @@
-import React, { useContext, useMemo } from "react";
-import { MyContext } from "./Home";
+import React, { useContext } from 'react'
+import { MyContext } from './Home'
 
 export default function ValidContext() {
-  const { setObj, state } = useContext(MyContext);
+  const { setObj, state } = useContext(MyContext)
   return (
     <div>
       <div>{state.a}</div>
@@ -10,5 +10,5 @@ export default function ValidContext() {
         <button onClick={() => setObj(2)}>修改</button>
       </div>
     </div>
-  );
+  )
 }

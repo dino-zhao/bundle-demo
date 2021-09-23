@@ -1,23 +1,27 @@
-import React, { useState } from "react";
-import { Button } from "antd";
-import midImg from "@/assets/m.jpg";
-import styles from "./Counter.module.scss";
-import styled from "styled-components";
+import React, { useState, useCallback } from 'react'
+import { Button } from 'antd'
+import midImg from '@/assets/m.jpg'
+import styles from './Counter.module.scss'
+import styled from 'styled-components'
 
-import { useAppSelector, useAppDispatch } from "@redux/store";
-import { decrement, increment, testAsync } from "@/redux/countSlice";
-
+import { useAppSelector, useAppDispatch } from '@redux/store'
+import { decrement, increment, testAsync } from '@/redux/countSlice'
 const Hello = styled.div`
   color: red;
-`;
+`
 
 export default function Counter() {
-  const { value, loading } = useAppSelector((state) => state.counter);
-  const dispatch = useAppDispatch();
-  const [state, setState] = useState(0);
+  const { value, loading } = useAppSelector((state) => state.counter)
+  const dispatch = useAppDispatch()
+  const [state, setState] = useState(0)
+
+  useCallback(() => {
+    return value
+  }, [value])
+
   return (
     <div>
-      <img style={{ display: "none" }} src={midImg} alt="" />
+      <img style={{ display: 'none' }} src={midImg} alt="" />
       <div>
         <Button
           aria-label="Increment value"
@@ -40,11 +44,11 @@ export default function Counter() {
       </div>
       <div
         onClick={() => {
-          dispatch(testAsync());
+          dispatch(testAsync())
         }}
       >
-        异步调用 {loading ? "调用中" : "完成"}
+        异步调用 {loading ? '调用中' : '完成'}
       </div>
     </div>
-  );
+  )
 }
