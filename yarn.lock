@@ -3462,7 +3462,7 @@ config-chain@^1.1.12:
 
 connect-history-api-fallback@^1.6.0:
   version "1.6.0"
-  resolved "https://registry.nlark.com/connect-history-api-fallback/download/connect-history-api-fallback-1.6.0.tgz?cache=0&sync_timestamp=1618847040596&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fconnect-history-api-fallback%2Fdownload%2Fconnect-history-api-fallback-1.6.0.tgz#8b32089359308d111115d81cad3fceab888f97bc"
+  resolved "https://registry.npm.taobao.org/connect-history-api-fallback/download/connect-history-api-fallback-1.6.0.tgz#8b32089359308d111115d81cad3fceab888f97bc"
   integrity sha1-izIIk1kwjRERFdgcrT/Oq4iPl7w=
 
 console-control-strings@^1.0.0, console-control-strings@~1.1.0:

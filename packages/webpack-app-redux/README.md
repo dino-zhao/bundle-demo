@@ -53,6 +53,5 @@ rtk query
 11. react17 的 jsx 不需要显示引入 react
     https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html#eslint
 
-todo
-
-1. react-rourter 刷新 404
+12. react-rourter 刷新 404
+    配置 webpack-dev-midware publicpath，引入 connect-history-api-fallback
