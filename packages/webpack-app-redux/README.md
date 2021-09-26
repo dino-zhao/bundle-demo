@@ -47,6 +47,12 @@ rtk query
    scss 和 css module, css module 在 css-loader 中处理，看 sass-loader 和 css-loader 文档即可
    styled-components https://styled-components.com/docs/basics
 
+10. hook 相关 eslint 插件 plugin:react-hooks/recommended
+    https://github.com/facebook/react/issues/18235
 
-plugin:react-hooks/recommended
-https://github.com/facebook/react/issues/18235
+11. react17 的 jsx 不需要显示引入 react
+    https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html#eslint
+
+todo
+
+1. react-rourter 刷新 404

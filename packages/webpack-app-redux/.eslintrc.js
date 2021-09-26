@@ -29,6 +29,8 @@ module.exports = {
         enableDangerousAutofixThisMayCauseInfiniteLoops: true,
       },
     ],
+    'react/jsx-uses-react': 'off',
+    'react/react-in-jsx-scope': 'off',
     '@typescript-eslint/no-unused-vars': ['error'],
   },
   settings: {

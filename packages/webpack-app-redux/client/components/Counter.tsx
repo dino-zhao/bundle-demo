@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react'
+import { useState, useCallback } from 'react'
 import { Button } from 'antd'
 import midImg from '@/assets/m.jpg'
 import styles from './Counter.module.scss'
@@ -46,6 +46,7 @@ export default function Counter() {
         onClick={() => {
           dispatch(testAsync())
         }}
+        style={{ border: '1px solid #111' }}
       >
         异步调用 {loading ? '调用中' : '完成'}
       </div>
