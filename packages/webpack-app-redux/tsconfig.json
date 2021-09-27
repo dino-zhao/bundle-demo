@@ -12,7 +12,8 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["client/*"],
-      "@redux/*": ["client/redux/*"]
+      "@redux/*": ["client/redux/*"],
+      "@components/*": ["client/components/*"]
     }
   },
 

@@ -1,5 +1,8 @@
 import React from 'react'
-import { useGetPokemonByNameQuery, useLogMutation } from '../services/pokemon'
+import {
+  useGetPokemonByNameQuery,
+  useLogMutation,
+} from '../../services/pokemon'
 export default function Query() {
   //   const [skip, setSkip] = React.useState(true);
   const { data, error, isLoading, refetch } =

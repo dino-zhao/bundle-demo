@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { MyContext } from './Home'
+import { MyContext } from '../Home'
 
 export default function ValidContext() {
   const { setObj, state } = useContext(MyContext)

@@ -1,9 +1,5 @@
 import React from 'react'
-// import Query from "./Query";
-// const Counter = React.lazy(() => import('./Counter'))
-// import Counter from "./Counter";
-// import Book from "./Book";
-// import ValidContext from "./ValidContext";
+
 import { BrowserRouter as Router, Link } from 'react-router-dom'
 import AppRoute from './AppRoute'
 

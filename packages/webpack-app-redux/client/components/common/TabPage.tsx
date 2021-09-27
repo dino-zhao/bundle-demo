@@ -7,13 +7,9 @@ export interface TabItem {
 }
 
 export default function TabPage({ tabList }: { tabList: TabItem[] }) {
-  const activeTab = useMemo(() => {
-    return tabList[0]?.name
-  }, [tabList])
-
   if (tabList.length === 0) return null
   return (
-    <Tabs defaultActiveKey={activeTab}>
+    <Tabs type="card">
       {tabList.map((item) => {
         return (
           <TabPane tab={item.name} key={item.name}>
