@@ -1,0 +1,23 @@
+//aspect-ratio polyfill,参考 https://www.npmjs.com/package/postcss-aspect-ratio-polyfill
+
+.aspect-ratio-box::before {
+  float: left;
+  padding-top: calc(9 / 16 * 100%);
+  content: '';
+}
+.aspect-ratio-box::after {
+  display: block;
+  content: '';
+  clear: both;
+}
+.aspect-ratio-box {
+  max-width: 500px;
+  background: red;
+}
+
+//真的aspect
+.aspect {
+  max-width: 500px;
+  aspect-ratio: 16/9;
+  //   background: red;
+}

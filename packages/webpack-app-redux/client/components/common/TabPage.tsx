@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import React from 'react'
 import { Tabs } from 'antd'
 const { TabPane } = Tabs
 export interface TabItem {
