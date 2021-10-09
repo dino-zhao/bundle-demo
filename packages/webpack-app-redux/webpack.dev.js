@@ -20,6 +20,7 @@ module.exports = merge(common, {
     rules: [
       {
         test: /\.css|scss$/,
+        exclude: [/node_modules/],
         use: [
           'style-loader',
           {
@@ -31,6 +32,16 @@ module.exports = merge(common, {
             },
           },
           'sass-loader',
+        ],
+      },
+      {
+        test: /\.css$/,
+        include: [/node_modules/],
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+          },
         ],
       },
     ],

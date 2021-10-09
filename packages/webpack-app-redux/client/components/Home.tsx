@@ -1,9 +1,7 @@
 import React from 'react'
-// import Query from "./Query";
-const Counter = React.lazy(() => import('./Counter'))
-// import Counter from "./Counter";
-// import Book from "./Book";
-// import ValidContext from "./ValidContext";
+
+import { BrowserRouter as Router, Link } from 'react-router-dom'
+import AppRoute from './AppRoute'
 
 export interface ContextType {
   state: { a: number }
@@ -19,7 +17,24 @@ export const MyContext = React.createContext<ContextType>({
 export default function Home({ setObj, state }: ContextType) {
   return (
     <MyContext.Provider value={{ setObj, state }}>
-      <Counter />
+      <Router>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/redux">redux</Link>
+            </li>
+            <li>
+              <Link to="/css">css</Link>
+            </li>
+            <li>
+              <Link to="/header">http header</Link>
+            </li>
+          </ul>
+        </nav>
+        <AppRoute />
+      </Router>
+
+      {/* <Counter /> */}
       {/* <Query /> */}
       {/* <Book /> */}
       {/* <ValidContext /> */}

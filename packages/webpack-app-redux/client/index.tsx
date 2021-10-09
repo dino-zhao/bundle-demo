@@ -18,8 +18,8 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('root')
 )
-//用来更新store
-// if (module.hot) {
-//   module.hot.accept();
-// }
+// 用来更新store
+if (module.hot) {
+  module.hot.accept()
+}
 log('99')
