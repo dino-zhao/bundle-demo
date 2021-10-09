@@ -26,6 +26,9 @@ export default function Home({ setObj, state }: ContextType) {
             <li>
               <Link to="/css">css</Link>
             </li>
+            <li>
+              <Link to="/header">http header</Link>
+            </li>
           </ul>
         </nav>
         <AppRoute />
