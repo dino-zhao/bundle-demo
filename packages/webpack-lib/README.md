@@ -6,6 +6,8 @@
 4. [DllPlugin](https://webpack.js.org/plugins/dll-plugin/#dllplugin)
    两个配置文件，先打包 dll 后，注意配置 devServer.static 为打包目录,用在开发环境，生产环境用 2,5
 
+   可以通过[autodll-webpack-plugin](https://www.npmjs.com/package/autodll-webpack-plugin)自动配置，但 webapck5 已经内置了更高效的[ hard-source-webpack-plugin](https://github.com/mzgoddard/hard-source-webpack-plugin)
+
 5. [tree-shaking](https://webpack.docschina.org/guides/tree-shaking/)
 
 tree shaking 会删除是用不到的模块，但项目中会出现带有副作用的模块，于是引入了 sideEffects 字段，
