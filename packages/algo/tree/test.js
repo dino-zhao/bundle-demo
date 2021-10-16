@@ -1,6 +1,5 @@
 const { tree } = require("./buildTree");
-
-function levelOrder(root) {
+function search(root) {
   if (root === null) return [];
   let queue = [root],
     res = [];
@@ -16,4 +15,5 @@ function levelOrder(root) {
   }
   return res;
 }
-console.log(levelOrder(tree));
+
+console.log(search(tree));
