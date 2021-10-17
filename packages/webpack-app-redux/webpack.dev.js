@@ -2,6 +2,7 @@ const { merge } = require('webpack-merge')
 const common = require('./webpack.common.js')
 const webpack = require('webpack')
 const path = require('path')
+const Wba = require('webpack-bundle-analyzer')
 module.exports = merge(common, {
   mode: 'development',
   devtool: 'inline-source-map',
@@ -10,7 +11,10 @@ module.exports = merge(common, {
     './client/index.tsx',
     'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true',
   ],
-  plugins: [new webpack.HotModuleReplacementPlugin()],
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    // new Wba.BundleAnalyzerPlugin(),
+  ],
   cache: {
     type: 'filesystem',
     allowCollectingMemory: true,
