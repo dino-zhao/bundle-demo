@@ -4,6 +4,8 @@ import 'antd/dist/antd.css'
 import './index.css'
 import './index.scss'
 import App from './App'
+import './styles/tailwind.css'
+// import '../dist/tailwind.css'
 import store from './redux/store'
 import { Provider } from 'react-redux'
 /* eslint-disable */

@@ -24,7 +24,7 @@ module.exports = merge(common, {
     rules: [
       {
         test: /\.css|scss$/,
-        exclude: [/node_modules/],
+        exclude: [/node_modules/, /tailwind.css$/],
         use: [
           'style-loader',
           {
@@ -36,6 +36,16 @@ module.exports = merge(common, {
             },
           },
           'sass-loader',
+        ],
+      },
+      {
+        test: /tailwind.css$/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+          },
+          'postcss-loader',
         ],
       },
       {
