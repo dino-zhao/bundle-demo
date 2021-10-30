@@ -6,3 +6,4 @@
 **/dist/
 **/.temp_cache/
 **/yarn-error.log
+**/.umi/

@@ -1,4 +1,4 @@
-import { cloneDeep } from "lodash";
+import cloneDeep from "lodash/cloneDeep";
 import { cube } from "./math";
 export function log(v: string) {
   console.log(cloneDeep(v + "啊啊12"));
