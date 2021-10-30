@@ -1,0 +1,20 @@
+{
+  "name": "c",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "dumi": "^1.1.31",
+    "father-build": "^1.20.1"
+  },
+  "scripts": {
+    "start": "dumi dev",
+    "dumi-build": "cross-env APP_ROOT=dumi dumi build",
+    "build": "father-build"
+  },
+  "dependencies": {
+    "@types/react": "^17.0.33",
+    "react": "^17.0.2"
+  }
+}
