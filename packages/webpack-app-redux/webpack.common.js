@@ -23,8 +23,8 @@ module.exports = {
         type: 'asset/resource',
       },
       {
-        test: /\.css|scss$/,
-        exclude: [/tailwind.css$/, path.join(__dirname, 'node_modules/antd/')],
+        test: /\.scss$/,
+        include: path.resolve(__dirname, 'client'),
         use: [
           process.env.NODE_ENV === 'development'
             ? 'style-loader'
@@ -54,7 +54,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        include: [path.join(__dirname, 'node_modules/antd/')],
+        exclude: [/tailwind.css$/],
         use: [
           process.env.NODE_ENV === 'development'
             ? 'style-loader'
