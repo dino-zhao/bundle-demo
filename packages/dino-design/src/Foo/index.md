@@ -7,12 +7,8 @@ nav:
 ## Foo
 
 Demo:
+<API></API>
 
-```tsx
-import React from "react";
-import { Foo } from "c";
-
-export default () => <Foo title="First Demo" />;
-```
+<code src="./demo/basic.tsx"></code>
 
 More skills for writing demo: https://d.umijs.org/guide/basic#write-component-demo
