@@ -76,6 +76,6 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({ template: './public/index.html' }),
-    new Wba.BundleAnalyzerPlugin(),
+    // new Wba.BundleAnalyzerPlugin(),
   ],
 }

@@ -29,6 +29,9 @@ export default function Home({ setObj, state }: ContextType) {
             <li>
               <Link to="/header">http header</Link>
             </li>
+            <li>
+              <Link to="/others">其他</Link>
+            </li>
           </ul>
         </nav>
         <AppRoute />
