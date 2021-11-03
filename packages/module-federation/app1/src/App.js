@@ -7,9 +7,11 @@ function loadComponent(scope, module) {
     await __webpack_init_sharing__("default");
 
     const container = window[scope]; // or get the container somewhere else
+
     // Initialize the container, it may provide shared modules
     await container.init(__webpack_share_scopes__.default);
     const factory = await window[scope].get(module);
+
     const Module = factory();
     return Module;
   };
@@ -107,9 +109,6 @@ function useRemoteFn({ url, scope, module }) {
   useEffect(() => {
     loadFn(scope, module)().then((res) => {
       if (!res) return;
-      console.log(res);
-      res.default(222);
-      res.cake();
       setC(res);
     });
   });
@@ -127,7 +126,7 @@ const App = () => {
     module: "./log",
   });
   useEffect(() => {
-    console.log(c?.cake);
+    // console.log(c?.cake);
   }, [c]);
   return (
     <div>
