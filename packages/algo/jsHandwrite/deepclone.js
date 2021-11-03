@@ -49,28 +49,6 @@ function cloneReg(targe) {
   return result;
 }
 
-function cloneFunction(func) {
-  const bodyReg = /(?<={)(.|\n)+(?=})/m;
-  const paramReg = /(?<=\().+(?=\)\s+{)/;
-  const funcString = func.toString();
-  if (func.prototype) {
-    const param = paramReg.exec(funcString);
-    const body = bodyReg.exec(funcString);
-    if (body) {
-      if (param) {
-        const paramArr = param[0].split(",");
-        return new Function(...paramArr, body[0]);
-      } else {
-        return new Function(body[0]);
-      }
-    } else {
-      return null;
-    }
-  } else {
-    return eval(funcString);
-  }
-}
-
 function cloneOtherType(targe, type) {
   const Ctor = targe.constructor;
   switch (type) {
@@ -85,13 +63,14 @@ function cloneOtherType(targe, type) {
     case symbolTag:
       return cloneSymbol(targe);
     case funcTag:
-      return cloneFunction(targe);
+      //函数没必要克隆
+      return targe;
     default:
       return null;
   }
 }
-
-function clone(target, map = new WeakMap()) {
+//weakmap没必要
+function clone(target, map = new Map()) {
   // 克隆原始类型
   if (!isObject(target)) {
     return target;
