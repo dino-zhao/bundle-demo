@@ -10,7 +10,8 @@
     "serve": "12.0.1",
     "webpack": "5.52.1",
     "webpack-cli": "4.8.0",
-    "webpack-dev-server": "4.2.0"
+    "webpack-dev-server": "4.2.0",
+    "webpack-sources": "^3.2.1"
   },
   "scripts": {
     "start": "webpack-cli serve",
@@ -19,6 +20,7 @@
     "clean": "rm -rf dist"
   },
   "dependencies": {
+    "html-webpack-plugin": "^5.5.0",
     "react": "^16.13.0",
     "react-dom": "^16.13.0"
   }

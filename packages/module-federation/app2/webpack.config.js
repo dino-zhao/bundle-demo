@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { ModuleFederationPlugin } = require("webpack").container;
+const ModuleFedSingleRuntimePlugin = require("./plugins/moduleFedSingleRuntime");
 const path = require("path");
 
 module.exports = {
@@ -10,6 +11,8 @@ module.exports = {
       directory: path.join(__dirname, "dist"),
     },
     port: 3011,
+    allowedHosts: ["localhost"],
+    hot: true,
   },
   output: {
     publicPath: "auto",
@@ -40,5 +43,9 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "./public/index.html",
     }),
+    new ModuleFedSingleRuntimePlugin(),
   ],
+  optimization: {
+    runtimeChunk: "single",
+  },
 };

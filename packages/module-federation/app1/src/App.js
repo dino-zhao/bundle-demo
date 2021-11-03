@@ -18,13 +18,13 @@ const App = () => {
       <h2>App 1</h2>
       <button onClick={log?.cake}>做蛋糕</button>
       {Btn && <Btn.default></Btn.default>}
-      <BackwardComponent
+      {/* <BackwardComponent
         system={{
           url: "http://localhost:3011/remoteEntry.js",
           scope: "app2",
           module: "./Button",
         }}
-      />
+      /> */}
     </div>
   );
 };
