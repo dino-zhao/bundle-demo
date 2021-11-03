@@ -35,7 +35,7 @@ export default function Book() {
             )
           }}
         >
-          更新1
+          更新
         </button>
       </div>
       <div>
