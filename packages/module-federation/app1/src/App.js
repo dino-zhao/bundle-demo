@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 // const RemoteButton = React.lazy(() => import("app2/Button"));
 
 function loadComponent(scope, module) {
@@ -8,6 +8,21 @@ function loadComponent(scope, module) {
 
     const container = window[scope]; // or get the container somewhere else
     // Initialize the container, it may provide shared modules
+    await container.init(__webpack_share_scopes__.default);
+    const factory = await window[scope].get(module);
+    const Module = factory();
+    return Module;
+  };
+}
+
+function loadFn(scope, module) {
+  return async () => {
+    // Initializes the share scope. This fills it with known provided modules from this build and all remotes
+    await __webpack_init_sharing__("default");
+
+    const container = window[scope]; // or get the container somewhere else
+    // Initialize the container, it may provide shared modules
+    if (!container) return;
     await container.init(__webpack_share_scopes__.default);
     const factory = await window[scope].get(module);
     const Module = factory();
@@ -84,21 +99,53 @@ function System(props) {
   );
 }
 
-const App = () => (
-  <div>
-    <h1>Basic Host-Remote</h1>
-    <h2>App 1</h2>
-    {/* <React.Suspense fallback="Loading Button">
-      <RemoteButton />
-    </React.Suspense> */}
-    <System
-      system={{
-        url: "http://localhost:3011/remoteEntry.js",
-        scope: "app2",
-        module: "./Button",
-      }}
-    />
-  </div>
-);
+function useRemoteFn({ url, scope, module }) {
+  const { ready, failed } = useDynamicScript({
+    url,
+  });
+  const [c, setC] = useState();
+  useEffect(() => {
+    loadFn(scope, module)().then((res) => {
+      if (!res) return;
+      console.log(res);
+      res.default(222);
+      res.cake();
+      setC(res);
+    });
+  });
+  if (!ready || failed) {
+    return;
+  }
+
+  return c;
+}
+
+const App = () => {
+  const c = useRemoteFn({
+    url: "http://localhost:3011/remoteEntry.js",
+    scope: "app2",
+    module: "./log",
+  });
+  useEffect(() => {
+    console.log(c?.cake);
+  }, [c]);
+  return (
+    <div>
+      <h1>Basic Host-Remote</h1>
+      <h2>App 1</h2>
+      <button onClick={c?.cake}>做蛋糕</button>
+      {/* <React.Suspense fallback="Loading Button">
+        <RemoteButton />
+      </React.Suspense> */}
+      <System
+        system={{
+          url: "http://localhost:3011/remoteEntry.js",
+          scope: "app2",
+          module: "./Button",
+        }}
+      />
+    </div>
+  );
+};
 
 export default App;
