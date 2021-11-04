@@ -1,6 +1,6 @@
 import React from "react";
-import useDynamicScript from "./useDynamicScript";
-import { loadModule } from "./loadModules";
+import useDynamicScript from "../common/useDynamicScript";
+import { loadModule } from "../common/loadModules";
 export default function BackwardComponent(props) {
   const { ready, failed } = useDynamicScript({
     url: props.system && props.system.url,

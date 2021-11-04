@@ -41,6 +41,42 @@ module.exports = {
       // remotes: {
       //   app2: `app2@${getRemoteEntryUrl(3011)}`,
       // },
+      //这种方式无法处理remote加载错误
+      // remotes: {
+      //   app3: `promise new Promise(resolve => {
+
+      //     // This part depends on how you plan on hosting and versioning your federated modules
+      //     const remoteUrlWithVersion = 'http://localhost:3012/remoteEntry.js'
+      //     const script = document.createElement('script')
+      //     script.src = remoteUrlWithVersion
+      //     script.onerror=()=>{
+      //       console.log('shibai')
+      //       return false
+      //     }
+      //     script.onload = () => {
+      //       // the injected script has loaded and is available on window
+      //       // we can now resolve this Promise
+
+      //       const proxy = {
+      //         get: (request) =>{
+      //           console.log(window.app3)
+      //         return  window.app3.get(request)
+      //         },
+      //         init: (arg) => {
+      //           try {
+      //             return window.app1.init(arg)
+      //           } catch(e) {
+      //             console.log('remote container already initialized')
+      //           }
+      //         }
+      //       }
+      //       resolve(proxy)
+      //     }
+      //     // inject this script with the src set to the versioned remoteEntry.js
+      //     document.head.appendChild(script);
+      //   })
+      //   `,
+      // },
       shared: { react: { singleton: true }, "react-dom": { singleton: true } },
     }),
     new HtmlWebpackPlugin({
