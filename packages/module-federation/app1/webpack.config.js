@@ -38,9 +38,9 @@ module.exports = {
   plugins: [
     new ModuleFederationPlugin({
       name: "app1",
-      // remotes: {
-      //   app2: `app2@${getRemoteEntryUrl(3011)}`,
-      // },
+      remotes: {
+        app3: `app3@${getRemoteEntryUrl(3012)}`,
+      },
       //这种方式无法处理remote加载错误
       // remotes: {
       //   app3: `promise new Promise(resolve => {

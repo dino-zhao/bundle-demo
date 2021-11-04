@@ -40,7 +40,7 @@ module.exports = {
       library: { type: "var", name: "app3" },
       filename: "remoteEntry.js",
       exposes: {
-        "./Button": "./src/Button",
+        "./tools": "./src/tools",
       },
       shared: { react: { singleton: true }, "react-dom": { singleton: true } },
     }),

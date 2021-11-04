@@ -8,10 +8,12 @@ export default function useLoadRemoteModule({ url, scope, modules }) {
   });
   const [res, setRes] = useState([]);
   useEffect(() => {
-    loadModules(scope, modules)().then((res) => {
-      setRes(res);
-    });
-  }, [ready, failed]);
+    if (ready) {
+      loadModules(scope, modules)().then((res) => {
+        setRes(res);
+      });
+    }
+  }, [ready]);
   if (!ready || failed) {
     return [];
   }

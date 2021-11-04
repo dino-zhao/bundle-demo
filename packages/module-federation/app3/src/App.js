@@ -1,11 +1,9 @@
-import LocalButton from "./Button";
 import React from "react";
 
 const App = () => (
   <div>
-    <h1>Basic Host-Remote12222</h1>
+    <h1>Basic Host-Remote12</h1>
     <h2>App 3</h2>
-    <LocalButton />
   </div>
 );
 
