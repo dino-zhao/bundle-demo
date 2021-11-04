@@ -10,7 +10,7 @@ module.exports = {
     static: {
       directory: path.join(__dirname, "dist"),
     },
-    port: 3011,
+    port: 3012,
     hot: true,
     headers: {
       "Access-Control-Allow-Origin": "*",
@@ -36,12 +36,11 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: "app2",
-      library: { type: "var", name: "app2" },
+      name: "app3",
+      library: { type: "var", name: "app3" },
       filename: "remoteEntry.js",
       exposes: {
-        "./Button": "./src/Button",
-        "./log": "./src/log",
+        "./tools": "./src/tools",
       },
       shared: { react: { singleton: true }, "react-dom": { singleton: true } },
     }),
