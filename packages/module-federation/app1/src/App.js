@@ -16,7 +16,7 @@ const App = () => {
     <div>
       <h1>Basic Host-Remote</h1>
       <h2>App 1</h2>
-      <button onClick={log?.cake}>做蛋糕</button>
+      <button onClick={log?.cake}>做蛋糕1</button>
       {Btn && <Btn.default></Btn.default>}
       {/* <BackwardComponent
         system={{
