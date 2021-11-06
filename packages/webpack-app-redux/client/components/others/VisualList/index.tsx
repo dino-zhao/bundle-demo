@@ -26,7 +26,8 @@ export default function VisualList() {
    * 创建列表显示数据
    */
   const createListData = () => {
-    const initnalList: number[] = Array.from(Array(20).keys())
+    const initnalList: number[] = Array.from(Array(200).keys())
+    // const initnalList: number[] = Array.from(Array(20).keys())
     setSourceData(initnalList)
   }
 
@@ -41,7 +42,6 @@ export default function VisualList() {
     const element = containerRef.current
     if (element) {
       const offset: number = Math.floor(element.scrollTop / ITEM_HEIGHT) + 1
-      console.log(offset, 'offset')
       const viewItemSize: number = Math.ceil(element.clientHeight / ITEM_HEIGHT)
       const startSize: number = offset - PRE_LOAD_COUNT
       const endSize: number = viewItemSize + offset + PRE_LOAD_COUNT
@@ -56,16 +56,15 @@ export default function VisualList() {
    * 计算当前是否已经到底底部
    * @returns 是否到达底部
    */
-  const reachScrollBottom = (): boolean => {
-    const contentScrollTop = containerRef.current?.scrollTop || 0 //滚动条距离顶部
-    const clientHeight = containerRef.current?.clientHeight || 0 //可视区域
-    const scrollHeight = containerRef.current?.scrollHeight || 0 //滚动条内容的总高度
-    console.log(scrollHeight, clientHeight, contentScrollTop, 'scrollContainer')
-    if (contentScrollTop + clientHeight >= scrollHeight) {
-      return true
-    }
-    return false
-  }
+  //   const reachScrollBottom = (): boolean => {
+  //     const contentScrollTop = containerRef.current?.scrollTop || 0 //滚动条距离顶部
+  //     const clientHeight = containerRef.current?.clientHeight || 0 //可视区域
+  //     const scrollHeight = containerRef.current?.scrollHeight || 0 //滚动条内容的总高度
+  //     if (contentScrollTop + clientHeight >= scrollHeight) {
+  //       return true
+  //     }
+  //     return false
+  //   }
 
   /**
    * onScroll事件回调
@@ -73,18 +72,18 @@ export default function VisualList() {
    */
   const onContainerScroll = (event: UIEvent<HTMLDivElement>) => {
     event.preventDefault()
-    if (reachScrollBottom()) {
-      setTimeout(() => {
-        let endIndex = showRange.end
-        const pushData: number[] = []
-        for (let index = 0; index < 20; index++) {
-          pushData.push(endIndex++)
-        }
-        setSourceData((arr) => {
-          return [...arr, ...pushData]
-        })
-      }, 0)
-    }
+    // if (reachScrollBottom()) {
+    //   setTimeout(() => {
+    //     let endIndex = showRange.end
+    //     const pushData: number[] = []
+    //     for (let index = 0; index < 20; index++) {
+    //       pushData.push(endIndex++)
+    //     }
+    //     setSourceData((arr) => {
+    //       return [...arr, ...pushData]
+    //     })
+    //   }, 0)
+    // }
     calculateRange()
   }
 
@@ -111,7 +110,6 @@ export default function VisualList() {
    * scrollView 偏移量
    */
   const scrollViewOffset = useMemo(() => {
-    console.log(showRange.start, 'showRange.start')
     return showRange.start * ITEM_HEIGHT
   }, [showRange.start])
 
