@@ -9,34 +9,13 @@ const styles = {
     height: '100%',
     width: '100%',
   },
-  newMessage: {
-    backgroundColor: '#3578E5',
-    borderRadius: '8px',
-    color: '#FFFFFF',
-    display: 'flex',
-    fontFamily: 'Roboto, sans-serif',
-    padding: '12px',
-    width: '65%',
-  },
-  newMessageContainer: {
-    display: 'flex',
-    flex: '0 0 auto',
-    justifyContent: 'flex-end',
-    width: '100%',
-  },
-  receivedMessage: {
-    backgroundColor: '#FFFFFF',
-    borderRadius: '8px',
-    display: 'flex',
-    fontFamily: 'Roboto, sans-serif',
-    padding: '12px',
-    width: '65%',
-  },
+
   receivedMessageContainer: {
     display: 'flex',
     flex: '0 0 auto',
     justifyContent: 'flex-start',
     width: '100%',
+    backgroundColor: '#FFFFFF',
   },
 }
 
@@ -69,9 +48,7 @@ const Message = ({ messages }: { messages: string[] }) => {
     return (
       <div style={style}>
         <div ref={rowRef} style={styles.receivedMessageContainer}>
-          <div style={styles.receivedMessage}>
-            <span>{messages[index]}</span>
-          </div>
+          {messages[index]}
         </div>
       </div>
     )
@@ -88,19 +65,32 @@ const Message = ({ messages }: { messages: string[] }) => {
 
   return (
     <AutoSizer style={styles.messagesContainer}>
-      {({ height, width }) => (
-        <List
-          className="List"
-          height={height - 74}
-          itemCount={messages.length}
-          itemSize={getRowHeight}
-          ref={listRef}
-          width={width}
-        >
-          {Row}
-        </List>
-      )}
+      {({ height, width }) => {
+        console.log(height, width)
+        return (
+          <List
+            className="List"
+            height={height}
+            itemCount={messages.length}
+            itemSize={getRowHeight}
+            ref={listRef}
+            width={width}
+          >
+            {Row}
+          </List>
+        )
+      }}
     </AutoSizer>
+    // <List
+    //   className="List"
+    //   height={300}
+    //   itemCount={messages.length}
+    //   itemSize={getRowHeight}
+    //   ref={listRef}
+    //   width={200}
+    // >
+    //   {Row}
+    // </List>
   )
 }
 

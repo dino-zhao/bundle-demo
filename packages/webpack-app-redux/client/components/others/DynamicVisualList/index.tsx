@@ -7,7 +7,7 @@ export default function DynamicVisualList() {
   useEffect(() => {
     const arr = []
     for (let i = 0; i < 200; i++) {
-      arr.push(faker.lorem.sentence())
+      arr.push(faker.lorem.paragraph())
     }
     setMessage(arr)
   }, [])
@@ -18,10 +18,9 @@ export default function DynamicVisualList() {
         backgroundColor: '#F0F0F0',
         display: 'flex',
         flexDirection: 'column',
-        height: '300px',
+        height: '500px',
         justifyContent: 'flex-end',
         overflow: 'hidden',
-        padding: '0px 100px',
         width: '100%',
       }}
     >
