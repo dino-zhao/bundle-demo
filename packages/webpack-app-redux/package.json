@@ -56,16 +56,22 @@
   "dependencies": {
     "@reduxjs/toolkit": "^1.6.1",
     "@types/axios": "^0.14.0",
+    "@types/faker": "^5.5.9",
     "@types/react-dom": "^17.0.9",
+    "@types/react-virtualized-auto-sizer": "^1.0.1",
+    "@types/react-window": "^1.8.5",
     "antd": "^4.16.13",
     "axios": "^0.21.4",
     "babel-plugin-import": "^1.13.3",
+    "dinod": "1.0.0",
+    "faker": "^5.5.3",
     "react": "^17.0.2",
     "react-dom": "npm:@hot-loader/react-dom",
     "react-redux": "^7.2.5",
     "react-router-dom": "^5.3.0",
+    "react-virtualized-auto-sizer": "^1.0.6",
+    "react-window": "^1.8.6",
     "styled-components": "^5.3.1",
-    "webpack-lib": "1.0.0",
-    "dinod": "1.0.0"
+    "webpack-lib": "1.0.0"
   }
 }
