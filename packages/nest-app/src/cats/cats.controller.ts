@@ -8,6 +8,7 @@ import {
   Body,
   Post,
   UsePipes,
+  Inject,
 } from '@nestjs/common';
 import { Request } from 'express';
 import { CreateCatDto } from './dto';
@@ -19,6 +20,8 @@ import { GetHeader } from '../common/decorators/user.decorator';
 @Controller('cats')
 export class CatsController {
   constructor(private catsService: CatsService) {}
+  @Inject('TestConfig')
+  private readonly testConfig;
 
   @Get()
   @HttpCode(200)
@@ -38,6 +41,6 @@ export class CatsController {
 
   @Get(':id')
   findOne(@GetHeader('user-agent') agent: string) {
-    console.log(agent);
+    console.log(agent, this.testConfig);
   }
 }
