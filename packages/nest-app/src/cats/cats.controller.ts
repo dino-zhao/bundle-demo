@@ -38,9 +38,21 @@ export class CatsController {
   async create(@Body() createCatDto: CreateCatDto) {
     try {
       const res = await this.catsService.create(createCatDto);
+      return 'success';
     } catch (error) {
-      // console.log(error.errors);
-      throw new BadRequestException(error.errors['age'].message);
+      let keys = Object.keys(error.errors);
+      throw new BadRequestException(error.errors[keys[0]].message);
+    }
+  }
+
+  @Post(':id')
+  async update(@Body() createCatDto: CreateCatDto, @Param('id') id: string) {
+    try {
+      await this.catsService.update(createCatDto, id);
+      return 'success';
+    } catch (error) {
+      console.log(error);
+      return 'failed';
     }
   }
 

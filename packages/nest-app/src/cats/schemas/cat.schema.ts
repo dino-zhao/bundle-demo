@@ -11,9 +11,9 @@ export type CatDocument = Cat & Document;
 @Schema()
 export class Cat {
   @Prop({
-    required: [true, 'Why no bacon?'],
+    required: [true],
     type: String,
-    enum: ['Coffee', 'Tea'],
+    // enum: ['Coffee', 'Tea'],
   })
   name: string;
 
