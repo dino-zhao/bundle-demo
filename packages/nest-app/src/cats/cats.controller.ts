@@ -40,8 +40,9 @@ export class CatsController {
       const res = await this.catsService.create(createCatDto);
       return 'success';
     } catch (error) {
-      let keys = Object.keys(error.errors);
-      throw new BadRequestException(error.errors[keys[0]].message);
+      console.log(error);
+      // let keys = Object.keys(error.errors);
+      // throw new BadRequestException(error.errors[keys[0]].message);
     }
   }
 

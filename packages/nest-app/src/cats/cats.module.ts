@@ -3,6 +3,7 @@ import { CatsController } from './cats.controller';
 import { CatsService } from './cats.service';
 import { Cat, CatSchema } from './schemas/cat.schema';
 import { MongooseModule } from '@nestjs/mongoose';
+import { DogsModule } from '../dogs/dogs.module';
 @Module({
   controllers: [CatsController],
   providers: [

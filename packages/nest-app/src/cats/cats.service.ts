@@ -1,9 +1,10 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Inject } from '@nestjs/common';
 // import { Cat } from './interfaces/cat.interface';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 import { Cat, CatDocument } from './schemas/cat.schema';
 import { CreateCatDto } from './dto/create-cat.dto';
+import { Dog, DogDocument } from '../dogs/schemas/dog.schema';
 
 @Injectable()
 export class CatsService {
@@ -15,10 +16,13 @@ export class CatsService {
   }
 
   async findAll(): Promise<Cat[]> {
-    return this.catModel.find().exec();
+    return this.catModel.find().populate('dogs').exec();
   }
 
-  async update(createCatDto: CreateCatDto, id: string): Promise<Cat> {
-    return this.catModel.findByIdAndUpdate(id, createCatDto);
+  async update(createCatDto: CreateCatDto, id: string): Promise<void> {
+    const cat = await this.catModel.updateOne({ _id: id }, createCatDto);
+
+    console.log(createCatDto.dogs);
+    // createCatDto.dogs.forEach((item) => item.push(cat._id));
   }
 }
