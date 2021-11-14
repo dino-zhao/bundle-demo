@@ -26,4 +26,13 @@ export class CatsService {
     console.log(createCatDto.dogs);
     // createCatDto.dogs.forEach((item) => item.push(cat._id));
   }
+  async updateMany(ids: string[], id: string): Promise<any> {
+    return this.catModel.find({ _id: { $in: ids } }).then((res) => {
+      console.log(res);
+      res.forEach((item) => {
+        item.dogs.push(id as any);
+        item.save();
+      });
+    });
+  }
 }

@@ -14,5 +14,6 @@ import { DogsModule } from '../dogs/dogs.module';
     },
   ],
   imports: [MongooseModule.forFeature([{ name: Cat.name, schema: CatSchema }])],
+  exports: [CatsService],
 })
 export class CatsModule {}

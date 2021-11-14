@@ -17,9 +17,13 @@ import { DogsService } from './dogs.service';
 import { Dog } from './interfaces/dog.interface';
 import { createDogSchema } from './schemas/dog.schema';
 import { GetHeader } from '../common/decorators/user.decorator';
+import { CatsService } from '../cats/cats.service';
 @Controller('dogs')
 export class DogsController {
-  constructor(private dogsService: DogsService) {}
+  constructor(
+    private dogsService: DogsService,
+    private catService: CatsService,
+  ) {}
   @Get()
   @Header('Cache-Control', 'none')
   findAll(@Req() request: Request, @Param() params): Promise<Dog[]> {
@@ -39,7 +43,9 @@ export class DogsController {
   async create(@Body() createDogDto: CreateDogDto) {
     console.log(createDogDto);
     try {
-      const res = await this.dogsService.create(createDogDto);
+      const res: any = await this.dogsService.create(createDogDto);
+      console.log(res._id);
+      this.catService.updateMany(createDogDto.cats as any[], res._id);
       return 'success';
     } catch (err) {
       console.log(err);
