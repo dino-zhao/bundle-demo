@@ -4,5 +4,5 @@ export class CreateDogDto {
   name: string;
   age: number;
   breed: string;
-  cats: CatDocument[];
+  // cats: CatDocument[];
 }

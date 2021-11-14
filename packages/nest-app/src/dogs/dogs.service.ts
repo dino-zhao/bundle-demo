@@ -15,13 +15,16 @@ export class DogsService {
   }
 
   async findAll(): Promise<Dog[]> {
-    return this.dogModel.find().exec();
+    let cur = this.dogModel.find();
+
+    let res = await cur.populate('cats');
+    return res;
   }
 
   async update(createDogDto: CreateDogDto, id: string): Promise<Dog> {
     return this.dogModel.findByIdAndUpdate(id, createDogDto);
   }
   async getOne(id): Promise<Dog> {
-    return (await this.dogModel.findOne({ age: 11 })).populate('cats');
+    return (await this.dogModel.findOne({ id: id })).populate('cats');
   }
 }

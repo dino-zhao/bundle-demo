@@ -24,8 +24,17 @@ export class Dog {
   @Prop()
   breed: string;
 
-  @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Cat' }] })
-  cats: Cat[];
+  // @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Cat' }] })
+  // cats: Cat[];
 }
 
-export const DogSchema = SchemaFactory.createForClass(Dog);
+const DogSchema = SchemaFactory.createForClass(Dog);
+DogSchema.virtual('cats', {
+  ref: 'Cat',
+  localField: '_id',
+  foreignField: 'dogs',
+});
+
+DogSchema.set('toObject', { getters: true, virtuals: true });
+DogSchema.set('toJSON', { getters: true, virtuals: true });
+export { DogSchema };

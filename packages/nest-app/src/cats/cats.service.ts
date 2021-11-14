@@ -16,7 +16,8 @@ export class CatsService {
   }
 
   async findAll(): Promise<Cat[]> {
-    return this.catModel.find().populate('dogs').exec();
+    let cur = this.catModel.find();
+    return cur.populate('dogs').exec();
   }
 
   async update(createCatDto: CreateCatDto, id: string): Promise<void> {

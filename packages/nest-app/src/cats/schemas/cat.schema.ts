@@ -27,8 +27,8 @@ export class Cat {
   @Prop({ type: [{ type: S.Types.ObjectId, ref: 'Dog' }] })
   dogs: Dog[];
 
-  @Prop()
-  _id: S.Types.ObjectId;
+  // @Prop()
+  // _id: S.Types.ObjectId;
 }
 
 export const CatSchema = SchemaFactory.createForClass(Cat);
