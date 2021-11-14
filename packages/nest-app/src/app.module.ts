@@ -10,6 +10,7 @@ import { CatsModule } from './cats/cats.module';
 import { LoggerMiddleware } from './common/middleware/logger.middleware';
 import { MongooseModule } from '@nestjs/mongoose';
 import { DogsModule } from './dogs/dogs.module';
+import { GraphQLModule } from '@nestjs/graphql';
 @Module({
   controllers: [AppController],
   providers: [AppService],
