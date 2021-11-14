@@ -11,6 +11,7 @@ import { LoggerMiddleware } from './common/middleware/logger.middleware';
 import { MongooseModule } from '@nestjs/mongoose';
 import { DogsModule } from './dogs/dogs.module';
 import { GraphQLModule } from '@nestjs/graphql';
+import { RecipesModule } from './graphql/recipes/recipes.module';
 @Module({
   controllers: [AppController],
   providers: [AppService],
@@ -18,6 +19,12 @@ import { GraphQLModule } from '@nestjs/graphql';
     CatsModule,
     MongooseModule.forRoot('mongodb://localhost:27017/nest'),
     DogsModule,
+    RecipesModule,
+    GraphQLModule.forRoot({
+      installSubscriptionHandlers: true,
+      autoSchemaFile: true,
+      playground: true,
+    }),
   ],
 })
 export class AppModule implements NestModule {
