@@ -15,4 +15,7 @@ module.exports = merge(common, {
   module: {
     rules: [],
   },
+  devServer: {
+    port: 3088,
+  },
 })
