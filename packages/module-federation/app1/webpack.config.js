@@ -10,6 +10,7 @@ module.exports = {
       directory: path.join(__dirname, "dist"),
     },
     port: 3010,
+    hot: true,
   },
   output: {
     publicPath: "auto",
@@ -38,8 +39,44 @@ module.exports = {
     new ModuleFederationPlugin({
       name: "app1",
       remotes: {
-        app2: `app2@${getRemoteEntryUrl(3011)}`,
+        app3: `app3@${getRemoteEntryUrl(3012)}`,
       },
+      //这种方式无法处理remote加载错误
+      // remotes: {
+      //   app3: `promise new Promise(resolve => {
+
+      //     // This part depends on how you plan on hosting and versioning your federated modules
+      //     const remoteUrlWithVersion = 'http://localhost:3012/remoteEntry.js'
+      //     const script = document.createElement('script')
+      //     script.src = remoteUrlWithVersion
+      //     script.onerror=()=>{
+      //       console.log('shibai')
+      //       return false
+      //     }
+      //     script.onload = () => {
+      //       // the injected script has loaded and is available on window
+      //       // we can now resolve this Promise
+
+      //       const proxy = {
+      //         get: (request) =>{
+      //           console.log(window.app3)
+      //         return  window.app3.get(request)
+      //         },
+      //         init: (arg) => {
+      //           try {
+      //             return window.app1.init(arg)
+      //           } catch(e) {
+      //             console.log('remote container already initialized')
+      //           }
+      //         }
+      //       }
+      //       resolve(proxy)
+      //     }
+      //     // inject this script with the src set to the versioned remoteEntry.js
+      //     document.head.appendChild(script);
+      //   })
+      //   `,
+      // },
       shared: { react: { singleton: true }, "react-dom": { singleton: true } },
     }),
     new HtmlWebpackPlugin({
@@ -49,16 +86,5 @@ module.exports = {
 };
 
 function getRemoteEntryUrl(port) {
-  const { CODESANDBOX_SSE, HOSTNAME = "" } = process.env;
-
-  // Check if the example is running on codesandbox
-  // https://codesandbox.io/docs/environment
-  if (!CODESANDBOX_SSE) {
-    return `//localhost:${port}/remoteEntry.js`;
-  }
-
-  const parts = HOSTNAME.split("-");
-  const codesandboxId = parts[parts.length - 1];
-
-  return `//${codesandboxId}-${port}.sse.codesandbox.io/remoteEntry.js`;
+  return `//localhost:${port}/remoteEntry.js`;
 }

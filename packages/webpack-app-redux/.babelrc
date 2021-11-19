@@ -16,5 +16,10 @@
     ],
     "@babel/preset-typescript"
   ],
-  "plugins": ["react-hot-loader/babel"]
+  "plugins": [
+    ["import", { "libraryName": "antd", "style": "css" }],
+    ["import", { "libraryName": "dinod", "style": "css" }, "dinod"],
+    ["@babel/plugin-transform-runtime", { "corejs": 3, "proposals": true }],
+    "react-hot-loader/babel"
+  ]
 }

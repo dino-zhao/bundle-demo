@@ -1,8 +1,9 @@
 **/node_modules/
-.vscode/
+
 
 
 # dist stuff:
 **/dist/
 **/.temp_cache/
 **/yarn-error.log
+**/.umi/

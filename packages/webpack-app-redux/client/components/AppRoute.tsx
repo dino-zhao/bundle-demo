@@ -3,7 +3,7 @@ import { Switch, Route } from 'react-router-dom'
 const Css = React.lazy(() => import('./cssRelated'))
 const Redux = React.lazy(() => import('./reduxRelated'))
 const Header = React.lazy(() => import('./httpHeader'))
-
+const Others = React.lazy(() => import('./others'))
 export default function AppRoute() {
   return (
     <Switch>
@@ -15,6 +15,9 @@ export default function AppRoute() {
       </Route>
       <Route path="/header">
         <Header />
+      </Route>
+      <Route path="/others">
+        <Others />
       </Route>
       <Route path="/">
         <Redux />

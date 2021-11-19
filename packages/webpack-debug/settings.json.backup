@@ -1,0 +1,24 @@
+
+//vscode配置的备份
+{
+
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true,
+  },
+  "editor.formatOnSave": false,
+  "git.autofetch": true,
+  "files.associations": {},
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.rulers": [],
+  "editor.fontSize": 15,
+  "terminal.integrated.shell.osx": "",
+  "remote.SSH.remotePlatform": {
+    "106.12.209.216": "linux"
+  },
+  "terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\cmd.exe",
+  "workbench.iconTheme": "Aliyun Serverless",
+  "terminal.integrated.automationShell.linux": "",
+  "prettier.resolveGlobalModules": false
+}

@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { ModuleFederationPlugin } = require("webpack").container;
+const ModuleFedSingleRuntimePlugin = require("./plugins/moduleFedSingleRuntime");
 const path = require("path");
 
 module.exports = {
@@ -10,6 +11,13 @@ module.exports = {
       directory: path.join(__dirname, "dist"),
     },
     port: 3011,
+    hot: true,
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
+      "Access-Control-Allow-Headers":
+        "X-Requested-With, content-type, Authorization",
+    },
   },
   output: {
     publicPath: "auto",
@@ -33,11 +41,16 @@ module.exports = {
       filename: "remoteEntry.js",
       exposes: {
         "./Button": "./src/Button",
+        "./log": "./src/log",
       },
       shared: { react: { singleton: true }, "react-dom": { singleton: true } },
     }),
     new HtmlWebpackPlugin({
       template: "./public/index.html",
     }),
+    new ModuleFedSingleRuntimePlugin(),
   ],
+  optimization: {
+    runtimeChunk: "single",
+  },
 };

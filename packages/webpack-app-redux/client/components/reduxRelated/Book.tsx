@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { bookAction, selectBookById } from '@redux/bookSlice'
 import { useAppSelector, useAppDispatch } from '@redux/store'
 const { bookAdded, booksLoading, booksReceived, bookUpdated } = bookAction
@@ -12,6 +12,9 @@ export default function Book() {
   const dispatch = useAppDispatch()
   const [id, setId] = useState('a')
   const books = useSelect(id)
+  useEffect(() => {
+    console.log(id)
+  }, [id])
   console.log(books)
   return (
     <div>
@@ -32,7 +35,7 @@ export default function Book() {
             )
           }}
         >
-          更新1
+          更新
         </button>
       </div>
       <div>

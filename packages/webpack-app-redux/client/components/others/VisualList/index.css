@@ -1,0 +1,38 @@
+.product {
+  position: relative;
+  box-sizing: border-box;
+  padding: 8px 16px;
+  margin-bottom: 10px;
+  color: #323233;
+  font-size: 30px;
+  background-color: #fafafa;
+
+  height: 100px;
+}
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.footer {
+  display: flex;
+  font-size: 20px;
+  margin-left: auto;
+}
+
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.showElement {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #000;
+  margin-bottom: 8px;
+  border-radius: 4px;
+}
+
+.scrollView {
+}

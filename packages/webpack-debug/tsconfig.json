@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "module": "esnext",
+    "noImplicitAny": true,
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "sourceMap": true,
+    "moduleResolution": "node",
+    "jsx": "preserve",
+    "allowSyntheticDefaultImports": true,
+    "allowJs": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["client/*"],
+      "@redux/*": ["client/redux/*"],
+      "@components/*": ["client/components/*"]
+    }
+  },
+
+  "include": ["client/**/*"],
+  "exclude": ["node_modules"]
+}

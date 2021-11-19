@@ -2,37 +2,49 @@ const { merge } = require('webpack-merge')
 const common = require('./webpack.common.js')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
+const CopyPlugin = require('copy-webpack-plugin')
 module.exports = merge(common, {
   mode: 'production',
   entry: './client/index.tsx',
 
-  module: {
-    rules: [
-      {
-        test: /(?<!antd).css$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader'],
-      },
-      {
-        test: /antd.css$/,
-        use: ['style-loader', 'css-loader'],
-      },
-    ],
-  },
+  module: {},
   plugins: [
     new MiniCssExtractPlugin({
       filename: 'css/[name].[contenthash].css',
       chunkFilename: 'css/[name].[contenthash].css',
+    }),
+    new CopyPlugin({
+      patterns: [
+        {
+          from: 'public',
+          globOptions: {
+            ignore: ['**/index.html'],
+          },
+        },
+      ],
     }),
   ],
   optimization: {
     runtimeChunk: 'single',
     moduleIds: 'deterministic',
     splitChunks: {
+      chunks: 'all',
+      filename: 'js/[name].split.js',
       cacheGroups: {
-        vendor: {
+        react: {
+          test: /[\\/]node_modules[\\/]react/,
+        },
+        antd: {
+          test: /[\\/]node_modules[\\/](antd|@ant-design|rc-)/,
+        },
+        defaultVendors: {
           test: /[\\/]node_modules[\\/]/,
-          name: 'vendors',
-          chunks: 'all',
+        },
+        default: {
+          minChunks: 2,
+          priority: -30,
+          name: 'default',
+          filename: 'js/[name].split.js',
         },
       },
     },

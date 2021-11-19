@@ -9,12 +9,14 @@ import postcss from "rollup-plugin-postcss";
 import image from "@rollup/plugin-image";
 import copy from "rollup-plugin-copy";
 const isDev = process.env.NODE_ENV === "development";
+
 let config = {
   input: "src/index.tsx",
   output: {
     plugins: [terser()],
     dir: "dist",
     format: "es",
+    sourcemap: "inline",
   },
   plugins: [
     resolve({
@@ -45,5 +47,4 @@ if (isDev) {
     livereload({ watch: "dist" })
   );
 }
-
 export default config;
