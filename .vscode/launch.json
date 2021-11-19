@@ -13,10 +13,10 @@
     {
       "type": "chrome",
       "request": "launch",
-      "name": "Launch Chrome",
-      "url": "http://localhost:3000", // 改为目标 url
+      "name": "webpack-debug",
+      "url": "http://localhost:3088", // 改为目标 url
       "sourceMaps": true,
-      "webRoot": "${workspaceFolder}/packages/webpack-app-redux"
+      "webRoot": "${workspaceFolder}/packages/webpack-debug"
       // "skipFiles": ["node_modules/**"],
       // "sourceMapPathOverrides": {
       //   "webpack:///*": "${webRoot}/*"
