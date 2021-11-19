@@ -7,8 +7,20 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Launch Chrome against localhost",
+      "name": "调试compose",
       "program": "${workspaceFolder}/packages/algo/test/compose.js"
+    },
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "Launch Chrome",
+      "url": "http://localhost:3000", // 改为目标 url
+      "sourceMaps": true,
+      "webRoot": "${workspaceFolder}/packages/webpack-app-redux"
+      // "skipFiles": ["node_modules/**"],
+      // "sourceMapPathOverrides": {
+      //   "webpack:///*": "${webRoot}/*"
+      // }
     }
   ]
 }

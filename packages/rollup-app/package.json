@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "build": "cross-env NODE_ENV=production rollup -c",
-    "start": "cross-env NODE_ENV=development  rollup -c -w"
+    "start": "cross-env NODE_ENV=development TEST=11111  rollup -c -w"
   },
   "author": "",
   "license": "ISC",
