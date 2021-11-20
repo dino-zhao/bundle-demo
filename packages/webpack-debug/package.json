@@ -39,10 +39,7 @@
   },
   "dependencies": {
     "@types/react-dom": "^17.0.9",
-    "antd": "^4.16.13",
-    "axios": "^0.21.4",
-    "babel-plugin-import": "^1.13.3",
     "react": "^17.0.2",
-    "react-dom": "npm:@hot-loader/react-dom"
+    "react-dom": "^17.0.2"
   }
 }

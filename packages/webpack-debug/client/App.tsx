@@ -7,6 +7,8 @@ function App() {
       <header
         onClick={() => {
           setState((c) => c + 1)
+          console.log(333)
+          setState((c) => c + 1)
         }}
       >
         header{state}
