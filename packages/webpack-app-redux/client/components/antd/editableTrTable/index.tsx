@@ -1,13 +1,5 @@
 import React, { useState } from 'react'
-import {
-  Table,
-  Input,
-  InputNumber,
-  Popconfirm,
-  Form,
-  Typography,
-  Button,
-} from 'antd'
+import { Table, Input, InputNumber, Popconfirm, Form, Typography } from 'antd'
 import './index.css'
 
 interface Item {
@@ -136,9 +128,12 @@ export default function EditableTrTable() {
         const editable = isEditing(record)
         return editable ? (
           <span>
-            <Button onClick={() => save(record.key)} style={{ marginRight: 8 }}>
+            <Typography.Link
+              onClick={() => save(record.key)}
+              style={{ marginRight: 8 }}
+            >
               Save
-            </Button>
+            </Typography.Link>
             <Popconfirm title="Sure to cancel?" onConfirm={cancel}>
               <a>Cancel</a>
             </Popconfirm>
