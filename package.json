@@ -16,6 +16,7 @@
   "devDependencies": {
     "@commitlint/cli": "^13.1.0",
     "@commitlint/config-conventional": "^13.1.0",
+    "eslint-plugin-react-hooks": "^4.2.1-beta-149b420f6-20211119",
     "husky": "^7.0.0",
     "lerna": "^4.0.0",
     "lint-staged": "^11.1.2"

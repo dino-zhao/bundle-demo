@@ -119,7 +119,7 @@ interface DataType {
 
 type ColumnTypes = Exclude<EditableTableProps['columns'], undefined>
 
-export default function EditableTable(props: EditableTableProps) {
+export default function EditableCellTable(props: EditableTableProps) {
   const columns: (ColumnTypes[number] & {
     editable?: boolean
     dataIndex: string
@@ -192,7 +192,6 @@ export default function EditableTable(props: EditableTableProps) {
 
   const handleSave = (row: DataType) => {
     const index = dataSource.findIndex((item) => row.key === item.key)
-    console.log(index)
     setDataSource((dataSource) => {
       dataSource[index] = { ...dataSource[index], ...row }
     })

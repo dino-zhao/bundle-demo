@@ -1,9 +1,14 @@
 import TabPage, { TabItem } from '@components/common/TabPage'
-import ATable from './atable/ATable'
+import EditableCellTable from './editableCellTable'
+import EditableTrTable from './editableTrTable'
 const tabList: TabItem[] = [
   {
-    name: 'table',
-    component: ATable,
+    name: '可编辑单元格',
+    component: EditableCellTable,
+  },
+  {
+    name: '可编辑行',
+    component: EditableTrTable,
   },
 ]
 
