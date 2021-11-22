@@ -72,6 +72,7 @@
     "react-virtualized-auto-sizer": "^1.0.6",
     "react-window": "^1.8.6",
     "styled-components": "^5.3.1",
+    "use-immer": "^0.6.0",
     "webpack-lib": "1.0.0"
   }
 }
