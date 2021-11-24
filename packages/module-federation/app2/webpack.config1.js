@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { ModuleFederationPlugin } = require("webpack").container;
+const ModuleFedSingleRuntimePlugin = require("./plugins/moduleFedSingleRuntime");
 const path = require("path");
 
 module.exports = {
@@ -9,7 +10,7 @@ module.exports = {
     static: {
       directory: path.join(__dirname, "dist"),
     },
-    port: 3010,
+    port: 3011,
     hot: true,
     headers: {
       "Access-Control-Allow-Origin": "*",
@@ -40,27 +41,29 @@ module.exports = {
       },
     ],
   },
-  //http://localhost:3002/remoteEntry.js
   plugins: [
     new ModuleFederationPlugin({
-      name: "app1",
-      filename: "remoteEntry.js",
-      //   library: { type: "var", name: "app1" },
+      name: "app2",
+      library: { type: "var", name: "app2" },
       remotes: {
-        app3: `app3@${getRemoteEntryUrl(3012)}`,
-        app2: `app2@${getRemoteEntryUrl(3011)}`,
+        app1: `app1@${getRemoteEntryUrl(3010)}`,
       },
+      filename: "remoteEntry.js",
       exposes: {
-        "./ExportTest": "./src/ExportTest",
+        "./Button": "./src/Button",
+        "./log": "./src/log",
       },
       shared: { react: { singleton: true }, "react-dom": { singleton: true } },
     }),
     new HtmlWebpackPlugin({
       template: "./public/index.html",
     }),
+    // new ModuleFedSingleRuntimePlugin(),
   ],
+  //   optimization: {
+  //     runtimeChunk: "single",
+  //   },
 };
-
 function getRemoteEntryUrl(port) {
   return `//localhost:${port}/remoteEntry.js`;
 }
