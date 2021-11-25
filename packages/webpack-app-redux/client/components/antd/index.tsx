@@ -3,6 +3,7 @@ import EditableCellTable from './editableCellTable'
 import EditableTrTable from './editableTrTable'
 import VirtualTable from './virtualTable'
 import OrdinaryTable from './ordinaryTable'
+import FormList from './FormList'
 const tabList: TabItem[] = [
   {
     name: '可编辑单元格',
@@ -19,6 +20,10 @@ const tabList: TabItem[] = [
   {
     name: '普通表格',
     component: OrdinaryTable,
+  },
+  {
+    name: '表单列表',
+    component: FormList,
   },
 ]
 
