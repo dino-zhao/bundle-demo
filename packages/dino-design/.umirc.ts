@@ -10,5 +10,8 @@ export default defineConfig({
   polyfill: {
     imports: [],
   },
+  menus: {
+    "/util": [{ title: "工具", children: ["utils/log"] }],
+  },
   // more config: https://d.umijs.org/config
 });
