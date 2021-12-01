@@ -1,5 +1,3 @@
-import React from "react";
-
 export interface LogParams {
   /**
    * @description       也可以显式加上描述名
@@ -10,5 +8,5 @@ export interface LogParams {
 }
 
 export default function ({ base, extra }: LogParams) {
-  // return base + extra;
+  return base + extra;
 }
