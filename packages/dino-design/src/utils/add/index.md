@@ -1,16 +1,14 @@
 ---
 title: add
 group:
-  title: 数学
+  title: demo
 nav:
   title: 工具
   path: /utils
 ---
 
-## Foo
+## 用法
 
-ddd
+用于演示
 
 <API></API>
-
-<code src="./demo/basic.tsx"></code>
