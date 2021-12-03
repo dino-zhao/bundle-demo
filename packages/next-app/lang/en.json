@@ -1,9 +1,4 @@
 {
-  "e1DTmD": {
-    "defaultMessage": "Today is {ts, date, ::yyyyMMdd}"
-  },
-  "foo": {
-    "defaultMessage": "foo",
-    "description": "bar"
-  }
+  "wwwww": "dddddd",
+  "click_count": "You clicked {count, plural, one {# time} other {# times}}"
 }

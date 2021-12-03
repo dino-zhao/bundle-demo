@@ -2,14 +2,8 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import LocaleSwitcher from "../components/locale-switcher";
 import { IntlProvider, FormattedMessage, FormattedNumber } from "react-intl";
-import messagesInFrench from "/compiled-lang/en.json";
+import messagesInFrench from "/lang/en.json";
 import { useEffect, useState } from "react";
-function loadLocaleData(locale) {
-  switch (locale) {
-    default:
-      return import("/compiled-lang/en.json");
-  }
-}
 
 export default function IndexPage(props) {
   const router = useRouter();
@@ -17,7 +11,7 @@ export default function IndexPage(props) {
   const [messages, setMessages] = useState(messagesInFrench);
 
   useEffect(() => {
-    import(`/compiled-lang/${locale}.json`).then((res) => {
+    import(`/lang/${locale}.json`).then((res) => {
       console.log(res);
       setMessages(res);
     });
@@ -26,18 +20,11 @@ export default function IndexPage(props) {
     <div>
       <IntlProvider messages={messages} locale={locale}>
         <p>
-          <FormattedMessage
-            defaultMessage="Today is {ts, date, ::yyyyMMdd}"
-            values={{ ts: Date.now() }}
-          />
+          <FormattedMessage id="wwwww" />
+          <FormattedMessage id="click_count" values={{ count: 2 }} />
           <br />
         </p>
       </IntlProvider>
-
-      <h1>Index page</h1>
-      <p>Current locale: {locale}</p>
-      <p>Default locale: {defaultLocale}</p>
-      <p>Configured locales: {JSON.stringify(locales)}</p>
 
       <LocaleSwitcher />
 

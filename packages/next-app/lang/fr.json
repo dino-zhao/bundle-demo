@@ -1,9 +1,4 @@
 {
-  "e1DTmD": {
-    "defaultMessage": "aaaais {ts, date, ::yyyyMMdd}"
-  },
-  "foo": {
-    "defaultMessage": "foo",
-    "description": "bar"
-  }
+  "wwwww": "1111",
+  "click_count": "You clicked {count, plural, =0 {no photos.} =1 {one photo.} other {# photos.} }"
 }
