@@ -2,24 +2,35 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import LocaleSwitcher from "../components/locale-switcher";
 import { IntlProvider, FormattedMessage, FormattedNumber } from "react-intl";
-const messagesInFrench = {
-  myMessage: "Aujourd'hui, c'est le {ts, date, ::yyyyMMdd}",
-};
+import messagesInFrench from "/compiled-lang/en.json";
+import { useEffect, useState } from "react";
+function loadLocaleData(locale) {
+  switch (locale) {
+    default:
+      return import("/compiled-lang/en.json");
+  }
+}
+
 export default function IndexPage(props) {
   const router = useRouter();
   const { locale, locales, defaultLocale } = router;
+  const [messages, setMessages] = useState(messagesInFrench);
 
+  useEffect(() => {
+    import(`/compiled-lang/${locale}.json`).then((res) => {
+      console.log(res);
+      setMessages(res);
+    });
+  }, [locale]);
   return (
     <div>
-      <IntlProvider messages={messagesInFrench} locale="fr" defaultLocale="en">
+      <IntlProvider messages={messages} locale={locale}>
         <p>
           <FormattedMessage
-            id="myMessage"
             defaultMessage="Today is {ts, date, ::yyyyMMdd}"
             values={{ ts: Date.now() }}
           />
           <br />
-          <FormattedNumber value={19} style="currency" currency="EUR" />
         </p>
       </IntlProvider>
 

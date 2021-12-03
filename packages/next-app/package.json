@@ -8,7 +8,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "extract": "formatjs extract"
+    "extract": "formatjs extract pages/**/*.{ts,tsx} --out-file lang/en.json --id-interpolation-pattern [sha512:contenthash:base64:6]",
+    "compile": "formatjs compile-folder  --ast lang compiled-lang"
   },
   "dependencies": {
     "next": "12.0.4",
@@ -20,8 +21,10 @@
     "@formatjs/cli": "^4.5.0",
     "@types/node": "16.11.11",
     "@types/react": "17.0.37",
+    "babel-plugin-formatjs": "^10.3.12",
     "eslint": "7",
     "eslint-config-next": "12.0.4",
+    "eslint-plugin-formatjs": "^2.19.0",
     "typescript": "4.5.2"
   }
 }

@@ -1,0 +1,9 @@
+{
+  "e1DTmD": {
+    "defaultMessage": "aaaais {ts, date, ::yyyyMMdd}"
+  },
+  "foo": {
+    "defaultMessage": "foo",
+    "description": "bar"
+  }
+}

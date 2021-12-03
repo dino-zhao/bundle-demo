@@ -1,9 +1,0 @@
-{
-  "foo": {
-    "defaultMessage": "foo",
-    "description": "bar"
-  },
-  "myMessage": {
-    "defaultMessage": "Today is {ts, date, ::yyyyMMdd}"
-  }
-}
