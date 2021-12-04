@@ -14,15 +14,15 @@ export default defineConfig({
   alias: {
     common: path.resolve(__dirname, "src/common"),
   },
-  extraBabelPlugins: [
-    [
-      "import",
-      {
-        libraryName: "antd",
-        libraryDirectory: "es",
-        style: "css",
-      },
-    ],
-  ],
+  //   extraBabelPlugins: [
+  //     [
+  //       "import",
+  //       {
+  //         libraryName: "antd",
+  //         libraryDirectory: "es",
+  //         style: "css",
+  //       },
+  //     ],
+  //   ],
   // more config: https://d.umijs.org/config
 });

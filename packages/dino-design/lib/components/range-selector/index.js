@@ -1,13 +1,13 @@
 import _extends from "@babel/runtime/helpers/extends";
 import _slicedToArray from "@babel/runtime/helpers/slicedToArray";
 import _objectWithoutProperties from "@babel/runtime/helpers/objectWithoutProperties";
-import "antd/lib/date-picker/style/css";
-import _DatePicker from "antd/lib/date-picker";
+import "antd/es/date-picker/style/css";
+import _DatePicker from "antd/es/date-picker";
 var _excluded = ["value", "btnArr", "onRangeChange"];
 import React, { useImperativeHandle } from "react";
 import moment from "moment";
 import { useImmer } from "use-immer";
-import { prefixCls } from "common/constant";
+import { prefixCls } from "../../common/constant";
 var RangePicker = _DatePicker.RangePicker;
 var rangeOptions = {};
 Object.defineProperties(rangeOptions, {

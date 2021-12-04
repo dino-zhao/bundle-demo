@@ -2,7 +2,7 @@ import React, { useImperativeHandle } from "react";
 import { DatePicker } from "antd";
 import moment, { Moment } from "moment";
 import { useImmer } from "use-immer";
-import { prefixCls } from "common/constant";
+import { prefixCls } from "../../common/constant";
 const { RangePicker } = DatePicker;
 
 const rangeOptions: {

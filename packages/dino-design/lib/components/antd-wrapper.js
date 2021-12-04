@@ -1,5 +1,5 @@
-import "antd/lib/config-provider/style/css";
-import _ConfigProvider from "antd/lib/config-provider";
+import "antd/es/config-provider/style/css";
+import _ConfigProvider from "antd/es/config-provider";
 import zhCN from "antd/es/locale/zh_CN";
 import React from "react";
 export default function AntdWrapper(_ref) {
