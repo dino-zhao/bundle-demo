@@ -35,6 +35,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.16.0",
+    "exceljs": "^4.3.0",
     "react": "^17.0.2"
   }
 }
