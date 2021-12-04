@@ -16,5 +16,10 @@ module.exports = {
         helpers: true,
       },
     ],
+    [
+      "import",
+      { libraryName: "antd", style: "css", libraryDirectory: "es" },
+      "antd",
+    ],
   ],
 };

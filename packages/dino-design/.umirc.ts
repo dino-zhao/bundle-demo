@@ -1,5 +1,6 @@
 import { defineConfig } from "dumi";
-
+import path from "path";
+console.log(path.resolve(__dirname, "src/common"));
 export default defineConfig({
   title: "组件库",
   favicon:
@@ -10,5 +11,18 @@ export default defineConfig({
   polyfill: {
     imports: [],
   },
+  alias: {
+    common: path.resolve(__dirname, "src/common"),
+  },
+  extraBabelPlugins: [
+    [
+      "import",
+      {
+        libraryName: "antd",
+        libraryDirectory: "es",
+        style: "css",
+      },
+    ],
+  ],
   // more config: https://d.umijs.org/config
 });
