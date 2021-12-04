@@ -30,11 +30,12 @@ export default function () {
         title: "年龄",
         dataIndex: "age",
         outputText: (i) => i + "岁",
+        sorter: true,
       },
     ];
 
     exportTableColumns({
-      columns: columns as any,
+      columns: columns,
       dataSource,
       fileName: "test",
     });

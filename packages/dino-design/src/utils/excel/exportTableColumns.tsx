@@ -1,8 +1,7 @@
 import { ColumnType } from "antd/lib/table";
 import exportExcel from ".";
-export type DataSource = Record<string, any>;
 export interface ExportColumnType<T> extends ColumnType<T> {
-  outputText?: (v: unknown, item: DataSource) => string;
+  outputText?: (v: unknown, item: T) => string;
 }
 
 export interface TransformParams<T> {
@@ -30,17 +29,14 @@ export default function exportTableColumns({
   columns,
   dataSource,
   fileName,
-}: ExportColumns<DataSource>) {
+}: ExportColumns<any>) {
   exportExcel({
     rows: transformDataForExport({ columns, dataSource }),
     fileName,
   });
 }
 
-function transformDataForExport({
-  columns,
-  dataSource,
-}: TransformParams<DataSource>) {
+function transformDataForExport({ columns, dataSource }: TransformParams<any>) {
   const content = dataSource.map((item, index) => {
     return columns.map((column) => {
       let fn = column.outputText ?? column.render ?? ((v) => v);
