@@ -8,4 +8,3 @@ nav:
 
 sss
 <code src="./demo/basic.tsx"></code>
-<code src="./a.tsx"></code>

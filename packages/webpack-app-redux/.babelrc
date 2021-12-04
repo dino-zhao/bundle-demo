@@ -18,15 +18,15 @@
   ],
   "plugins": [
     ["import", { "libraryName": "antd", "style": "css" }, "antd"],
-    [
-      "import",
-      {
-        "libraryName": "dinod",
-        "style": "css",
-        "libraryDirectory": "es/components"
-      },
-      "dinod"
-    ],
+    // [
+    //   "import",
+    //   {
+    //     "libraryName": "dinod",
+    //     "style": "css",
+    //     "libraryDirectory": "es/components"
+    //   },
+    //   "dinod"
+    // ],
     ["@babel/plugin-transform-runtime", { "corejs": 3, "proposals": true }],
     "react-hot-loader/babel"
   ]

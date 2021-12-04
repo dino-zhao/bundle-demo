@@ -1,14 +1,20 @@
 import _extends from "@babel/runtime/helpers/extends";
 import _slicedToArray from "@babel/runtime/helpers/slicedToArray";
 import _objectWithoutProperties from "@babel/runtime/helpers/objectWithoutProperties";
+import _taggedTemplateLiteral from "@babel/runtime/helpers/taggedTemplateLiteral";
 import "antd/es/date-picker/style/css";
 import _DatePicker from "antd/es/date-picker";
 var _excluded = ["value", "btnArr", "onRangeChange"];
+
+var _templateObject;
+
 import React, { useImperativeHandle } from "react";
 import moment from "moment";
 import { useImmer } from "use-immer";
-import { prefixCls } from "../../common/constant";
+import styled from "styled-components";
+import { $Link_COLOR } from "../common/varible";
 var RangePicker = _DatePicker.RangePicker;
+var Wrap = styled.div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  span {\n    margin-right: 10px;\n    cursor: pointer;\n  }\n  .on {\n    color: ", ";\n  }\n"])), $Link_COLOR);
 var rangeOptions = {};
 Object.defineProperties(rangeOptions, {
   THIS_MONTH: {
@@ -83,9 +89,7 @@ var Ranger = function Ranger(_ref, ref) {
       }
     };
   });
-  return /*#__PURE__*/React.createElement("div", {
-    className: prefixCls
-  }, btnArr.map(function (item) {
+  return /*#__PURE__*/React.createElement(Wrap, null, btnArr.map(function (item) {
     return /*#__PURE__*/React.createElement("span", {
       className: date.selectedBtn === item ? "on" : "",
       onClick: function onClick(e) {

@@ -11,18 +11,16 @@ export default defineConfig({
   polyfill: {
     imports: [],
   },
-  alias: {
-    common: path.resolve(__dirname, "src/common"),
-  },
-  //   extraBabelPlugins: [
-  //     [
-  //       "import",
-  //       {
-  //         libraryName: "antd",
-  //         libraryDirectory: "es",
-  //         style: "css",
-  //       },
-  //     ],
-  //   ],
+  alias: {},
+  extraBabelPlugins: [
+    [
+      "import",
+      {
+        libraryName: "antd",
+        libraryDirectory: "es",
+        style: "css",
+      },
+    ],
+  ],
   // more config: https://d.umijs.org/config
 });

@@ -12,9 +12,7 @@
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
-    "paths": {
-      "common/*": ["src/common/*"]
-    }
+    "paths": {}
   },
   "include": ["src", "typings.d.ts"],
   "exclude": [

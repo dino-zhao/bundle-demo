@@ -2,9 +2,18 @@ import React, { useImperativeHandle } from "react";
 import { DatePicker } from "antd";
 import moment, { Moment } from "moment";
 import { useImmer } from "use-immer";
-import { prefixCls } from "../../common/constant";
+import styled from "styled-components";
+import { $Link_COLOR } from "../common/varible";
 const { RangePicker } = DatePicker;
-
+const Wrap = styled.div`
+  span {
+    margin-right: 10px;
+    cursor: pointer;
+  }
+  .on {
+    color: ${$Link_COLOR};
+  }
+`;
 const rangeOptions: {
   [props: string]: {
     range: [Moment, Moment];
@@ -96,7 +105,7 @@ const Ranger = (
   }));
 
   return (
-    <div className={prefixCls}>
+    <Wrap>
       {btnArr.map((item) => {
         return (
           <span
@@ -124,7 +133,7 @@ const Ranger = (
         {...others}
         value={date.range}
       />
-    </div>
+    </Wrap>
   );
 };
 
