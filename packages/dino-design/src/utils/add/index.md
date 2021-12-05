@@ -1,5 +1,4 @@
 ---
-title: add
 group:
   title: demo
 nav:
