@@ -31,7 +31,11 @@ export default function exportTableColumns({
   fileName,
 }: ExportColumns<any>) {
   exportExcel({
-    rows: transformDataForExport({ columns, dataSource }),
+    sheets: [
+      {
+        rows: transformDataForExport({ columns, dataSource }),
+      },
+    ],
     fileName,
   });
 }
