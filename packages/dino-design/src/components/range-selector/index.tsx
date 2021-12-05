@@ -79,9 +79,21 @@ export type BtnKind =
   | "YESTODAY"
   | "LAST_SEVEN_DAYS_WITHOUT_TODAY";
 interface Props {
-  value: [Moment, Moment] | BtnKind; //默认值
-  btnArr: BtnKind[]; //显示的按钮数组
-  onRangeChange: (p: [Moment, Moment]) => void; //子组件时间变化引起调用的父组件传入的事件
+  /**
+   * @description       当前控件的默认值
+   * @default
+   */
+  value: [Moment, Moment] | BtnKind;
+  /**
+   * @description       显示的按钮数组
+   * @default
+   */
+  btnArr: BtnKind[];
+  /**
+   * @description       子组件时间变化调用的父组件传入的事件
+   * @default
+   */
+  onRangeChange: (p: [Moment, Moment]) => void;
   [propsName: string]: any;
 }
 
@@ -92,6 +104,7 @@ const getDateValue = (targetValue: [Moment, Moment] | BtnKind) => ({
     : rangeOptions[targetValue].range,
   selectedBtn: Array.isArray(targetValue) ? "" : targetValue,
 });
+
 const Ranger = (
   { value, btnArr, onRangeChange, ...others }: Props,
   ref?: any
@@ -139,8 +152,12 @@ const Ranger = (
 
 export default React.forwardRef(Ranger) as React.ForwardRefExoticComponent<
   Props & {
+    /**
+     * @description    从父组件命令式修改当前组件的时间，常用于复位
+     * @default
+     */
     ref?: React.MutableRefObject<{
-      setDate: () => void;
+      setDate: (targetValue: [Moment, Moment] | BtnKind) => void;
     }>;
   }
 >;
