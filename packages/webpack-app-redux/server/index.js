@@ -2,10 +2,10 @@ const express = require('express')
 const webpack = require('webpack')
 const webpackconfig = require('../webpack.dev')
 const webpackMiddleware = require('webpack-dev-middleware')
-
 var webpackHotMiddleware = require('webpack-hot-middleware')
 var history = require('connect-history-api-fallback')
-const path = require('path')
+var store = require('./store')
+
 const app = express()
 
 const webpackCompiler = webpack(webpackconfig)
@@ -13,8 +13,6 @@ const wpmw = webpackMiddleware(webpackCompiler, {
   publicPath: webpackconfig.output.publicPath,
 })
 
-app.use(history())
-// app.use(express.static('../dist'))
 app.use(wpmw)
 app.use(
   webpackHotMiddleware(webpackCompiler, {
@@ -24,8 +22,9 @@ app.use(
 
 app.use('/test', function (req, res) {
   res.send({
-    code: 0,
+    code: 1,
     ...req.query,
+    store: store,
   })
 })
 
@@ -35,29 +34,11 @@ app.use('/post', function (req, res) {
     code: '1',
   })
 })
-// app.use(
-//   history({
-//     verbose: true,
-
-//     index: '/',
-//   })
-// )
-
-// app.get('/', function (req, res) {
-//   res.redirect('/')
-// })
-
-// app.use(function (req, res) {
-//   res.sendFile(path.join(__dirname, '../dist/index.html'))
-// })
-
-// app.get('/redux', (req, res) => {
-//   res.sendFile(path.join(__dirname, '../dist/index.html'))
-// })
 app.use((req, res, next) => {
   console.log(req.url)
   next()
 })
+app.use(history())
 app.listen(3012, () => {
   console.log('Example app listening on port 3012!')
 })
