@@ -22,9 +22,8 @@ app.use(
 
 app.use('/test', function (req, res) {
   res.send({
-    code: 1,
-    ...req.query,
-    store: store,
+    code: 0,
+    data: store.getState(),
   })
 })
 

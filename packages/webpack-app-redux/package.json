@@ -5,7 +5,7 @@
   "main": "index.js",
   "private": true,
   "scripts": {
-    "start": "cross-env NODE_ENV=development nodemon server",
+    "start": "cross-env NODE_ENV=development nodemon",
     "build": "cross-env NODE_ENV=production webpack --config webpack.prod.js",
     "lint": "eslint  --fix --ext .ts,.tsx,.js client"
   },
@@ -73,6 +73,7 @@
     "react-virtualized-auto-sizer": "^1.0.6",
     "react-window": "^1.8.6",
     "styled-components": "^5.3.1",
+    "ts-node": "^10.4.0",
     "use-immer": "^0.6.0",
     "webpack-lib": "1.0.0"
   }
