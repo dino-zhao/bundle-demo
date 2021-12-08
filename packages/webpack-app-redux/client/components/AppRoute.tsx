@@ -1,7 +1,7 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 const Css = React.lazy(() => import('./cssRelated'))
-const Redux = React.lazy(() => import('./reduxRelated'))
+const Redux = React.lazy(() => import('./redux'))
 const Header = React.lazy(() => import('./httpHeader'))
 const AAntd = React.lazy(() => import('./antd'))
 const Others = React.lazy(() => import('./others'))

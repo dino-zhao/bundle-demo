@@ -5,7 +5,7 @@ import './index.scss'
 import App from './App'
 import './styles/tailwind.css'
 // import '../dist/tailwind.css'
-import store from './redux/store'
+// import store from './redux/store'
 import { Provider } from 'react-redux'
 import zhCN from 'antd/es/locale/zh_CN'
 import { ConfigProvider } from 'antd'
@@ -19,9 +19,9 @@ const { log } = require('webpack-lib') //是用cmj的格式
 ReactDOM.render(
   <DConfigProvider locale={zhCN}>
     <ConfigProvider locale={zhCN}>
-      <Provider store={store}>
-        <App />
-      </Provider>
+      {/* <Provider store={store}> */}
+      <App />
+      {/* </Provider> */}
     </ConfigProvider>
   </DConfigProvider>,
   document.getElementById('root')
