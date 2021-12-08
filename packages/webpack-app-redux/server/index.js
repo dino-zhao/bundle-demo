@@ -13,6 +13,13 @@ const wpmw = webpackMiddleware(webpackCompiler, {
   publicPath: webpackconfig.output.publicPath,
 })
 
+function wrap(data) {
+  return {
+    code: 0,
+    data,
+  }
+}
+
 app.use(wpmw)
 app.use(
   webpackHotMiddleware(webpackCompiler, {
@@ -20,20 +27,10 @@ app.use(
   })
 )
 
-app.use('/test', function (req, res) {
-  res.send({
-    code: 0,
-    data: store.getState(),
-  })
+app.get('/posts/:id', function (req, res) {
+  res.send(wrap(store.getState()))
 })
-
-app.use('/post', function (req, res) {
-  console.log(req.body)
-  res.send({
-    code: '1',
-  })
-})
-app.use((req, res, next) => {
+app.get((req, res, next) => {
   console.log(req.url)
   next()
 })
