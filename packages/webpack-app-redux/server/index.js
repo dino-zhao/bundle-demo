@@ -8,7 +8,18 @@ var history = require('connect-history-api-fallback')
 var store = require('./store')
 
 const app = express()
-
+app.use(
+  history({
+    rewrites: [
+      {
+        from: /^\/api\/.*$/,
+        to: function (context) {
+          return context.parsedUrl.path
+        },
+      },
+    ],
+  })
+)
 const webpackCompiler = webpack(webpackconfig)
 const wpmw = webpackMiddleware(webpackCompiler, {
   publicPath: webpackconfig.output.publicPath,
@@ -38,7 +49,6 @@ app.get((req, res, next) => {
   console.log(req.url)
   next()
 })
-app.use(history())
 app.listen(3012, () => {
   console.log('Example app listening on port 3012!')
 })
