@@ -4,13 +4,13 @@ import { Post } from 'server/store'
 
 export const postApi = createApi({
   baseQuery: fetchBaseQuery({
-    baseUrl: '/',
+    baseUrl: '/api',
   }),
   tagTypes: ['Post'],
   endpoints: (build) => ({
     getPost: build.query<Post, number>({
       // note: an optional `queryFn` may be used in place of `query`
-      query: (id) => ({ url: `post/${id}` }),
+      query: (id) => ({ url: `posts/${id}` }),
       // Pick out data and prevent nested properties in a hook or selector
       transformResponse: (response: { data: Post }) => response.data,
       providesTags: (result, error, id) => [{ type: 'Post', id }],

@@ -28,7 +28,7 @@ app.use(
   })
 )
 
-app.get('/posts/:id?', function (req, res) {
+app.get('/api/posts/:id', function (req, res) {
   if (req.params['id']) {
     return res.send(wrap(store.get(req.params['id'])))
   }
