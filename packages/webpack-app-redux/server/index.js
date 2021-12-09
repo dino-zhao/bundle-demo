@@ -8,6 +8,7 @@ var history = require('connect-history-api-fallback')
 var store = require('./store')
 
 const app = express()
+app.use(express.json())
 app.use(
   history({
     rewrites: [
@@ -45,7 +46,9 @@ app.get('/api/posts/:id?', function (req, res) {
   }
   res.send(wrap(store.getState()))
 })
-// app.post('/api/post')
+app.post('/api/post', function (req, res) {
+  return res.send(wrap(store.update(req.body)))
+})
 app.get((req, res, next) => {
   console.log(req.url)
   next()

@@ -14,6 +14,7 @@ export default function PostsList() {
           return (
             <div key={item.id}>
               <Button onClick={() => setId(item.id)}>{item.id}</Button>
+              {item.name}
             </div>
           )
         })}
