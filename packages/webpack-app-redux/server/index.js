@@ -39,12 +39,13 @@ app.use(
   })
 )
 
-app.get('/api/posts/:id', function (req, res) {
+app.get('/api/posts/:id?', function (req, res) {
   if (req.params['id']) {
     return res.send(wrap(store.get(req.params['id'])))
   }
   res.send(wrap(store.getState()))
 })
+// app.post('/api/post')
 app.get((req, res, next) => {
   console.log(req.url)
   next()
