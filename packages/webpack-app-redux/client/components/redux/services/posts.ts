@@ -1,10 +1,10 @@
 // Or from '@reduxjs/toolkit/query/react'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-// import { Post } from 'server/store'
-interface Post {
-  id: number
-  name: string
-}
+import { Post } from 'server/store'
+// interface Post {
+//   id: number
+//   name: string
+// }
 export const postApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: '/',
