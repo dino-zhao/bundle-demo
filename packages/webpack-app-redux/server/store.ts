@@ -18,6 +18,9 @@ class Store {
     this.data.push(v)
     return this.data
   }
+  get(id: number) {
+    return this.data.find((item) => item.id == id)
+  }
   delete(id: number) {
     const index = this.data.findIndex((i) => i.id === id)
     if (index > -1) {
