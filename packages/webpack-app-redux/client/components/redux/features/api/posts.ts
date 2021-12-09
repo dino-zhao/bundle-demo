@@ -1,7 +1,7 @@
 // Or from '@reduxjs/toolkit/query/react'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { Post } from 'server/store'
-export type { Post } from 'server/store'
+import { Post } from 'server/post.controller'
+export type { Post } from 'server/post.controller'
 export const postApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: '/api',

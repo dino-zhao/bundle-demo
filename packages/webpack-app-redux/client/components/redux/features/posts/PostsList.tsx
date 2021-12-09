@@ -1,4 +1,4 @@
-import { useGetPostsQuery, Post } from '../../services/posts'
+import { useGetPostsQuery, Post } from '../api/posts'
 import PostDetail from './PostDetail'
 import { useState } from 'react'
 import { Button } from 'antd'
