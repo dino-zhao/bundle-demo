@@ -13,7 +13,8 @@
     "paths": {
       "@/*": ["client/*"],
       "@redux/*": ["client/redux/*"],
-      "@components/*": ["client/components/*"]
+      "@components/*": ["client/components/*"],
+      "server/*": ["server/*"]
     }
   },
 

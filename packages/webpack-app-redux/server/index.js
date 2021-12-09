@@ -27,7 +27,7 @@ app.use(
   })
 )
 
-app.get('/posts/:id', function (req, res) {
+app.get('/posts/:id*?', function (req, res) {
   res.send(wrap(store.getState()))
 })
 app.get((req, res, next) => {
