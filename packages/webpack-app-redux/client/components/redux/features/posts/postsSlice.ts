@@ -1,12 +1,7 @@
-// Or from '@reduxjs/toolkit/query/react'
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import { apiSlice } from '../api/apiSlice'
 import { Post } from 'server/post.controller'
 export type { Post } from 'server/post.controller'
-export const postApi = createApi({
-  baseQuery: fetchBaseQuery({
-    baseUrl: '/api',
-  }),
-  tagTypes: ['Posts'],
+export const postsSlice = apiSlice.injectEndpoints({
   endpoints: (build) => ({
     getPost: build.query<Post, number>({
       query: (id) => ({ url: `posts/${id}` }),
@@ -33,4 +28,4 @@ export const postApi = createApi({
 })
 
 export const { useGetPostQuery, useGetPostsQuery, useUpdatePostMutation } =
-  postApi
+  postsSlice

@@ -1,5 +1,5 @@
 import { Modal, Form, Input, Button } from 'antd'
-import { useGetPostsQuery, useUpdatePostMutation } from '../api/posts'
+import { useGetPostsQuery, useUpdatePostMutation } from './postsSlice'
 export default function PostDetail({
   id,
   onCancel,
