@@ -1,14 +1,14 @@
 import { useSelector } from 'react-redux'
 import {
   useGetUsersQuery,
-  selectUsersResult,
   selectUserById,
   selectAllUsers,
+  selectUsersResult,
 } from './usersSlice'
 export default function UsersList() {
-  const user = useSelector((state) => selectUserById(state, 1))
   const all = useSelector((state) => selectAllUsers(state))
+  const a = useSelector((state) => selectUsersResult(state))
   //   const { data } = useGetUsersQuery()
-  console.log(all)
+  console.log(a)
   return <div>2222</div>
 }

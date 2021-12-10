@@ -6,6 +6,7 @@ import {
   EntityState,
   createSelector,
 } from '@reduxjs/toolkit'
+import { RootState } from '../../app/store'
 
 const usersAdapter = createEntityAdapter<User>()
 const initialState = usersAdapter.getInitialState()
@@ -21,12 +22,17 @@ export const usersSlice = apiSlice.injectEndpoints({
 })
 
 export const { useGetUsersQuery } = usersSlice
-export const selectUsersResult = usersSlice.endpoints.getUsers.select()
+export const selectUsersResult = usersSlice.endpoints.getUsers.select() as (
+  state: RootState
+) => {
+  data: EntityState<User>
+}
 
-const selectUsersData = createSelector(
-  selectUsersResult,
-  (usersResult) => usersResult.data
-)
+const selectUsersData = createSelector(selectUsersResult, (usersResult) => {
+  return usersResult.data
+})
 
 export const { selectAll: selectAllUsers, selectById: selectUserById } =
-  usersAdapter.getSelectors((state) => selectUsersData(state) ?? initialState)
+  usersAdapter.getSelectors<RootState>(
+    (state) => selectUsersData(state) ?? initialState
+  )
