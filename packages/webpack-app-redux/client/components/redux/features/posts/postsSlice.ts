@@ -23,6 +23,23 @@ export const postsSlice = apiSlice.injectEndpoints({
       // Pick out data and prevent nested properties in a hook or selector
       transformResponse: (response: { data: Post }) => response.data,
       invalidatesTags: ['Posts'],
+      async onQueryStarted({ id, name }, { dispatch, queryFulfilled }) {
+        //乐观更新
+        const patchResult = dispatch(
+          postsSlice.util.updateQueryData('getPosts', undefined, (draft) => {
+            const post = draft.find((post) => post.id === id)
+            console.log(post)
+            if (post) {
+              post.name = name + '2222'
+            }
+          })
+        )
+        try {
+          await queryFulfilled
+        } catch {
+          patchResult.undo()
+        }
+      },
     }),
   }),
 })
