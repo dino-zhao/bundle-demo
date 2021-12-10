@@ -6,7 +6,7 @@ import {
   EntityState,
   createSelector,
 } from '@reduxjs/toolkit'
-import { RootState } from '../../app/store'
+import { RootState } from '@components/redux/app/store'
 
 const usersAdapter = createEntityAdapter<User>()
 const initialState = usersAdapter.getInitialState()

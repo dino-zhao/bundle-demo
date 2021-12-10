@@ -1,4 +1,4 @@
-import { useSelector } from 'react-redux'
+import { useAppSelector } from '@components/redux/app/store'
 import {
   useGetUsersQuery,
   selectUserById,
@@ -6,8 +6,7 @@ import {
   selectUsersResult,
 } from './usersSlice'
 export default function UsersList() {
-  const all = useSelector((state) => selectAllUsers(state))
-  const a = useSelector((state) => selectUsersResult(state))
+  const a = useAppSelector((state) => selectUsersResult(state))
   //   const { data } = useGetUsersQuery()
   console.log(a)
   return <div>2222</div>
