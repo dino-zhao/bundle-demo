@@ -7,15 +7,21 @@ export default function PostDetail({
   id: number
   onCancel: () => void
 }) {
-  const { post } = useGetPostsQuery(undefined, {
+  const { post, options } = useGetPostsQuery(undefined, {
     selectFromResult: ({ data }) => ({
       post: data?.find((post) => post.id === id),
+      options: data?.map((item) => {
+        return {
+          label: item.name,
+          value: item.id,
+        }
+      }),
     }),
   })
   const [
     updatePost, // This is the mutation trigger
   ] = useUpdatePostMutation()
-
+  console.log(options)
   return (
     <Modal title="post detail" visible={!!id} onCancel={onCancel}>
       {post && (
