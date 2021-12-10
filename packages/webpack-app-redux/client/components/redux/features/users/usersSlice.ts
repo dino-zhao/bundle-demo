@@ -1,24 +1,32 @@
 import { apiSlice } from '../api/apiSlice'
 import { User } from 'server/user.controller'
 export type { User } from 'server/user.controller'
-import { createEntityAdapter, EntityState } from '@reduxjs/toolkit'
+import {
+  createEntityAdapter,
+  EntityState,
+  createSelector,
+} from '@reduxjs/toolkit'
 
 const usersAdapter = createEntityAdapter<User>()
 const initialState = usersAdapter.getInitialState()
 export const usersSlice = apiSlice.injectEndpoints({
   endpoints: (build) => ({
-    getUser: build.query<EntityState<User>, number>({
-      query: (id) => ({ url: `users/${id}` }),
-      transformResponse: (response: { data: User }) =>
-        usersAdapter.setAll(initialState, response),
-      providesTags: ['Users'],
-    }),
-    getUsers: build.query<User[], void>({
+    getUsers: build.query<EntityState<User>, void>({
       query: () => `users`,
-      transformResponse: (response: { data: User[] }) => response.data,
+      transformResponse: (response: { data: User[] }) =>
+        usersAdapter.setAll(initialState, response.data),
       providesTags: ['Users'],
     }),
   }),
 })
 
-export const { useGetUserQuery, useGetUsersQuery } = usersSlice
+export const { useGetUsersQuery } = usersSlice
+export const selectUsersResult = usersSlice.endpoints.getUsers.select()
+
+const selectUsersData = createSelector(
+  selectUsersResult,
+  (usersResult) => usersResult.data
+)
+
+export const { selectAll: selectAllUsers, selectById: selectUserById } =
+  usersAdapter.getSelectors((state) => selectUsersData(state) ?? initialState)
