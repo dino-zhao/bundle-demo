@@ -45,7 +45,7 @@ app.get('/api/posts/:id?', function (req, res) {
   if (req.params['id']) {
     return res.send(wrap(postStore.get(req.params['id'])))
   }
-  setTimeout(() => res.send(wrap(postStore.getState())), 3000)
+  res.send(wrap(postStore.getState()))
 })
 app.get('/api/users/:id?', function (req, res) {
   if (req.params['id']) {

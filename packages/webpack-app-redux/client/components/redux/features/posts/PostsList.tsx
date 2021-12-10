@@ -1,4 +1,4 @@
-import { useGetPostsQuery, Post } from './postsSlice'
+import { useGetPostsQuery, Post, useExportExcelQuery } from './postsSlice'
 import PostDetail from './PostDetail'
 import { useState } from 'react'
 import { Button } from 'antd'
@@ -12,12 +12,21 @@ export default function PostsList() {
     //参数变化时请求
     refetchOnMountOrArgChange: true,
   })
+
+  const { isFetching: isExporting, refetch: reExport } = useExportExcelQuery(2)
+
   const [id, setId] = useState(0)
+  const hiddenDetail = () => {
+    setId(0)
+  }
   if (isLoading) return <div>Loading...</div>
   if (!posts) return <div>Missing post!</div>
   function List({ posts }: { posts: Post[] }) {
     return (
       <div>
+        <Button onClick={reExport} loading={isExporting}>
+          重新下载
+        </Button>
         <Button onClick={refetch}> refetch</Button>
         {posts.map((item) => {
           return (
@@ -34,7 +43,7 @@ export default function PostsList() {
     <div>
       <List posts={posts} />
       <div>{isFetching ? '...refetching' : ''}</div>
-      <PostDetail id={id} onCancel={() => setId(0)} />
+      <PostDetail id={id} onCancel={hiddenDetail} />
     </div>
   )
 }

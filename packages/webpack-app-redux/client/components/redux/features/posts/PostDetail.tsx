@@ -1,12 +1,7 @@
+import React from 'react'
 import { Modal, Form, Input, Button } from 'antd'
 import { useGetPostsQuery, useUpdatePostMutation } from './postsSlice'
-export default function PostDetail({
-  id,
-  onCancel,
-}: {
-  id: number
-  onCancel: () => void
-}) {
+function PostDetail({ id, onCancel }: { id: number; onCancel: () => void }) {
   const { post, options } = useGetPostsQuery(undefined, {
     selectFromResult: ({ data }) => ({
       post: data?.find((post) => post.id === id),
@@ -42,3 +37,5 @@ export default function PostDetail({
     </Modal>
   )
 }
+
+export default React.memo(PostDetail)

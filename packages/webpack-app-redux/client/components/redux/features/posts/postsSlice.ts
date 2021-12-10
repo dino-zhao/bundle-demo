@@ -13,6 +13,18 @@ export const postsSlice = apiSlice.injectEndpoints({
       transformResponse: (response: { data: Post[] }) => response.data,
       providesTags: ['Posts'],
     }),
+    exportExcel: build.query<string, number>({
+      queryFn: async (arg, queryApi, extraOptions, baseQuery) => {
+        let arr = []
+        for (let i = 0; i < arg; i++) {
+          arr.push(await baseQuery('posts'))
+        }
+        console.log(arr)
+        return {
+          data: '111',
+        }
+      },
+    }),
     updatePost: build.mutation<Post, Partial<Post> & Pick<Post, 'id'>>({
       // note: an optional `queryFn` may be used in place of `query`
       query: (patch) => ({
@@ -44,5 +56,9 @@ export const postsSlice = apiSlice.injectEndpoints({
   }),
 })
 
-export const { useGetPostQuery, useGetPostsQuery, useUpdatePostMutation } =
-  postsSlice
+export const {
+  useGetPostQuery,
+  useGetPostsQuery,
+  useUpdatePostMutation,
+  useExportExcelQuery,
+} = postsSlice
