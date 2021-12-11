@@ -1,4 +1,4 @@
-import { useGetPostsQuery, Post, useExportExcelQuery } from './postsSlice'
+import { useGetPostsQuery, Post, useExportExcelMutation } from './postsSlice'
 import PostDetail from './PostDetail'
 import { useState } from 'react'
 import { Button } from 'antd'
@@ -13,7 +13,7 @@ export default function PostsList() {
     refetchOnMountOrArgChange: true,
   })
 
-  const { isFetching: isExporting, refetch: reExport } = useExportExcelQuery(2)
+  const [exportExcel, { isLoading: isExporting }] = useExportExcelMutation()
 
   const [id, setId] = useState(0)
   const hiddenDetail = () => {
@@ -25,7 +25,11 @@ export default function PostsList() {
     console.log(posts)
     return (
       <div>
-        <Button onClick={reExport} key="export" loading={isExporting}>
+        <Button
+          onClick={() => exportExcel(2)}
+          key="export"
+          loading={isExporting}
+        >
           重新下载
         </Button>
         <Button onClick={refetch} key="refetch">

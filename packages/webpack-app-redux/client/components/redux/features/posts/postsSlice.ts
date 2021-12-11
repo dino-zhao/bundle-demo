@@ -13,12 +13,13 @@ export const postsSlice = apiSlice.injectEndpoints({
       transformResponse: (response: { data: Post[] }) => response.data,
       providesTags: ['Posts'],
     }),
-    exportExcel: build.query<string, number>({
+    exportExcel: build.mutation<string, number>({
       queryFn: async (arg, queryApi, extraOptions, baseQuery) => {
         let arr = []
         for (let i = 0; i < arg; i++) {
           arr.push(await baseQuery({ url: 'posts' }))
         }
+        console.log('导出excel')
         return {
           data: '111',
         }
@@ -58,5 +59,5 @@ export const {
   useGetPostQuery,
   useGetPostsQuery,
   useUpdatePostMutation,
-  useExportExcelQuery,
+  useExportExcelMutation,
 } = postsSlice
