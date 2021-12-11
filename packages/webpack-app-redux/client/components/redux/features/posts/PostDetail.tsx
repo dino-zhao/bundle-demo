@@ -23,12 +23,10 @@ function PostDetail({ id, onCancel }: { id: number; onCancel: () => void }) {
         <Form
           initialValues={post}
           onFinish={(values) => {
-            updatePost(values)
+            updatePost({ ...post, ...values })
           }}
         >
-          <Form.Item label="id" name="id">
-            {post.id}
-          </Form.Item>
+          <Form.Item label="id">{post.id}</Form.Item>
           <Form.Item label="name" name="name">
             <Input></Input>
           </Form.Item>
