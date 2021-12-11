@@ -5,6 +5,7 @@ function PostDetail({ id, onCancel }: { id: number; onCancel: () => void }) {
   const { post, options } = useGetPostsQuery(undefined, {
     selectFromResult: ({ data }) => ({
       post: data?.find((post) => post.id === id),
+      //这里生成的值总是会造成rerender
       options: data?.map((item) => {
         return {
           label: item.name,
