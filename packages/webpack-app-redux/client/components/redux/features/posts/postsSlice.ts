@@ -9,7 +9,7 @@ export const postsSlice = apiSlice.injectEndpoints({
       providesTags: ['Posts'],
     }),
     getPosts: build.query<Post[], void>({
-      query: () => `posts`,
+      query: () => 'posts',
       transformResponse: (response: { data: Post[] }) => response.data,
       providesTags: ['Posts'],
     }),
@@ -17,9 +17,8 @@ export const postsSlice = apiSlice.injectEndpoints({
       queryFn: async (arg, queryApi, extraOptions, baseQuery) => {
         let arr = []
         for (let i = 0; i < arg; i++) {
-          arr.push(await baseQuery('posts'))
+          arr.push(await baseQuery({ url: 'posts' }))
         }
-        console.log(arr)
         return {
           data: '111',
         }
@@ -29,8 +28,8 @@ export const postsSlice = apiSlice.injectEndpoints({
       // note: an optional `queryFn` may be used in place of `query`
       query: (patch) => ({
         url: `post`,
-        method: 'Post',
-        body: patch,
+        method: 'post',
+        data: patch,
       }),
       // Pick out data and prevent nested properties in a hook or selector
       transformResponse: (response: { data: Post }) => response.data,
@@ -40,7 +39,6 @@ export const postsSlice = apiSlice.injectEndpoints({
         const patchResult = dispatch(
           postsSlice.util.updateQueryData('getPosts', undefined, (draft) => {
             const post = draft.find((post) => post.id === id)
-            console.log(post)
             if (post) {
               post.name = name + '2222'
             }

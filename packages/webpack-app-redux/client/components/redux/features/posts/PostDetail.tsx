@@ -17,11 +17,15 @@ function PostDetail({ id, onCancel }: { id: number; onCancel: () => void }) {
   const [
     updatePost, // This is the mutation trigger
   ] = useUpdatePostMutation()
-  console.log(options)
   return (
     <Modal title="post detail" visible={!!id} onCancel={onCancel}>
       {post && (
-        <Form initialValues={post} onFinish={(values) => updatePost(values)}>
+        <Form
+          initialValues={post}
+          onFinish={(values) => {
+            updatePost(values)
+          }}
+        >
           <Form.Item label="id" name="id">
             {post.id}
           </Form.Item>
