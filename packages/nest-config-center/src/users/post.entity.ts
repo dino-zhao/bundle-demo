@@ -1,10 +1,10 @@
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
-export class User {
+export class Post {
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column()
-  age: number;
+  name: number;
 }
