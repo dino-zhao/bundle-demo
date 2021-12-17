@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, PrimaryGeneratedColumn, ManyToMany } from "typeorm";
+import { User } from "./user.entity";
 
 @Entity()
 export class Post {
@@ -7,4 +8,7 @@ export class Post {
 
   @Column()
   name: number;
+
+  @ManyToMany(() => User, (user) => user.posts, { onDelete: "CASCADE" })
+  users: User[];
 }
