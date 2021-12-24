@@ -19,14 +19,10 @@ test("resolver-package", (done) => {
     extensions: [".js"],
     plugins: [new Mp()],
   });
-  myResolver(
-    "C:\\code\\bundle-demo\\packages\\webpack-plugin",
-    "jest",
-    (err /*Error*/, filepath /*string*/) => {
-      console.log(filepath);
-      done();
-    }
-  );
+  myResolver("./", "jest", (err /*Error*/, filepath /*string*/) => {
+    console.log(filepath);
+    done();
+  });
 });
 
 test("resolver-tsconfig", (done) => {
@@ -35,12 +31,8 @@ test("resolver-tsconfig", (done) => {
     extensions: [".js"],
     plugins: [new Mp()],
   });
-  myResolver(
-    "C:\\code\\bundle-demo\\packages\\webpack-plugin",
-    "src/index.js",
-    (err /*Error*/, filepath /*string*/) => {
-      console.log(filepath);
-      done();
-    }
-  );
+  myResolver("./", "src/index.js", (err /*Error*/, filepath /*string*/) => {
+    console.log(filepath);
+    done();
+  });
 });

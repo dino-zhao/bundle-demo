@@ -2,7 +2,7 @@
 
 const TsconfigPaths = require("tsconfig-paths");
 const getInnerRequest = require("enhanced-resolve/lib/getInnerRequest");
-export default class TsconfigAliasPlugin {
+module.exports = class TsconfigAliasPlugin {
   //可传参configFile
   constructor(options = {}) {
     this.source = "described-resolve";
@@ -79,4 +79,4 @@ export default class TsconfigAliasPlugin {
         }
       );
   }
-}
+};
