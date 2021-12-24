@@ -9,7 +9,7 @@ const getInnerRequest = require("enhanced-resolve/lib/getInnerRequest");
 export default class TsconfigPathsPlugin {
   constructor(rawOptions = {}) {
     this.source = "described-resolve";
-    this.target = "resolve";
+    this.target = "internal-resolve";
     const options = Options.getOptions(rawOptions);
     this.extensions = options.extensions;
     // const colors = new chalk.constructor({ enabled: options.colors });
@@ -63,34 +63,19 @@ export default class TsconfigPathsPlugin {
       );
       return;
     }
-    // getHook will only exist in Webpack 4 & 5, if so we should comply to the Webpack 4 plugin system.
-    if ("getHook" in resolver && typeof resolver.getHook === "function") {
-      resolver
-        .getHook(this.source)
-        .tapAsync(
-          { name: "TsconfigPathsPlugin" },
-          createPluginCallback(
-            this.matchPath,
-            resolver,
-            this.absoluteBaseUrl,
-            resolver.getHook(this.target),
-            this.extensions
-          )
-        );
-    } else if ("plugin" in resolver) {
-      // This is the legacy (Webpack < 4.0.0) way of using the plugin system.
-      const legacyResolver = resolver;
-      legacyResolver.plugin(
-        this.source,
-        createPluginLegacy(
+
+    resolver
+      .getHook(this.source)
+      .tapAsync(
+        { name: "TsconfigPathsPlugin" },
+        createPluginCallback(
           this.matchPath,
           resolver,
           this.absoluteBaseUrl,
-          this.target,
+          resolver.getHook(this.target),
           this.extensions
         )
       );
-    }
   }
 }
 
@@ -165,65 +150,7 @@ function createPluginCallback(
     );
   };
 }
-function createPluginLegacy(
-  matchPath,
-  resolver,
-  absoluteBaseUrl,
-  target,
-  extensions
-) {
-  const fileExistAsync = createFileExistAsync(resolver.fileSystem);
-  const readJsonAsync = createReadJsonAsync(resolver.fileSystem);
-  return (request, callback) => {
-    const innerRequest = getInnerRequest(resolver, request);
-    if (
-      !innerRequest ||
-      innerRequest.startsWith(".") ||
-      innerRequest.startsWith("..")
-    ) {
-      return callback();
-    }
-    matchPath(
-      innerRequest,
-      readJsonAsync,
-      fileExistAsync,
-      extensions,
-      (err, foundMatch) => {
-        if (err) {
-          return callback(err);
-        }
-        if (!foundMatch) {
-          return callback();
-        }
-        const newRequest = Object.assign(Object.assign({}, request), {
-          request: foundMatch,
-          path: absoluteBaseUrl,
-        });
-        // Only at this point we are sure we are dealing with a legacy Webpack version (< 4.0.0)
-        // So only now can we require the createInnerCallback function.
-        // (It's already deprecated and might be removed down the line).
-        const createInnerCallback = require("enhanced-resolve/lib/createInnerCallback");
-        return resolver.doResolve(
-          target,
-          newRequest,
-          `Resolved request '${innerRequest}' to '${foundMatch}' using tsconfig.json paths mapping`,
-          createInnerCallback(function (err2, result2) {
-            // Note:
-            //  *NOT* using an arrow function here because arguments.length implies we have "this"
-            //  That means "this" has to be in the current function scope, and not the scope above.
-            //  Pattern taken from:
-            //  https://github.com/s-panferov/awesome-typescript-loader/blob/10653beff85f555f1f3b5d4bfd7d21513d0e54a4/src/paths-plugin.ts#L169
-            if (arguments.length > 0) {
-              return callback(err2, result2);
-            }
-            // don't allow other aliasing or raw request
-            callback(undefined, undefined);
-          }, callback)
-        );
-      }
-    );
-  };
-}
+
 function readJson(fileSystem, path2, callback) {
   if ("readJson" in fileSystem && fileSystem.readJson) {
     return fileSystem.readJson(path2, callback);
