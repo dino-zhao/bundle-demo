@@ -2,16 +2,17 @@ const { tree } = require("./buildTree");
 function search(root) {
   if (root === null) return [];
   let queue = [root],
-    res = [];
+    res = [root.value];
   while (queue.length) {
-    let nextQueue = [];
+    console.log(queue.map((i) => i.value));
+    let temps = [];
     while (queue.length) {
       let cur = queue.shift();
-      res.push(cur.value);
-      cur.left && nextQueue.push(cur.left);
-      cur.right && nextQueue.push(cur.right);
+      cur.left && temps.push(cur.left);
+      cur.right && temps.push(cur.right);
     }
-    queue = nextQueue;
+    res.push(...temps.map((i) => i.value));
+    queue = temps;
   }
   return res;
 }

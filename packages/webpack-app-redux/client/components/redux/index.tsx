@@ -16,7 +16,7 @@ const tabList: TabItem[] = [
   },
 ]
 
-export default function CssRelated() {
+export default function ReduxComponent() {
   return (
     <Provider store={store}>
       <TabPage tabList={tabList}></TabPage>

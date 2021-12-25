@@ -3840,6 +3840,28 @@
   dependencies:
     defer-to-connect "^1.0.1"
 
+"@testing-library/dom@^8.0.0":
+  version "8.11.1"
+  resolved "https://registry.npmmirror.com/@testing-library/dom/download/@testing-library/dom-8.11.1.tgz?cache=0&sync_timestamp=1636571132420&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2F%40testing-library%2Fdom%2Fdownload%2F%40testing-library%2Fdom-8.11.1.tgz#03fa2684aa09ade589b460db46b4c7be9fc69753"
+  integrity sha512-3KQDyx9r0RKYailW2MiYrSSKEfH0GTkI51UGEvJenvcoDoeRYs0PZpi2SXqtnMClQvCqdtTTpOfFETDTVADpAg==
+  dependencies:
+    "@babel/code-frame" "^7.10.4"
+    "@babel/runtime" "^7.12.5"
+    "@types/aria-query" "^4.2.0"
+    aria-query "^5.0.0"
+    chalk "^4.1.0"
+    dom-accessibility-api "^0.5.9"
+    lz-string "^1.4.4"
+    pretty-format "^27.0.2"
+
+"@testing-library/react@^12.1.2":
+  version "12.1.2"
+  resolved "https://registry.npmmirror.com/@testing-library/react/download/@testing-library/react-12.1.2.tgz#f1bc9a45943461fa2a598bb4597df1ae044cfc76"
+  integrity sha1-8byaRZQ0YfoqWYu0WX3xrgRM/HY=
+  dependencies:
+    "@babel/runtime" "^7.12.5"
+    "@testing-library/dom" "^8.0.0"
+
 "@tootallnate/once@1":
   version "1.1.2"
   resolved "https://registry.npmmirror.com/@tootallnate/once/download/@tootallnate/once-1.1.2.tgz?cache=0&sync_timestamp=1632734062895&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2F%40tootallnate%2Fonce%2Fdownload%2F%40tootallnate%2Fonce-1.1.2.tgz#ccb91445360179a04e7fe6aff78c00ffc1eeaf82"
@@ -3876,6 +3898,11 @@
   integrity sha1-w0vsEVz8dG4E/loFnfTOfns5FXU=
   dependencies:
     "@types/node" "*"
+
+"@types/aria-query@^4.2.0":
+  version "4.2.2"
+  resolved "https://registry.npmmirror.com/@types/aria-query/download/@types/aria-query-4.2.2.tgz#ed4e0ad92306a704f9fb132a0cfcf77486dbe2bc"
+  integrity sha1-7U4K2SMGpwT5+xMqDPz3dIbb4rw=
 
 "@types/axios@^0.14.0":
   version "0.14.0"
@@ -4111,7 +4138,7 @@
   dependencies:
     "@types/istanbul-lib-report" "*"
 
-"@types/jest@27.0.3", "@types/jest@^27.0.1":
+"@types/jest@27.0.3", "@types/jest@^27.0.1", "@types/jest@^27.0.3":
   version "27.0.3"
   resolved "https://registry.npmmirror.com/@types/jest/download/@types/jest-27.0.3.tgz#0cf9dfe9009e467f70a342f0f94ead19842a783a"
   integrity sha512-cmmwv9t7gBYt7hNKH5Spu7Kuu/DotGa+Ff+JGRKZ4db5eh8PnKS4LuebJ3YLUoyOyIHraTGyULn23YtEAm0VSg==
@@ -5594,6 +5621,11 @@ aria-query@^4.2.2:
   dependencies:
     "@babel/runtime" "^7.10.2"
     "@babel/runtime-corejs3" "^7.10.2"
+
+aria-query@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.npmmirror.com/aria-query/download/aria-query-5.0.0.tgz?cache=0&sync_timestamp=1633308564212&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Faria-query%2Fdownload%2Faria-query-5.0.0.tgz#210c21aaf469613ee8c9a62c7f86525e058db52c"
+  integrity sha1-IQwhqvRpYT7oyaYsf4ZSXgWNtSw=
 
 arr-diff@^4.0.0:
   version "4.0.0"
@@ -8400,6 +8432,11 @@ doctrine@^3.0.0:
   dependencies:
     esutils "^2.0.2"
 
+dom-accessibility-api@^0.5.9:
+  version "0.5.10"
+  resolved "https://registry.npmmirror.com/dom-accessibility-api/download/dom-accessibility-api-0.5.10.tgz#caa6d08f60388d0bb4539dd75fe458a9a1d0014c"
+  integrity sha1-yqbQj2A4jQu0U53XX+RYqaHQAUw=
+
 dom-align@^1.7.0:
   version "1.12.2"
   resolved "https://registry.nlark.com/dom-align/download/dom-align-1.12.2.tgz#0f8164ebd0c9c21b0c790310493cd855892acd4b"
@@ -10417,6 +10454,11 @@ hard-rejection@^2.1.0:
   resolved "https://registry.npm.taobao.org/hard-rejection/download/hard-rejection-2.1.0.tgz#1c6eda5c1685c63942766d79bb40ae773cecd883"
   integrity sha1-HG7aXBaFxjlCdm15u0Cudzzs2IM=
 
+harmony-reflect@^1.4.6:
+  version "1.6.2"
+  resolved "https://registry.npm.taobao.org/harmony-reflect/download/harmony-reflect-1.6.2.tgz?cache=0&sync_timestamp=1618512427562&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fharmony-reflect%2Fdownload%2Fharmony-reflect-1.6.2.tgz#31ecbd32e648a34d030d86adb67d4d47547fe710"
+  integrity sha1-Mey9MuZIo00DDYattn1NR1R/5xA=
+
 has-ansi@^2.0.0:
   version "2.0.0"
   resolved "https://registry.nlark.com/has-ansi/download/has-ansi-2.0.0.tgz?cache=0&sync_timestamp=1631556755105&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fhas-ansi%2Fdownload%2Fhas-ansi-2.0.0.tgz#34f5049ce1ecdf2b0649af3ef24e45ed35416d91"
@@ -10959,6 +11001,13 @@ icss-utils@^5.0.0, icss-utils@^5.1.0:
   version "5.1.0"
   resolved "https://registry.npm.taobao.org/icss-utils/download/icss-utils-5.1.0.tgz#c6be6858abd013d768e98366ae47e25d5887b1ae"
   integrity sha1-xr5oWKvQE9do6YNmrkfiXViHsa4=
+
+identity-obj-proxy@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.npmmirror.com/identity-obj-proxy/download/identity-obj-proxy-3.0.0.tgz#94d2bda96084453ef36fbc5aaec37e0f79f1fc14"
+  integrity sha1-lNK9qWCERT7zb7xarsN+D3nx/BQ=
+  dependencies:
+    harmony-reflect "^1.4.6"
 
 ieee754@^1.1.13, ieee754@^1.1.4, ieee754@^1.2.1:
   version "1.2.1"
@@ -16489,7 +16538,7 @@ pretty-error@^4.0.0:
     lodash "^4.17.20"
     renderkid "^3.0.0"
 
-pretty-format@^27.0.0, pretty-format@^27.4.2:
+pretty-format@^27.0.0, pretty-format@^27.0.2, pretty-format@^27.4.2:
   version "27.4.2"
   resolved "https://registry.npmmirror.com/pretty-format/download/pretty-format-27.4.2.tgz#e4ce92ad66c3888423d332b40477c87d1dac1fb8"
   integrity sha512-p0wNtJ9oLuvgOQDEIZ9zQjZffK7KtyR6Si0jnXULIDwrlNF8Cuir3AZP0hHv0jmKuNN/edOnbMjnzd4uTcmWiw==
