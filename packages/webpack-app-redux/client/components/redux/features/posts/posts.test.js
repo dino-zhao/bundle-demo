@@ -40,7 +40,7 @@ test('handles server error', async () => {
   )
 
   render(<PostsList />)
-  await waitFor(() => screen.getByText('Missing post!'))
+  await waitForElementToBeRemoved(() => screen.getByText('Loading...'))
   expect(screen.getByText('Missing post!')).toBeInTheDocument()
 })
 test('loads and displays greeting', async () => {
@@ -49,6 +49,7 @@ test('loads and displays greeting', async () => {
   //   fireEvent.click(screen.getByText('refetch'))
 
   // await waitFor(() => screen.getByText('1'))
-  await screen.findByText('refetch')
+  await waitForElementToBeRemoved(() => screen.getByText('Loading...'))
+  //   await screen.findByText('refetch')
   expect(screen.getByText('1')).toHaveTextContent('1')
 })
