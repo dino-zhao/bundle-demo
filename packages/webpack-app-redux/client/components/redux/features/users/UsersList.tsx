@@ -8,6 +8,5 @@ import {
 export default function UsersList() {
   const a = useAppSelector((state) => selectUsersResult(state))
   //   const { data } = useGetUsersQuery()
-  console.log(a)
-  return <div>2222</div>
+  return <div>{JSON.stringify(a.data)}</div>
 }

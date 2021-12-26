@@ -22,7 +22,6 @@ export default function PostsList() {
   if (isLoading) return <div>Loading...</div>
   if (!posts) return <div>Missing post!</div>
   function List({ posts }: { posts: Post[] }) {
-    console.log(posts)
     return (
       <div>
         <Button
