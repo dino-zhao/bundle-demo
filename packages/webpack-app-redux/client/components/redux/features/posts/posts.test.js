@@ -10,7 +10,7 @@ import {
   waitForElementToBeRemoved,
   queryByText,
 } from '@components/redux/test-utils'
-import '@testing-library/jest-dom'
+// import '@testing-library/jest-dom'
 import PostsList from './PostsList'
 
 const server = setupServer(

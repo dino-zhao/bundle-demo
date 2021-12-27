@@ -17,4 +17,5 @@ module.exports = {
     'test-utils': '<rootDir>/client/components/redux/test-utils.jsx',
   },
   testEnvironment: 'jsdom',
+  setupFilesAfterEnv: ['<rootDir>/jest-setup.js'],
 }
