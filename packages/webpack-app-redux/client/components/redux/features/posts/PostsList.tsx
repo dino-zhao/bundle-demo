@@ -1,6 +1,6 @@
 import { useGetPostsQuery, Post, useExportExcelMutation } from './postsSlice'
 import PostDetail from './PostDetail'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Button } from 'antd'
 export default function PostsList() {
   const {
@@ -13,6 +13,14 @@ export default function PostsList() {
     refetchOnMountOrArgChange: true,
   })
 
+  useEffect(() => {
+    fetch('/api/login', {
+      method: 'POST',
+      body: JSON.stringify({
+        username: 555,
+      }),
+    })
+  }, [])
   const [exportExcel, { isLoading: isExporting }] = useExportExcelMutation()
 
   const [id, setId] = useState(0)

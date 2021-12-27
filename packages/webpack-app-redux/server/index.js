@@ -9,6 +9,7 @@ var postStore = require('./post.controller')
 var useStore = require('./user.controller')
 
 const app = express()
+
 app.use(express.json())
 app.use(
   history({
@@ -60,6 +61,7 @@ app.get((req, res, next) => {
   console.log(req.url)
   next()
 })
+app.use(express.static('public'))
 app.listen(3012, () => {
   console.log('Example app listening on port 3012!')
 })

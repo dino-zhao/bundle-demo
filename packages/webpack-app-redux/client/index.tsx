@@ -15,6 +15,12 @@ import { DConfigProvider } from 'dinod'
 const { log } = require('webpack-lib') //是用cmj的格式
 
 /* eslint-enable */
+if (process.env.NODE_ENV === 'development') {
+  const { worker } = require('./mocks/browser')
+  worker.start({
+    onUnhandledRequest: 'bypass',
+  })
+}
 
 ReactDOM.render(
   <DConfigProvider locale={zhCN}>
