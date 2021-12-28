@@ -1,12 +1,14 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import { Editor } from '@tinymce/tinymce-react'
 import ReactHtmlParser from 'react-html-parser'
 
 export default function TinyMce() {
   const editorRef = useRef(null)
+  const [text, setText] = useState('')
   const log = () => {
     if (editorRef.current) {
       console.log(editorRef.current.getContent())
+      setText(editorRef.current.getContent())
     }
   }
   const images_upload_handler = async (blob, success, fail) => {
@@ -16,9 +18,7 @@ export default function TinyMce() {
     // const data = await update_img(param) //update_img是自己定义的上传图片视频方法,需要自行封装，很简单
     // success(data.url)
   }
-  const html = `<p>This is the initial content of the editor.</p>
-<p>&nbsp;</p>
-<p><span style="font-size: 36pt;">sssssss</span></p>`
+
   return (
     <>
       <Editor
@@ -44,7 +44,7 @@ export default function TinyMce() {
         }}
       />
       <button onClick={log}>Log editor content</button>
-      <div>{ReactHtmlParser(html)}</div>
+      <div>{ReactHtmlParser(text)}</div>
     </>
   )
 }
