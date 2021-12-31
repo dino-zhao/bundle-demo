@@ -5,7 +5,7 @@
 
 module.exports = {
   clearMocks: true,
-  collectCoverage: true,
+  collectCoverage: false,
   coverageDirectory: 'coverage',
   testTimeout: 10000,
   testMatch: ['**/?(*.)+(spec|test).[jt]s?(x)'],

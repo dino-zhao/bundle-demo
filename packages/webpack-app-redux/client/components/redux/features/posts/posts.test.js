@@ -36,10 +36,7 @@ test('loads and displays greeting', async () => {
   )
   render(<PostsList />)
 
-  //   fireEvent.click(screen.getByText('refetch'))
-
-  // await waitFor(() => screen.getByText('1'))
   await waitForElementToBeRemoved(() => screen.getByText('Loading...'))
-  //   await screen.findByText('refetch')
+  screen.debug()
   expect(screen.getByText('1')).toHaveTextContent('1')
 })
