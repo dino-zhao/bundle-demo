@@ -9,7 +9,7 @@ import {
   fireEvent,
 } from '@components/redux/test-utils'
 import PostsList from './PostsList'
-import { waitFor } from '@testing-library/dom'
+import { getByRole, waitFor } from '@testing-library/dom'
 
 test('handles server error', async () => {
   //这个放在后面就不会成功，因为有缓存
@@ -59,16 +59,20 @@ test('测试refetch', async () => {
       )
     })
   )
-  const {} = render(<PostsList />)
+  const { getByRole } = render(<PostsList />)
   await waitForElementToBeRemoved(() => screen.getByText('Loading...'))
   screen.debug()
-  let btn = screen.getByTestId('toRefetch')
-  fireEvent.click(btn)
+  //   let btn = screen.getByTestId('toRefetch')
+  fireEvent.click(getByRole(/refetch/))
   screen.debug()
+  //下面两种方式等待
+  //1.使用动态data-test
+  await waitForElementToBeRemoved(() => screen.getByTestId('refetching'))
+  //使用expect+jest-dom
   await waitFor(() =>
-    expect(screen.getByTestId('toRefetch')).not.toHaveClass('ant-btn-loading')
+    expect(getByRole(/refetch/)).not.toHaveClass('ant-btn-loading')
   )
-  //   await waitForElementToBeRemoved(() => screen.getByTestId('refetching'))
+
   screen.debug()
   expect(1).toBe(1)
 })
