@@ -33,7 +33,8 @@ export default function PostsList() {
         </Button>
         <Button
           onClick={refetch}
-          data-testid={isFetching ? 'refetching' : 'toRefetch'}
+          //   data-testid={isFetching ? 'refetching' : 'toRefetch'}
+          data-testid="toRefetch"
           key="refetch"
           loading={isFetching}
         >

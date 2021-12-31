@@ -64,7 +64,11 @@ test('测试refetch', async () => {
   screen.debug()
   let btn = screen.getByTestId('toRefetch')
   fireEvent.click(btn)
-  await waitForElementToBeRemoved(() => screen.getByTestId('refetching'))
+  screen.debug()
+  await waitFor(() =>
+    expect(screen.getByTestId('toRefetch')).not.toHaveClass('ant-btn-loading')
+  )
+  //   await waitForElementToBeRemoved(() => screen.getByTestId('refetching'))
   screen.debug()
   expect(1).toBe(1)
 })
