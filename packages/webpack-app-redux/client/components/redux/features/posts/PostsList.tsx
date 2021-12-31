@@ -31,7 +31,12 @@ export default function PostsList() {
         >
           重新下载
         </Button>
-        <Button onClick={refetch} key="refetch">
+        <Button
+          onClick={refetch}
+          data-testid={isFetching ? 'refetching' : 'toRefetch'}
+          key="refetch"
+          loading={isFetching}
+        >
           refetch
         </Button>
         {posts.map((item) => {
