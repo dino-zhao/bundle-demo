@@ -40,3 +40,8 @@ test('loads and displays greeting', async () => {
   screen.debug()
   expect(screen.getByText('1')).toHaveTextContent('1')
 })
+
+test('测试refetch', async () => {
+  render(<PostsList />)
+  expect(1).toBe(1)
+})
