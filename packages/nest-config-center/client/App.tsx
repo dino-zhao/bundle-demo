@@ -15,9 +15,15 @@ export default function App() {
   return (
     <div>
       <h1 onClick={() => setCounter((c) => c + 1)}>counter:{counter}</h1>
-      <Link to="/about">Home</Link>
+      <div>
+        <Link to="/">Home</Link>
+      </div>
+      <div>
+        <Link to="/about">about</Link>
+      </div>
+
       <Routes>
-        <Route path="/ww" element={<Home />} />
+        <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
       </Routes>
     </div>

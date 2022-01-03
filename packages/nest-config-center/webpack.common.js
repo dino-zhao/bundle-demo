@@ -17,30 +17,10 @@ module.exports = {
         type: "asset/resource",
       },
       {
-        test: /\.scss$/,
-        include: path.resolve(__dirname, "client"),
-        use: [
-          process.env.NODE_ENV === "development"
-            ? "style-loader"
-            : MiniCssExtractPlugin.loader,
-          {
-            loader: "css-loader",
-            options: {
-              modules: {
-                localIdentName: "[path]__[local]--[hash:base64:5]",
-              },
-            },
-          },
-          "sass-loader",
-        ],
-      },
-      {
         test: /\.css$/,
         exclude: [/tailwind.css$/],
         use: [
-          process.env.NODE_ENV === "development"
-            ? "style-loader"
-            : MiniCssExtractPlugin.loader,
+          "style-loader",
           {
             loader: "css-loader",
           },

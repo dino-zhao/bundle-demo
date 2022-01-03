@@ -1,3 +1,9 @@
+import { Input } from "antd";
+
 export default function About() {
-  return <div>about</div>;
+  return (
+    <div>
+      <Input value="ddd"></Input>
+    </div>
+  );
 }
