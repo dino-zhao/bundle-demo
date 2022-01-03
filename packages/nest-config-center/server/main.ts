@@ -10,16 +10,9 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   const webpackCompiler = webpack(webpackconfig);
-  console.log(webpackconfig.output.publicPath);
   const wpmw = webpackMiddleware(webpackCompiler, {
     publicPath: webpackconfig.output.publicPath,
   });
-  app.use(wpmw);
-  app.use(
-    webpackHotMiddleware(webpackCompiler, {
-      log: console.log,
-    })
-  );
   app.use(
     history({
       rewrites: [
@@ -32,7 +25,16 @@ async function bootstrap() {
       ],
     })
   );
+  app.use(wpmw);
+
+  app.use(
+    webpackHotMiddleware(webpackCompiler, {
+      log: console.log,
+    })
+  );
+
   app.use(express.static("public"));
+
   await app.listen(3050);
   console.log(`Application is running on: ${await app.getUrl()}`);
 }
