@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { hot } from 'react-hot-loader/root'
 import Home from './components/Home'
 import { Spin } from 'antd'
 const store = {
@@ -20,4 +19,4 @@ function App() {
     </React.Suspense>
   )
 }
-export default hot(App)
+export default App

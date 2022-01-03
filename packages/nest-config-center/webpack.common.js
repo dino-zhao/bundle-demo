@@ -13,11 +13,6 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(js|jsx|tsx|ts)$/,
-        use: ["babel-loader"],
-        include: path.resolve(__dirname, "client"),
-      },
-      {
         test: /\.jpg/,
         type: "asset/resource",
       },

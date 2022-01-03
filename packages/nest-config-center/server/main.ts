@@ -10,6 +10,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   const webpackCompiler = webpack(webpackconfig);
+  console.log(webpackconfig.output.publicPath);
   const wpmw = webpackMiddleware(webpackCompiler, {
     publicPath: webpackconfig.output.publicPath,
   });
@@ -17,6 +18,18 @@ async function bootstrap() {
   app.use(
     webpackHotMiddleware(webpackCompiler, {
       log: console.log,
+    })
+  );
+  app.use(
+    history({
+      rewrites: [
+        {
+          from: /^\/api\/.*$/,
+          to: function (context) {
+            return context.parsedUrl.path;
+          },
+        },
+      ],
     })
   );
   app.use(express.static("public"));

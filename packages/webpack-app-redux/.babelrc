@@ -27,7 +27,6 @@
     //   },
     //   "dinod"
     // ],
-    ["@babel/plugin-transform-runtime", { "corejs": 3, "proposals": true }],
-    "react-hot-loader/babel"
+    ["@babel/plugin-transform-runtime", { "corejs": 3, "proposals": true }]
   ]
 }

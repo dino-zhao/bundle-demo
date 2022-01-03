@@ -5,8 +5,9 @@ import {
   selectAllUsers,
   selectUsersResult,
 } from './usersSlice'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 export default function UsersList() {
+  const [counter, setCounter] = useState(0)
   useEffect(() => {
     fetch('/api/login', {
       method: 'POST',
@@ -17,5 +18,11 @@ export default function UsersList() {
   }, [])
   const a = useAppSelector((state) => selectUsersResult(state))
   //   const { data } = useGetUsersQuery()
-  return <div>{JSON.stringify(a.data)}</div>
+  return (
+    <div onClick={() => setCounter((c) => c + 1)}>
+      {JSON.stringify(a.data)}
+      <div>555</div>
+      <div>{counter}</div>
+    </div>
+  )
 }
