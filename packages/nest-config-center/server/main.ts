@@ -23,6 +23,7 @@ async function bootstrap() {
           },
         },
       ],
+      htmlAcceptHeaders: ["text/html"],
     })
   );
   app.use(wpmw);
