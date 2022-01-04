@@ -18,6 +18,7 @@ export default function TinyMce() {
   const editorRef = useRef(null)
   const ossClient = useRef(null)
   const [text, setText] = useState('')
+  const [filePath] = useState(() => 'help-center/' + uuidv4() + '/')
 
   const log = () => {
     if (editorRef.current) {
@@ -63,10 +64,10 @@ export default function TinyMce() {
     console.log(blob.blob())
     const client = ossClient.current
     client
-      .put('help-center/' + fileName, file)
+      .put(filePath + fileName, file)
       .then(function (r1) {
         // console.log('put success: %j', client.get(fileName))
-        success('https://statics.ppio.cloud/help-center/' + fileName)
+        success('https://statics.ppio.cloud/' + filePath + fileName)
         console.log(r1)
       })
       .then(function (r2) {
