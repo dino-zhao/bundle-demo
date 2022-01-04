@@ -3,6 +3,7 @@ module.exports = {
     browser: true,
     es2021: true,
     commonjs: true,
+    'jest/globals': true,
   },
   extends: [
     'eslint:recommended',
@@ -19,7 +20,7 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: 'module',
   },
-  plugins: ['react', '@typescript-eslint', 'prettier'],
+  plugins: ['react', '@typescript-eslint', 'prettier', 'jest'],
   rules: {
     '@typescript-eslint/explicit-module-boundary-types': ['off'],
     'prettier/prettier': 'error',
@@ -32,6 +33,7 @@ module.exports = {
     'react/jsx-uses-react': 'off',
     'react/react-in-jsx-scope': 'off',
     '@typescript-eslint/no-unused-vars': ['error'],
+    '@typescript-eslint/no-var-requires': 0,
   },
   settings: {
     react: {

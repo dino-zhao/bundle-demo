@@ -1,7 +1,27 @@
-import { Foo } from 'dinod'
-import log from 'dinod/es/utils/console/log'
+import { RangeSelector, exportExcel } from 'dinod'
+import { DatePicker } from 'antd'
+import { Button } from 'antd'
 
 export default function DinoD() {
-  console.log(log({ base: 'a', extra: 'qqqaaa' }))
-  return <Foo title="test" />
+  const exportE = () => {
+    exportExcel({
+      rows: [
+        [5, 'Bob', '22222222'],
+        [5, 'Bob', 'wwwwwwwwwwwwww'],
+      ],
+      fileName: 'test',
+    })
+  }
+  return (
+    <div>
+      <DatePicker />
+      {/* <Foo title="test" /> */}
+      <RangeSelector
+        onRangeChange={() => {}}
+        btnArr={['YESTODAY', 'LAST_SEVEN_DAYS_WITHOUT_TODAY']}
+        value={'YESTODAY'}
+      ></RangeSelector>
+      <Button onClick={exportE}>下载excel</Button>
+    </div>
+  )
 }

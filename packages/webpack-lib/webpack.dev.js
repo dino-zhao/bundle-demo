@@ -6,7 +6,7 @@ module.exports = merge(common, {
   mode: "development",
   devtool: "inline-source-map",
   devServer: {
-    static: "./vendor",
+    static: ["vendor", "public"],
   },
   plugins: [
     new webpack.DllReferencePlugin({

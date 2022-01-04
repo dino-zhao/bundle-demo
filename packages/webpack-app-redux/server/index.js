@@ -1,63 +1,71 @@
+require('@babel/register')({ extensions: ['.js', '.ts'] })
 const express = require('express')
 const webpack = require('webpack')
 const webpackconfig = require('../webpack.dev')
 const webpackMiddleware = require('webpack-dev-middleware')
-
 var webpackHotMiddleware = require('webpack-hot-middleware')
 var history = require('connect-history-api-fallback')
-const path = require('path')
+var postStore = require('./post.controller')
+var useStore = require('./user.controller')
+const getToekn = require('./oss.controller')
 const app = express()
 
+app.use(express.json())
+app.use(
+  history({
+    rewrites: [
+      {
+        from: /^\/api\/.*$/,
+        to: function (context) {
+          return context.parsedUrl.path
+        },
+      },
+    ],
+  })
+)
 const webpackCompiler = webpack(webpackconfig)
 const wpmw = webpackMiddleware(webpackCompiler, {
   publicPath: webpackconfig.output.publicPath,
 })
 
-app.use(history())
-// app.use(express.static('../dist'))
+function wrap(data) {
+  return {
+    code: 0,
+    data,
+  }
+}
+
 app.use(wpmw)
 app.use(
   webpackHotMiddleware(webpackCompiler, {
     log: console.log,
   })
 )
-
-app.use('/test', function (req, res) {
-  res.send({
-    code: 0,
-    ...req.query,
+app.get('/api/oss-token', function (req, res) {
+  getToekn().then((info) => {
+    res.send(wrap(info))
   })
 })
-
-app.use('/post', function (req, res) {
-  console.log(req.body)
-  res.send({
-    code: '1',
-  })
+app.get('/api/posts/:id?', function (req, res) {
+  if (req.params['id']) {
+    return res.send(wrap(postStore.get(req.params['id'])))
+  }
+  res.send(wrap(postStore.getState()))
 })
-// app.use(
-//   history({
-//     verbose: true,
-
-//     index: '/',
-//   })
-// )
-
-// app.get('/', function (req, res) {
-//   res.redirect('/')
-// })
-
-// app.use(function (req, res) {
-//   res.sendFile(path.join(__dirname, '../dist/index.html'))
-// })
-
-// app.get('/redux', (req, res) => {
-//   res.sendFile(path.join(__dirname, '../dist/index.html'))
-// })
-app.use((req, res, next) => {
+app.get('/api/users/:id?', function (req, res) {
+  if (req.params['id']) {
+    return res.send(wrap(useStore.get(req.params['id'])))
+  }
+  res.send(wrap(useStore.getState()))
+})
+app.post('/api/post', function (req, res) {
+  return res.send(wrap(postStore.update(req.body)))
+})
+app.get((req, res, next) => {
   console.log(req.url)
   next()
 })
-app.listen(3000, () => {
-  console.log('Example app listening on port 3000!')
+app.use(express.static('public'))
+app.listen(3012, () => {
+  console.log('Example app listening on port 3012!')
 })

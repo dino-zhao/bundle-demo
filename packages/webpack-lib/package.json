@@ -29,5 +29,8 @@
     "@types/ramda": "^0.27.44",
     "ramda": "^0.27.1",
     "lodash": "^4.17.21"
+  },
+  "msw": {
+    "workerDirectory": "public"
   }
 }

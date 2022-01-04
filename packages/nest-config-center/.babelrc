@@ -1,0 +1,23 @@
+{
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "chrome": "93"
+        }
+      }
+    ],
+    [
+      "@babel/preset-react",
+      {
+        "runtime": "automatic"
+      }
+    ],
+    "@babel/preset-typescript"
+  ],
+  "plugins": [
+    ["import", { "libraryName": "antd", "style": "css" }, "antd"],
+    ["@babel/plugin-transform-runtime", { "corejs": 3, "proposals": true }]
+  ]
+}

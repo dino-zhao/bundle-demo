@@ -1,0 +1,9 @@
+$primary-color: #2e5bff;
+$SUCCESS_COLOR: #27ae60;
+$ERROR_COLOR: #fa5555;
+$Link_COLOR: #2e5bff;
+$WARN_COLOR: #faad14;
+$PRE_FIX_CLASSES: "dino";
+:export {
+  prefixCls: $PRE_FIX_CLASSES;
+}
