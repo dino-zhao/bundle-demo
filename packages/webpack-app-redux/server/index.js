@@ -7,7 +7,7 @@ var webpackHotMiddleware = require('webpack-hot-middleware')
 var history = require('connect-history-api-fallback')
 var postStore = require('./post.controller')
 var useStore = require('./user.controller')
-
+const getToekn = require('./oss.controller')
 const app = express()
 
 app.use(express.json())
@@ -41,7 +41,11 @@ app.use(
     log: console.log,
   })
 )
-
+app.get('/api/oss-token', function (req, res) {
+  getToekn().then((info) => {
+    res.send(wrap(info))
+  })
+})
 app.get('/api/posts/:id?', function (req, res) {
   if (req.params['id']) {
     return res.send(wrap(postStore.get(req.params['id'])))

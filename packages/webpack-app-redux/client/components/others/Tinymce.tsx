@@ -1,28 +1,86 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Editor } from '@tinymce/tinymce-react'
 import ReactHtmlParser from 'react-html-parser'
+import axios from 'axios'
+import { v4 as uuidv4 } from 'uuid'
+const OSS = require('ali-oss')
+interface TokenInfo {
+  AccessKeyId: string
+  AccessKeySecret: string
+  SecurityToken: string
+}
+async function getToken(): Promise<TokenInfo> {
+  const info = await axios('/api/oss-token')
+  return info.data.data
+}
 
 export default function TinyMce() {
   const editorRef = useRef(null)
+  const ossClient = useRef(null)
   const [text, setText] = useState('')
+
   const log = () => {
     if (editorRef.current) {
+      console.log(ossClient.current)
       console.log(editorRef.current.getContent())
       setText(editorRef.current.getContent())
     }
   }
+
+  useEffect(() => {
+    ;(async () => {
+      const token = await getToken()
+      const client = new OSS({
+        // yourRegion填写Bucket所在地域。以华东1（杭州）为例，Region填写为oss-cn-hangzhou。
+        region: 'oss-cn-hangzhou',
+        // 从STS服务获取的临时访问密钥（AccessKey ID和AccessKey Secret）。
+        accessKeyId: token.AccessKeyId,
+        accessKeySecret: token.AccessKeySecret,
+        // 从STS服务获取的安全令牌（SecurityToken）。
+        stsToken: token.SecurityToken,
+        refreshSTSToken: async () => {
+          // 向您搭建的STS服务获取临时访问凭证。
+          const info = await getToken()
+          return {
+            accessKeyId: info.AccessKeyId,
+            accessKeySecret: info.AccessKeySecret,
+            stsToken: info.SecurityToken,
+          }
+        },
+        // 刷新临时访问凭证的时间间隔，单位为毫秒。
+        refreshSTSTokenInterval: 300000,
+        // 填写Bucket名称。
+        bucket: 'statics-websites',
+      })
+      ossClient.current = client
+    })()
+  }, [])
   const images_upload_handler = async (blob, success, fail) => {
-    const param = new FormData()
-    param.append('img', blob.blob())
+    const oldFile = blob.blob()
+    const fileName =
+      uuidv4() + oldFile.name.slice(oldFile.name.lastIndexOf('.'))
+    const file = new File([oldFile], fileName, { type: oldFile.type })
     console.log(blob.blob())
-    // const data = await update_img(param) //update_img是自己定义的上传图片视频方法,需要自行封装，很简单
-    // success(data.url)
+    const client = ossClient.current
+    client
+      .put('help-center/' + fileName, file)
+      .then(function (r1) {
+        // console.log('put success: %j', client.get(fileName))
+        success('https://statics.ppio.cloud/help-center/' + fileName)
+        console.log(r1)
+      })
+      .then(function (r2) {
+        console.log('get success: %j', r2)
+      })
+      .catch(function (err) {
+        console.error('error: %j', err)
+      })
   }
 
   return (
     <>
       <Editor
-        tinymceScriptSrc="https://statics-websites.oss-cn-hangzhou.aliyuncs.com/tinymce/tinymce.min.js"
+        tinymceScriptSrc="https://statics.ppio.cloud/tinymce/tinymce.min.js"
         onInit={(evt, editor) => (editorRef.current = editor)}
         initialValue="<p>This is the initial content of the editor.</p>"
         init={{

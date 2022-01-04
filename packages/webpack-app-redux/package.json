@@ -69,6 +69,7 @@
     "webpack-hot-middleware": "^2.25.0"
   },
   "dependencies": {
+    "@alicloud/pop-core": "^1.7.10",
     "@reduxjs/toolkit": "^1.6.1",
     "@tinymce/tinymce-react": "^3.13.0",
     "@types/axios": "^0.14.0",
@@ -76,6 +77,8 @@
     "@types/react-dom": "^17.0.9",
     "@types/react-virtualized-auto-sizer": "^1.0.1",
     "@types/react-window": "^1.8.5",
+    "@types/uuid": "^8.3.3",
+    "ali-oss": "^6.16.0",
     "antd": "^4.16.13",
     "axios": "^0.21.4",
     "babel-plugin-import": "^1.13.3",
