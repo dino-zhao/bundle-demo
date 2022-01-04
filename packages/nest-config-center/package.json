@@ -6,10 +6,11 @@
   "private": "true",
   "scripts": {
     "prebuild": "rimraf dist",
-    "build": "nest build",
+    "build": "nest build && yarn build:client",
+    "build:client": "cross-env NODE_ENV=production webpack --config webpack.prod.js",
     "format": "prettier --write \"server/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
-    "start:dev": "nest start --watch",
+    "start:dev": "cross-env NODE_ENV=development  nest start --watch",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
     "lint": "eslint '{server,apps,libs,test}/**/*.ts' --fix",
