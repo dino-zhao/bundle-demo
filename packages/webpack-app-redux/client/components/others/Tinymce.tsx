@@ -85,10 +85,11 @@ export default function TinyMce() {
         onInit={(evt, editor) => (editorRef.current = editor)}
         initialValue="<p>This is the initial content of the editor.</p>"
         init={{
+          language: 'zh_CN',
           height: 500,
           menubar: false,
           plugins:
-            'print preview paste importcss searchreplace autolink autosave save directionality code visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap quickbars emoticons',
+            'print preview paste importcss searchreplace autolink autosave save directionality code visualblocks visualchars fullscreen  link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap quickbars emoticons',
           toolbar:
             'undo redo | formatselect | image | fontsizeselect | preview |' +
             'bold italic backcolor | alignleft aligncenter ' +
