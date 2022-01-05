@@ -91,10 +91,10 @@ export default function TinyMce() {
           plugins:
             'print preview paste importcss searchreplace autolink image autosave save directionality code visualblocks visualchars fullscreen  link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap quickbars emoticons',
           toolbar:
-            'undo redo | formatselect | image | fontsizeselect | preview |' +
-            'bold italic backcolor | alignleft aligncenter ' +
-            'alignright alignjustify | bullist numlist outdent indent | ' +
-            'removeformat | help',
+            'undo redo | image | fontsizeselect | preview |' +
+            'bold italic forecolor backcolor | alignleft aligncenter ' +
+            'alignright alignjustify | bullist numlist  | ' +
+            'removeformat',
           content_style:
             'body { font-family:Helvetica,Arial,sans-serif; font-size:14pt }',
           //   images_upload_handler,
