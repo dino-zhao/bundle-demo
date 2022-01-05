@@ -75,6 +75,7 @@ export default function TinyMce() {
       })
       .catch(function (err) {
         console.error('error: %j', err)
+        fail(err)
       })
   }
 
