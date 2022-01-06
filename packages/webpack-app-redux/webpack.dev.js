@@ -5,7 +5,7 @@ const path = require('path')
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
 module.exports = merge(common, {
   mode: 'development',
-  devtool: 'eval',
+  devtool: 'eval-source-map',
   entry: [
     './client/index.tsx',
     'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true',

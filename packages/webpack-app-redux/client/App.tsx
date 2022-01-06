@@ -14,6 +14,7 @@ function App() {
     store.setObj(v)
     setState((c) => c + 1)
   }
+
   return (
     <React.Suspense fallback={<Spin />}>
       <Router>
