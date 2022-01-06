@@ -4,4 +4,5 @@ export const ItemTypes = {
 
 export interface CardDragObject {
   id: string
+  index: number
 }

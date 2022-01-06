@@ -1,100 +1,80 @@
-import { CSSProperties, Component } from 'react'
-import { name } from 'faker'
+import { FC, useState, useEffect } from 'react'
 import Card from './Card'
 import update from 'immutability-helper'
 
-const style: CSSProperties = {
+const style = {
   width: 400,
 }
 
+export interface Item {
+  id: number
+  text: string
+}
 export interface ContainerState {
-  cardsById: { [key: string]: any }
-  cardsByIndex: any[]
+  cards: Item[]
 }
 
-/* eslint-disable-next-line @typescript-eslint/no-empty-interface */
-export interface ContainerProps {}
+export const Container: FC = () => {
+  {
+    const [cards, setCards] = useState([
+      {
+        id: 1,
+        text: 'Write a cool JS library',
+      },
+      {
+        id: 2,
+        text: 'Make it generic enough',
+      },
+      {
+        id: 3,
+        text: 'Write README',
+      },
+      {
+        id: 4,
+        text: 'Create some examples',
+      },
+      {
+        id: 5,
+        text: 'Spam in Twitter and IRC to promote it (note that this element is taller than the others)',
+      },
+      {
+        id: 6,
+        text: '???',
+      },
+      {
+        id: 7,
+        text: 'PROFIT',
+      },
+    ])
 
-export default class Container extends Component<
-  ContainerProps,
-  ContainerState
-> {
-  private pendingUpdateFn: any
-  private requestedFrame: number | undefined
-
-  public constructor(props: ContainerProps) {
-    super(props)
-
-    const cardsById: Record<string, any> = {}
-    const cardsByIndex = []
-
-    for (let i = 0; i < 1000; i += 1) {
-      const card = { id: i, text: name.findName() }
-      cardsById[card.id] = card
-      cardsByIndex[i] = card
+    const moveCard = (dragIndex: number, hoverIndex: number) => {
+      const dragCard = cards[dragIndex]
+      setCards(
+        update(cards, {
+          $splice: [
+            [dragIndex, 1],
+            [hoverIndex, 0, dragCard],
+          ],
+        })
+      )
     }
 
-    this.state = {
-      cardsById,
-      cardsByIndex,
-    }
-  }
-
-  public componentWillUnmount(): void {
-    if (this.requestedFrame !== undefined) {
-      cancelAnimationFrame(this.requestedFrame)
-    }
-  }
-
-  public render(): JSX.Element {
-    const { cardsByIndex } = this.state
+    useEffect(() => {
+      console.log(cards)
+    }, [cards])
 
     return (
       <div style={style}>
-        {cardsByIndex.map((card) => (
+        {cards.map((card, i) => (
           <Card
             key={card.id}
+            index={i}
             id={card.id}
             text={card.text}
-            moveCard={this.moveCard}
+            moveCard={moveCard}
           />
         ))}
       </div>
     )
-  }
-
-  private scheduleUpdate(updateFn: any) {
-    this.pendingUpdateFn = updateFn
-
-    if (!this.requestedFrame) {
-      this.requestedFrame = requestAnimationFrame(this.drawFrame)
-    }
-  }
-
-  private drawFrame = (): void => {
-    const nextState = update(this.state, this.pendingUpdateFn)
-    this.setState(nextState)
-
-    this.pendingUpdateFn = undefined
-    this.requestedFrame = undefined
-  }
-
-  private moveCard = (id: string, afterId: string): void => {
-    const { cardsById, cardsByIndex } = this.state
-
-    const card = cardsById[id]
-    const afterCard = cardsById[afterId]
-
-    const cardIndex = cardsByIndex.indexOf(card)
-    const afterIndex = cardsByIndex.indexOf(afterCard)
-
-    this.scheduleUpdate({
-      cardsByIndex: {
-        $splice: [
-          [cardIndex, 1],
-          [afterIndex, 0, card],
-        ],
-      },
-    })
   }
 }

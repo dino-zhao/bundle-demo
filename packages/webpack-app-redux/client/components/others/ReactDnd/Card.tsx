@@ -1,13 +1,21 @@
-import { CSSProperties, FC, memo } from 'react'
-import { DragSource, DropTarget } from 'react-dnd'
+import { forwardRef, useImperativeHandle, useRef } from 'react'
 import {
-  ConnectDragSource,
   ConnectDropTarget,
+  ConnectDragSource,
   DropTargetMonitor,
+  DragSourceMonitor,
 } from 'react-dnd'
-import { ItemTypes, CardDragObject } from './ItemTypes'
+import {
+  DragSource,
+  DropTarget,
+  DropTargetConnector,
+  DragSourceConnector,
+} from 'react-dnd'
+import { ItemTypes } from './ItemTypes'
+import { XYCoord } from 'dnd-core'
+import { CardDragObject } from './ItemTypes'
 
-const style: CSSProperties = {
+const style = {
   border: '1px dashed gray',
   padding: '0.5rem 1rem',
   marginBottom: '.5rem',
@@ -18,42 +26,113 @@ const style: CSSProperties = {
 export interface CardProps {
   id: any
   text: string
-  moveCard: (draggedId: string, id: string) => void
+  index: number
+  moveCard: (dragIndex: number, hoverIndex: number) => void
+
   isDragging: boolean
   connectDragSource: ConnectDragSource
   connectDropTarget: ConnectDropTarget
 }
 
-const Card: FC<CardProps> = memo(
-  ({ text, isDragging, connectDragSource, connectDropTarget }) => {
-    const opacity = isDragging ? 0 : 1
-    return connectDragSource(
-      connectDropTarget(<div style={{ ...style, opacity }}>{text}</div>)
-    )
-  }
-)
-Card.displayName = 'Card'
+interface CardInstance {
+  getNode(): HTMLDivElement | null
+}
+
+const Card = forwardRef<HTMLDivElement, CardProps>(function Card(
+  { text, isDragging, connectDragSource, connectDropTarget },
+  ref
+) {
+  const elementRef = useRef(null)
+  connectDragSource(elementRef)
+  connectDropTarget(elementRef)
+
+  const opacity = isDragging ? 0 : 1
+  useImperativeHandle<any, CardInstance>(ref, () => ({
+    getNode: () => elementRef.current,
+  }))
+  return (
+    <div ref={elementRef} style={{ ...style, opacity }}>
+      {text}
+      <button>2222</button>
+    </div>
+  )
+})
 
 export default DropTarget(
   ItemTypes.CARD,
   {
-    hover(props: CardProps, monitor: DropTargetMonitor) {
-      const draggedId = monitor.getItem<CardDragObject>().id
-      if (draggedId !== props.id) {
-        props.moveCard(draggedId, props.id)
+    hover(
+      props: CardProps,
+      monitor: DropTargetMonitor,
+      component: CardInstance
+    ) {
+      if (!component) {
+        return null
       }
+      // node = HTML Div element from imperative API
+      const node = component.getNode()
+      if (!node) {
+        return null
+      }
+
+      const dragIndex = monitor.getItem<CardDragObject>().index
+      const hoverIndex = props.index
+
+      // Don't replace items with themselves
+      if (dragIndex === hoverIndex) {
+        return
+      }
+
+      // Determine rectangle on screen
+      const hoverBoundingRect = node.getBoundingClientRect()
+
+      // Get vertical middle
+      const hoverMiddleY =
+        (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2
+
+      // Determine mouse position
+      const clientOffset = monitor.getClientOffset()
+
+      // Get pixels to the top
+      const hoverClientY = (clientOffset as XYCoord).y - hoverBoundingRect.top
+
+      // Only perform the move when the mouse has crossed half of the items height
+      // When dragging downwards, only move when the cursor is below 50%
+      // When dragging upwards, only move when the cursor is above 50%
+
+      // Dragging downwards
+      if (dragIndex < hoverIndex && hoverClientY < hoverMiddleY) {
+        return
+      }
+
+      // Dragging upwards
+      if (dragIndex > hoverIndex && hoverClientY > hoverMiddleY) {
+        return
+      }
+
+      // Time to actually perform the action
+      props.moveCard(dragIndex, hoverIndex)
+
+      // Note: we're mutating the monitor item here!
+      // Generally it's better to avoid mutations,
+      // but it's good here for the sake of performance
+      // to avoid expensive index searches.
+      monitor.getItem<CardDragObject>().index = hoverIndex
     },
   },
-  (connect) => ({
+  (connect: DropTargetConnector) => ({
     connectDropTarget: connect.dropTarget(),
   })
 )(
   DragSource(
     ItemTypes.CARD,
     {
-      beginDrag: (props: CardProps) => ({ id: props.id }),
+      beginDrag: (props: CardProps) => ({
+        id: props.id,
+        index: props.index,
+      }),
     },
-    (connect, monitor) => ({
+    (connect: DragSourceConnector, monitor: DragSourceMonitor) => ({
       connectDragSource: connect.dragSource(),
       isDragging: monitor.isDragging(),
     })
