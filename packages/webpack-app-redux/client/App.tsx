@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Home from './components/Home'
 import { Spin } from 'antd'
+import { BrowserRouter as Router } from 'react-router-dom'
 const store = {
   state: { a: 2 },
   setObj(v: number) {
@@ -15,7 +16,9 @@ function App() {
   }
   return (
     <React.Suspense fallback={<Spin />}>
-      <Home state={store.state} setObj={setObj} />
+      <Router>
+        <Home state={store.state} setObj={setObj} />
+      </Router>
     </React.Suspense>
   )
 }
