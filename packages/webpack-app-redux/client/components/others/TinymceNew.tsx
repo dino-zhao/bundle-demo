@@ -87,7 +87,8 @@ export default function TinymceNew() {
   return (
     <>
       <Editor
-        tinymceScriptSrc="https://statics.ppio.cloud/tinymce1/tinymce.min.js"
+        // tinymceScriptSrc="https://statics.ppio.cloud/tinymce1/tinymce.min.js"
+        tinymceScriptSrc="tinymce1/tinymce.min.js"
         onInit={(evt, editor) => (editorRef.current = editor)}
         initialValue="<p>This is the initial content of the editor.</p>"
         init={{
