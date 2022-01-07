@@ -17,14 +17,27 @@ async function getToken(): Promise<TokenInfo> {
 export default function TinymceNew() {
   const editorRef = useRef(null)
   const ossClient = useRef(null)
-  const [text, setText] = useState('')
+  const contentIFrameRef = useRef<HTMLIFrameElement>(null)
   const [filePath] = useState(() => 'help-center/' + uuidv4() + '/')
 
   const log = () => {
     if (editorRef.current) {
+      const doc = contentIFrameRef.current.contentWindow.document
+      //参考 https://www.cnblogs.com/zhangym118/p/13255043.html
+      const link = doc.createElement('link')
+      const head = doc.createElement('head')
+      link.href = 'inner-iframe.css'
+      link.rel = 'stylesheet'
+      link.type = 'text/css'
+      head.appendChild(link)
       console.log(ossClient.current)
       console.log(editorRef.current.getContent())
-      setText(editorRef.current.getContent())
+      doc.open()
+
+      doc.write(editorRef.current.getContent())
+      //   doc.documentElement.appendChild(head)
+      doc.head.appendChild(link)
+      doc.close()
     }
   }
 
@@ -115,7 +128,11 @@ export default function TinymceNew() {
         }}
       />
       <button onClick={log}>Log editor content</button>
-      <div>{ReactHtmlParser(text)}</div>
+      <iframe
+        style={{ width: '100%', height: 'auto' }}
+        ref={contentIFrameRef}
+        sandbox="allow-same-origin"
+      ></iframe>
     </>
   )
 }

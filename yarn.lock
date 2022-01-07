@@ -19132,6 +19132,13 @@ rxjs@7.4.0, rxjs@^7.2.0, rxjs@^7.4.0:
   dependencies:
     tslib "~2.1.0"
 
+rxjs@^7.5.1:
+  version "7.5.1"
+  resolved "https://registry.npmmirror.com/rxjs/download/rxjs-7.5.1.tgz#af73df343cbcab37628197f43ea0c8256f54b157"
+  integrity sha512-KExVEeZWxMZnZhUZtsJcFwz8IvPvgu4G2Z2QyqjZQzUGr32KDYuSxrEYO4w3tFFNbfLozcrKUTvTPi+E9ywJkQ==
+  dependencies:
+    tslib "^2.1.0"
+
 safe-buffer@5.1.2, safe-buffer@~5.1.0, safe-buffer@~5.1.1:
   version "5.1.2"
   resolved "https://registry.nlark.com/safe-buffer/download/safe-buffer-5.1.2.tgz?cache=0&sync_timestamp=1618847044058&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fsafe-buffer%2Fdownload%2Fsafe-buffer-5.1.2.tgz#991ec69d296e0313747d59bdfd2b745c35f8828d"
