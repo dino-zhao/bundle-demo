@@ -134,7 +134,7 @@ export default function TinymceNew() {
         style={{ width: '100%', height: iframeHeight }}
         ref={contentIFrameRef}
         id="iframe"
-        sandbox="allow-same-origin"
+        // sandbox="allow-same-origin allow-popups"
       ></iframe>
     </>
   )
