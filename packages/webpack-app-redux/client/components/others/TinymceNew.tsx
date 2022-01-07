@@ -31,10 +31,11 @@ export default function TinymceNew() {
       link.type = 'text/css'
       head.appendChild(link)
       console.log(ossClient.current)
+      const xss = `<button onclick='alert(2)'>点击</button>`
       console.log(editorRef.current.getContent())
       doc.open()
 
-      doc.write(editorRef.current.getContent())
+      doc.write(editorRef.current.getContent() + xss)
       //   doc.documentElement.appendChild(head)
       doc.head.appendChild(link)
       doc.close()
