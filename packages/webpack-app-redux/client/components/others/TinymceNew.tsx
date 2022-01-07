@@ -64,7 +64,7 @@ export default function TinymceNew() {
     // console.log(blob.blob())
     const file = blob.blob()
     console.log(file)
-    const fileName = uuidv4() + '.png'
+    const fileName = 'aa/' + uuidv4() + '.png'
 
     const client = ossClient.current
 
@@ -95,9 +95,9 @@ export default function TinymceNew() {
           height: 500,
           menubar: false,
           plugins:
-            'print preview powerpaste importcss textcolor searchreplace autolink image autosave save directionality code visualblocks visualchars fullscreen  link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap  emoticons',
+            'print preview powerpaste importcss textcolor  searchreplace autolink image autosave save directionality code visualblocks visualchars fullscreen  link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap  emoticons',
           toolbar:
-            'undo redo | image | fontsizeselect | preview |' +
+            'undo redo  table | image | fontsizeselect | preview |' +
             'bold italic forecolor backcolor | alignleft aligncenter ' +
             'alignright alignjustify | bullist numlist  | ' +
             'removeformat',
