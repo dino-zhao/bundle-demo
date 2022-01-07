@@ -19,7 +19,7 @@ export default function TinymceNew() {
   const ossClient = useRef(null)
   const contentIFrameRef = useRef<HTMLIFrameElement>(null)
   const [filePath] = useState(() => 'help-center/' + uuidv4() + '/')
-
+  const [iframeHeight, setHeight] = useState(300)
   const log = () => {
     if (editorRef.current) {
       const doc = contentIFrameRef.current.contentWindow.document
@@ -30,13 +30,14 @@ export default function TinymceNew() {
       link.rel = 'stylesheet'
       link.type = 'text/css'
       head.appendChild(link)
-      console.log(ossClient.current)
       const xss = `<button onclick='alert(2)'>点击</button>`
       console.log(editorRef.current.getContent())
       doc.open()
 
       doc.write(editorRef.current.getContent() + xss)
       //   doc.documentElement.appendChild(head)
+      console.log(doc.documentElement.scrollHeight)
+      setHeight(doc.documentElement.scrollHeight)
       doc.head.appendChild(link)
       doc.close()
     }
@@ -130,8 +131,9 @@ export default function TinymceNew() {
       />
       <button onClick={log}>Log editor content</button>
       <iframe
-        style={{ width: '100%', height: 'auto' }}
+        style={{ width: '100%', height: iframeHeight }}
         ref={contentIFrameRef}
+        id="iframe"
         sandbox="allow-same-origin"
       ></iframe>
     </>

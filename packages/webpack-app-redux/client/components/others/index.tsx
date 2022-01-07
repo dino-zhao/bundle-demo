@@ -3,9 +3,14 @@ import DinoD from './DinoDesign'
 import VisualList from './VisualList'
 import DynamicVisualList from './DynamicVisualList'
 import TinyMce from './Tinymce'
+import RxFc from './RxFc'
 import TinymceNew from './TinymceNew'
 import Dnd from './ReactDnd'
 const tabList: TabItem[] = [
+  {
+    name: 'rxjs',
+    component: RxFc,
+  },
   {
     name: '拖拽排序',
     component: Dnd,
