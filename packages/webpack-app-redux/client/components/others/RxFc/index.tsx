@@ -1,9 +1,15 @@
 import { useEffect } from 'react'
-import { disposingObservable } from './util'
+import * as utils from './util'
+import FindPoke from './FindPoke'
 export default function RxFc() {
   useEffect(() => {
-    disposingObservable()
+    utils.pipeFun()
   }, [])
 
-  return <div>rxjs</div>
+  return (
+    <div>
+      <div>rxjs</div>
+      <FindPoke></FindPoke>
+    </div>
+  )
 }
