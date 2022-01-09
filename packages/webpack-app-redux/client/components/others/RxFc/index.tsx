@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import * as utils from './util'
-import FindPokeNew from './FindPokeNew'
+import RaceCondition from './RaceCondition'
 export default function RxFc() {
   useEffect(() => {
     utils.pipeFun()
@@ -9,7 +9,7 @@ export default function RxFc() {
   return (
     <div>
       <div>rxjs</div>
-      <FindPokeNew></FindPokeNew>
+      <RaceCondition></RaceCondition>
     </div>
   )
 }
