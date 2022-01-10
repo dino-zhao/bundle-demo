@@ -15,12 +15,12 @@ const axiosBaseQuery =
       if (typeof params === 'string') {
         result = await instance({ url: params })
       } else {
-        let { url, ...rest } = params
+        const { url, ...rest } = params
         result = await instance({ url: url, ...rest })
       }
       return { data: result.data }
     } catch (axiosError) {
-      let err = axiosError as AxiosError
+      const err = axiosError as AxiosError
       return {
         error: { status: err.response?.status, data: err.response?.data },
       }
@@ -30,6 +30,6 @@ export const apiSlice = createApi({
   baseQuery: axiosBaseQuery({
     baseUrl: '/api',
   }),
-  tagTypes: ['Posts', 'Users'],
+  tagTypes: ['Posts', 'Users', 'LazyPosts'],
   endpoints: () => ({}),
 })

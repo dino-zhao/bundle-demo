@@ -4,8 +4,13 @@ import { Provider } from 'react-redux'
 import PostsList from './features/posts/PostsList'
 import UsersList from './features/users/UsersList'
 import { usersSlice } from './features/users/usersSlice'
+import LazyPost from './features/lazyPosts/LazyPost'
 store.dispatch(usersSlice.endpoints.getUsers.initiate())
 const tabList: TabItem[] = [
+  {
+    name: 'lazy posts',
+    component: LazyPost,
+  },
   {
     name: 'user列表',
     component: UsersList,

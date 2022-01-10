@@ -15,7 +15,7 @@ export const postsSlice = apiSlice.injectEndpoints({
     }),
     exportExcel: build.mutation<string, number>({
       queryFn: async (arg, queryApi, extraOptions, baseQuery) => {
-        let arr = []
+        const arr = []
         for (let i = 0; i < arg; i++) {
           arr.push(await baseQuery({ url: 'posts' }))
         }
