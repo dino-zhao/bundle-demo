@@ -53,7 +53,6 @@ const Card = forwardRef<HTMLDivElement, CardProps>(function Card(
   return (
     <div ref={elementRef} style={{ ...style, opacity }}>
       {text}
-      <button>2222</button>
     </div>
   )
 })
