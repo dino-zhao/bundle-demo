@@ -30,6 +30,6 @@ export const apiSlice = createApi({
   baseQuery: axiosBaseQuery({
     baseUrl: '/api',
   }),
-  tagTypes: ['Posts', 'Users', 'LazyPosts'],
+  tagTypes: ['Posts', 'Users', 'LazyUser'],
   endpoints: () => ({}),
 })
