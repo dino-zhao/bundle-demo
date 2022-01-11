@@ -70,7 +70,7 @@
   },
   "dependencies": {
     "@alicloud/pop-core": "^1.7.10",
-    "@reduxjs/toolkit": "^1.6.1",
+    "@reduxjs/toolkit": "^1.7.1",
     "@tinymce/tinymce-react": "^3.13.0",
     "@types/axios": "^0.14.0",
     "@types/faker": "^5.5.9",
