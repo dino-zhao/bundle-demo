@@ -1,9 +1,9 @@
-import { FC, useEffect } from 'react'
+import { FC } from 'react'
 import Card from './Card'
 import { useImmer } from 'use-immer'
 
 const style = {
-  width: 400,
+  width: '100%',
 }
 
 export interface Item {
@@ -53,21 +53,12 @@ export const Container: FC = () => {
         draft.splice(hoverIndex, 0, dragCard)
       })
     }
-
-    useEffect(() => {
-      console.log(cards)
-    }, [cards])
-
     return (
       <div style={style}>
         {cards.map((card, i) => (
-          <Card
-            key={card.id}
-            index={i}
-            id={card.id}
-            text={card.text}
-            moveCard={moveCard}
-          />
+          <Card key={card.id} index={i} id={card.id} moveCard={moveCard}>
+            <div>{card.text}</div>
+          </Card>
         ))}
       </div>
     )

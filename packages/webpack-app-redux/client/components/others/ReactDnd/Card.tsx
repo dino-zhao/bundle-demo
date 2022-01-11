@@ -22,8 +22,8 @@ const style = {
 }
 
 export interface CardProps {
-  id: string
-  text: string
+  id: number
+  children: React.ReactElement
   index: number
   moveCard: (dragIndex: number, hoverIndex: number) => void
 
@@ -37,7 +37,7 @@ interface CardInstance {
 }
 
 const Card = forwardRef<HTMLDivElement, CardProps>(function Card(
-  { text, isDragging, connectDragSource, connectDropTarget },
+  { children, isDragging, connectDragSource, connectDropTarget },
   ref
 ) {
   const elementRef = useRef(null)
@@ -50,7 +50,7 @@ const Card = forwardRef<HTMLDivElement, CardProps>(function Card(
   }))
   return (
     <div ref={elementRef} style={{ ...style, opacity }}>
-      {text}
+      {children}
     </div>
   )
 })
