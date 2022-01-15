@@ -115,7 +115,7 @@ export default function TinymceNew() {
           toolbar:
             'undo redo  table | image | fontsizeselect | preview |' +
             'bold italic forecolor backcolor | alignleft aligncenter ' +
-            'alignright alignjustify | bullist numlist  | ' +
+            'alignright alignjustify | bullist numlist  link | ' +
             'removeformat',
           content_style:
             'body { font-family:Helvetica,Arial,sans-serif; font-size:14pt }',
