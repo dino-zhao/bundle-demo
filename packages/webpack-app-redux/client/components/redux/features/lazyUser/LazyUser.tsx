@@ -1,13 +1,13 @@
-import { useLazyGetPostsQuery } from './postsSlice'
+import { useLazyGetLazyUserQuery } from './usersSlice'
 import { Button, Input } from 'antd'
 import { useState } from 'react'
 
 export default function LazyPost() {
-  const [trigger, { data, isFetching }, lastArg] = useLazyGetPostsQuery()
+  const [trigger, { data, isFetching }, lastArg] = useLazyGetLazyUserQuery()
   const [param, setParam] = useState('')
 
   const fetch = () => {
-    console.log(trigger(param, true))
+    console.log(trigger(param))
   }
   return (
     <div>

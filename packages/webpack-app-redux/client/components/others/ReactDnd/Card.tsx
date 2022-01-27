@@ -4,16 +4,14 @@ import {
   ConnectDragSource,
   DropTargetMonitor,
   DragSourceMonitor,
-} from 'react-dnd'
-import {
   DragSource,
   DropTarget,
   DropTargetConnector,
   DragSourceConnector,
 } from 'react-dnd'
-import { ItemTypes } from './ItemTypes'
+
+import { CARD, DragObject } from './ItemTypes'
 import { XYCoord } from 'dnd-core'
-import { CardDragObject } from './ItemTypes'
 
 const style = {
   border: '1px dashed gray',
@@ -24,8 +22,8 @@ const style = {
 }
 
 export interface CardProps {
-  id: any
-  text: string
+  id: number
+  children: React.ReactElement
   index: number
   moveCard: (dragIndex: number, hoverIndex: number) => void
 
@@ -39,7 +37,7 @@ interface CardInstance {
 }
 
 const Card = forwardRef<HTMLDivElement, CardProps>(function Card(
-  { text, isDragging, connectDragSource, connectDropTarget },
+  { children, isDragging, connectDragSource, connectDropTarget },
   ref
 ) {
   const elementRef = useRef(null)
@@ -52,14 +50,13 @@ const Card = forwardRef<HTMLDivElement, CardProps>(function Card(
   }))
   return (
     <div ref={elementRef} style={{ ...style, opacity }}>
-      {text}
-      <button>2222</button>
+      {children}
     </div>
   )
 })
 
 export default DropTarget(
-  ItemTypes.CARD,
+  CARD,
   {
     hover(
       props: CardProps,
@@ -75,7 +72,7 @@ export default DropTarget(
         return null
       }
 
-      const dragIndex = monitor.getItem<CardDragObject>().index
+      const dragIndex = monitor.getItem<DragObject>().index
       const hoverIndex = props.index
 
       // Don't replace items with themselves
@@ -117,7 +114,7 @@ export default DropTarget(
       // Generally it's better to avoid mutations,
       // but it's good here for the sake of performance
       // to avoid expensive index searches.
-      monitor.getItem<CardDragObject>().index = hoverIndex
+      monitor.getItem<DragObject>().index = hoverIndex
     },
   },
   (connect: DropTargetConnector) => ({
@@ -125,7 +122,7 @@ export default DropTarget(
   })
 )(
   DragSource(
-    ItemTypes.CARD,
+    CARD,
     {
       beginDrag: (props: CardProps) => ({
         id: props.id,

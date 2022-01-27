@@ -1,9 +1,9 @@
-import { FC, useState, useEffect } from 'react'
+import { FC } from 'react'
 import Card from './Card'
-import update from 'immutability-helper'
+import { useImmer } from 'use-immer'
 
 const style = {
-  width: 400,
+  width: '100%',
 }
 
 export interface Item {
@@ -16,7 +16,7 @@ export interface ContainerState {
 
 export const Container: FC = () => {
   {
-    const [cards, setCards] = useState([
+    const [cards, setCards] = useImmer([
       {
         id: 1,
         text: 'Write a cool JS library',
@@ -46,33 +46,19 @@ export const Container: FC = () => {
         text: 'PROFIT',
       },
     ])
-
     const moveCard = (dragIndex: number, hoverIndex: number) => {
       const dragCard = cards[dragIndex]
-      setCards(
-        update(cards, {
-          $splice: [
-            [dragIndex, 1],
-            [hoverIndex, 0, dragCard],
-          ],
-        })
-      )
+      setCards((draft) => {
+        draft.splice(dragIndex, 1)
+        draft.splice(hoverIndex, 0, dragCard)
+      })
     }
-
-    useEffect(() => {
-      console.log(cards)
-    }, [cards])
-
     return (
       <div style={style}>
         {cards.map((card, i) => (
-          <Card
-            key={card.id}
-            index={i}
-            id={card.id}
-            text={card.text}
-            moveCard={moveCard}
-          />
+          <Card key={card.id} index={i} id={card.id} moveCard={moveCard}>
+            <div>{card.text}</div>
+          </Card>
         ))}
       </div>
     )

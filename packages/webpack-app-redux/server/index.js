@@ -56,6 +56,8 @@ app.get('/api/users/:id?', function (req, res) {
   if (req.params['id']) {
     return res.send(wrap(useStore.get(req.params['id'])))
   }
+  //   res.header('cache-control', 'max-age=0')
+  res.header('last-modified', new Date().toUTCString())
   res.send(wrap(useStore.getState()))
 })
 app.post('/api/post', function (req, res) {
