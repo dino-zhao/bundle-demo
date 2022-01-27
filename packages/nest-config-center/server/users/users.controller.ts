@@ -1,4 +1,12 @@
-import { Body, Controller, Delete, Get, Param, Post } from "@nestjs/common";
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  HttpException,
+} from "@nestjs/common";
 import { CreateUserDto } from "./dto/create-user.dto";
 import { User } from "./user.entity";
 import { UsersService } from "./users.service";
@@ -14,7 +22,14 @@ export class UsersController {
 
   @Get()
   findAll(): Promise<User[]> {
-    return this.usersService.findAll();
+    // return this.usersService.findAll();
+    throw new HttpException(
+      {
+        status: 1111,
+        error: "This is a custom message",
+      },
+      200
+    );
   }
 
   @Get(":id")
