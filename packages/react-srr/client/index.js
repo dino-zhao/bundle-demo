@@ -1,14 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Switch } from "react-router-dom";
 import Routes from "./Routes";
 import store from "./redux";
 import { Provider } from "react-redux";
+import { renderRoutes } from "react-router-config";
 ReactDOM.hydrate(
   <Provider store={store}>
-    <BrowserRouter>
-      <Routes />
-    </BrowserRouter>
+    <BrowserRouter>{renderRoutes(Routes)}</BrowserRouter>
   </Provider>,
   document.getElementById("root")
 );
