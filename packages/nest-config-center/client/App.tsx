@@ -4,7 +4,7 @@ import Home from "./features/Home";
 import About from "./features/About";
 export default function App() {
   useEffect(() => {
-    fetch("/api/users").then((res) => res.json().then((i) => console.log(i)));
+    fetch("/api/login").then((res) => res.json().then((i) => console.log(i)));
   }, []);
 
   useEffect(() => {

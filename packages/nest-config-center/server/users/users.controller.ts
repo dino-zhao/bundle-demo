@@ -5,8 +5,9 @@ import {
   Get,
   Param,
   Post,
-  HttpException,
+  Req,
 } from "@nestjs/common";
+import { Request } from "express";
 import { CreateUserDto } from "./dto/create-user.dto";
 import { User } from "./user.entity";
 import { UsersService } from "./users.service";
@@ -21,7 +22,8 @@ export class UsersController {
   }
 
   @Get()
-  findAll(): Promise<User[]> {
+  findAll(@Req() req: Request): Promise<User[]> {
+    console.log(req.cookies);
     return this.usersService.findAll();
     // throw new HttpException(
     //   {

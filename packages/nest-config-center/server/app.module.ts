@@ -2,7 +2,7 @@ import { Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { UsersModule } from "./users/users.module";
 import { ConfigModule } from "@nestjs/config";
-
+import { AccountModule } from "./account/account.module";
 @Module({
   imports: [
     ConfigModule.forRoot(),
@@ -17,6 +17,7 @@ import { ConfigModule } from "@nestjs/config";
       synchronize: true,
     }),
     UsersModule,
+    AccountModule,
   ],
 })
 export class AppModule {}
