@@ -22,14 +22,14 @@ export class UsersController {
 
   @Get()
   findAll(): Promise<User[]> {
-    // return this.usersService.findAll();
-    throw new HttpException(
-      {
-        status: 1111,
-        error: "This is a custom message",
-      },
-      200
-    );
+    return this.usersService.findAll();
+    // throw new HttpException(
+    //   {
+    //     status: 1111,
+    //     error: "This is a custom message",
+    //   },
+    //   200
+    // );
   }
 
   @Get(":id")
