@@ -1,7 +1,4 @@
 @tailwind base;
 @tailwind components;
-.cursor-pointer {
-  cursor: pointer;
-}
 
 @tailwind utilities;
