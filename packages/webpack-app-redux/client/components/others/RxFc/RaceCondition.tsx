@@ -16,7 +16,7 @@ const getPokemonByName = async (name: string) => {
   const { results: allPokemons } = await fetch(
     'https://pokeapi.co/api/v2/pokemon/?limit=100'
   ).then((res) => res.json())
-
+  //两次输入为一组，第一个输入会慢，第二个会快，
   if (index > 1) {
     index = 0
   } else {
@@ -33,7 +33,7 @@ const getPokemonByName = async (name: string) => {
     }, index * 1000)
   })
 
-  let v = await getData
+  const v = await getData
   console.log(v, index, name)
   return v
 }
