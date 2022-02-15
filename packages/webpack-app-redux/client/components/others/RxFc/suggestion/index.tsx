@@ -1,7 +1,6 @@
 import {
   useObservableCallback,
   useObservableState,
-  useSubscription,
   useObservable,
 } from 'observable-hooks'
 import styled from 'styled-components'
@@ -58,7 +57,7 @@ export default function List() {
     )
   )
 
-  useSubscription(suggestionStream, console.log)
+  //   useSubscription(suggestionStream, console.log)
   const profileList = useObservableState<Profile[]>(suggestionStream)
   console.log(profileList)
   return (
