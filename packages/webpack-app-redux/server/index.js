@@ -8,6 +8,7 @@ var history = require('connect-history-api-fallback')
 var postStore = require('./post.controller')
 var useStore = require('./user.controller')
 const getToekn = require('./oss.controller')
+const accountList = require('./accountList')
 const app = express()
 
 app.use(express.json())
@@ -62,6 +63,9 @@ app.get('/api/users/:id?', function (req, res) {
 })
 app.post('/api/post', function (req, res) {
   return res.send(wrap(postStore.update(req.body)))
+})
+app.get('/api/account-list', function (req, res) {
+  return res.send(accountList)
 })
 app.get((req, res, next) => {
   console.log(req.url)

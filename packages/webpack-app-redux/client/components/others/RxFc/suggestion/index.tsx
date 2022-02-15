@@ -1,6 +1,11 @@
-import { useObservableCallback, useObservableState } from 'observable-hooks'
+import {
+  useObservableCallback,
+  useObservableState,
+  useSubscription,
+  useObservable,
+} from 'observable-hooks'
 import styled from 'styled-components'
-import { startWith, map, concatMap } from 'rxjs/operators'
+import { startWith, map, concatMap, combineLatestWith } from 'rxjs/operators'
 import { from } from 'rxjs'
 //https://gist.github.com/staltz/868e7e9bc2a7b8c1f754
 const Container = styled.div`
@@ -27,25 +32,34 @@ interface Profile {
   avatar_url: string
 }
 export default function List() {
-  const [onRefresh, refreshClickStream] = useObservableCallback((e) =>
-    e.pipe(
+  //点击刷新
+  const [onRefresh, refreshClickStream] = useObservableCallback((e) => e)
+  const responseStream = useObservable(() =>
+    refreshClickStream.pipe(
       startWith('startup click'),
       map(function () {
         const randomOffset = Math.floor(Math.random() * 500)
         return 'https://api.github.com/users?since=' + randomOffset
       }),
       concatMap(function (requestUrl) {
-        return from(
-          fetch(requestUrl)
-            .then((res) => res.json())
-            .then((res) => res.slice(0, 3))
-        )
+        return from(fetch(requestUrl).then((res) => res.json()))
+      })
+    )
+  )
+  const [onClose, suggestionStream] = useObservableCallback<any>((e) =>
+    e.pipe(
+      startWith('startup click'),
+      combineLatestWith(responseStream),
+      map(([index, arr]) => {
+        const cur = arr.concat()
+        cur.splice(index, 1, arr[Math.floor(Math.random() * arr.length)])
+        return cur
       })
     )
   )
 
-  const profileList = useObservableState<Profile[]>(refreshClickStream)
-
+  useSubscription(suggestionStream, console.log)
+  const profileList = useObservableState<Profile[]>(suggestionStream)
   console.log(profileList)
   return (
     <Container>
@@ -56,9 +70,9 @@ export default function List() {
         </a>
       </div>
       <ul className="suggestions">
-        {profileList?.map((item) => {
+        {profileList?.map((item, i) => {
           return (
-            <li className="suggestion1" key={item.login}>
+            <li className="suggestion1" key={i}>
               <img src={item.avatar_url} />
               <div>
                 <a
@@ -69,7 +83,13 @@ export default function List() {
                 >
                   {item.login}
                 </a>
-                <button className="close">x</button>
+                <button
+                  className="close"
+                  data-index={i}
+                  onClick={() => onClose(i)}
+                >
+                  x
+                </button>
               </div>
             </li>
           )
