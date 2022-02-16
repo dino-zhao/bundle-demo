@@ -51,7 +51,9 @@ export default function List() {
       combineLatestWith(responseStream),
       map(([index, arr]) => {
         const cur = arr.concat()
-        cur.splice(index, 1, arr[Math.floor(Math.random() * arr.length)])
+        if (typeof index === 'number') {
+          cur.splice(index, 1, arr[Math.floor(Math.random() * arr.length)])
+        }
         return cur
       })
     )
