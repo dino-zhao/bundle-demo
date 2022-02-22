@@ -1,7 +1,12 @@
-import { Injectable } from "@nestjs/common";
+import { Injectable, Inject } from "@nestjs/common";
+
+export const CONSTANTS = "constant";
+
 @Injectable()
 export default class FruitService {
+  @Inject(CONSTANTS) v: string;
+
   log(): void {
-    console.log("aaa");
+    console.log(this.v);
   }
 }
