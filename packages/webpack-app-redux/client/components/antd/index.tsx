@@ -4,7 +4,12 @@ import EditableTrTable from './editableTrTable'
 import VirtualTable from './virtualTable'
 import OrdinaryTable from './ordinaryTable'
 import FormList from './FormList'
+import FormFormat from './FormFormat'
 const tabList: TabItem[] = [
+  {
+    name: 'form参数格式测试',
+    component: FormFormat,
+  },
   {
     name: '可编辑单元格',
     component: EditableCellTable,
