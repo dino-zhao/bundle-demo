@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import Home from './components/Home'
 import { Spin } from 'antd'
 import { BrowserRouter as Router } from 'react-router-dom'
+const a: string = 2
+console.log(a)
 const store = {
   state: { a: 2 },
   setObj(v: number) {
