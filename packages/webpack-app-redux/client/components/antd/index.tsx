@@ -7,6 +7,10 @@ import FormList from './FormList'
 import FormFormat from './FormFormat'
 const tabList: TabItem[] = [
   {
+    name: '表单列表',
+    component: FormList,
+  },
+  {
     name: 'form参数格式测试',
     component: FormFormat,
   },
@@ -25,10 +29,6 @@ const tabList: TabItem[] = [
   {
     name: '普通表格',
     component: OrdinaryTable,
-  },
-  {
-    name: '表单列表',
-    component: FormList,
   },
 ]
 
