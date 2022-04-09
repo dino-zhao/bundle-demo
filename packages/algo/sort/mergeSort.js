@@ -1,7 +1,7 @@
 module.exports = (arr) => {
   //归并排序另外开空间
   //最终是要分到每个元素一个数组，然后merge
-  function sort(arr1) {
+  function sort(arr) {
     if (arr.length < 2) return arr;
     let mid = Math.floor((arr.length - 1) / 2);
     //这个地方第一个参数右侧要加1，否则两个时一直无法分解
