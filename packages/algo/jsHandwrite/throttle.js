@@ -4,27 +4,39 @@
 //这里做一下优化,即添加一个flag标记首次,其他按定时器的行为
 
 function throttle(fn, time) {
-  let timer = null
-  let isFirst = true
+  let timer = null;
+  let isFirst = true;
   return function (...args) {
-    if(isFirst){
-      fn.apply(this,args)
-      isFirst=false
-  }
-    if(timer===null){
-      timer= setTimeout(()=>{
-          timer=null
-          fn.apply(this,args)
-      },time)
+    if (isFirst) {
+      fn.apply(this, args);
+      isFirst = false;
     }
-  }
+    if (timer === null) {
+      timer = setTimeout(() => {
+        timer = null;
+        fn.apply(this, args);
+      }, time);
+    }
+  };
 }
 
 const trigger = throttle((number) => {
-  console.log(number)
-  console.timeLog()
-}, 2000)
+  console.log(number);
+  console.timeLog();
+}, 2000);
 setInterval(() => {
-  trigger(1)
-}, 1000)
-console.time()
+  trigger(1);
+}, 1000);
+console.time();
+
+function throttleWithStamp(fn, timeout) {
+  //如果不要第一次
+  let pre = Date.now();
+  return function (...args) {
+    const now = Date.now();
+    if (now - pre >= timeout) {
+      fn.call(this, ...args);
+      pre = now;
+    }
+  };
+}
