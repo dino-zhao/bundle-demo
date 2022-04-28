@@ -6,7 +6,7 @@ const path = require('path')
 module.exports = merge(common, {
   mode: 'development',
   devtool: 'source-map',
-  entry: ['./client/index.tsx'],
+  entry: ['./client/index.tsx', './client/test.tsx'],
   cache: {
     type: 'filesystem',
     allowCollectingMemory: true,

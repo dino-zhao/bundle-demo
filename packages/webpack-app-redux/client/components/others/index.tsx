@@ -6,7 +6,12 @@ import TinyMce from './Tinymce'
 import RxFc from './RxFc'
 import TinymceNew from './TinymceNew'
 import Dnd from './ReactDnd'
+import RenderOrder from './RenderOrder'
 const tabList: TabItem[] = [
+  {
+    name: '父子组件执行顺序',
+    component: RenderOrder,
+  },
   {
     name: 'rxjs',
     component: RxFc,

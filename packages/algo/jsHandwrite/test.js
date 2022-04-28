@@ -1,19 +1,6 @@
-function throttle(fn, timeout) {
-  //如果不要第一次
-  let pre = Date.now();
-  return function (...args) {
-    const now = Date.now();
-    if (now - pre >= timeout) {
-      fn.call(this, ...args);
-      pre = now;
-    }
-  };
+function myNew(Cons, ...args) {
+  const obj = {};
+  Object.setPrototypeOf(obj, Cons.protoType);
+  const result = Cons.call(obj, ...args) ?? "";
+  return typeof result === "object" ? result : obj;
 }
-const trigger = throttle((number) => {
-  console.log(number);
-  console.timeLog();
-}, 2000);
-setInterval(() => {
-  trigger(1);
-}, 1000);
-console.time();

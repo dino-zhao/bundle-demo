@@ -5,7 +5,12 @@ import VirtualTable from './virtualTable'
 import OrdinaryTable from './ordinaryTable'
 import FormList from './FormList'
 import FormFormat from './FormFormat'
+import SelectController from './SelectController'
 const tabList: TabItem[] = [
+  {
+    name: '下拉框',
+    component: SelectController,
+  },
   {
     name: '表单列表',
     component: FormList,
