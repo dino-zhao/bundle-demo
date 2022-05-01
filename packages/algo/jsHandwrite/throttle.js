@@ -1,7 +1,8 @@
 // 节流指的是一段时间内只能触发一次，
 //这个的基本实现包括时间戳和定时器的,时间戳的实现,只要当前时间-初始时间>time就执行,结果是首次执行,最后一次不执行
 // 定时器的是第一次触发定时,结果是第一次不执行,最后一次执行
-//这里做一下优化,即添加一个flag标记首次,其他按定时器的行为
+
+//定时器版本添加一个flag标记首次
 
 function throttle(fn, time) {
   let timer = null;
@@ -30,7 +31,7 @@ setInterval(() => {
 console.time();
 
 function throttleWithStamp(fn, timeout) {
-  //如果不要第一次
+  //最后一次不执行
   let pre = Date.now();
   return function (...args) {
     const now = Date.now();
