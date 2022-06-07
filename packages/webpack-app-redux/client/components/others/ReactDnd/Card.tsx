@@ -22,7 +22,7 @@ const style = {
 }
 
 export interface CardProps {
-  id: number
+  id: string
   children: React.ReactElement
   index: number
   moveCard: (dragIndex: number, hoverIndex: number) => void

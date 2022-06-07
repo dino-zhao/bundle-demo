@@ -1,7 +1,7 @@
-const Pendding = "pendding";
-const REJECTED = "rejected";
-const FULLFILLED = "fullfilled";
-
-class MyPromise {
-  constructor() {}
+function compose(arr) {
+  return arr.reduce(
+    (a, b) =>
+      (...args) =>
+        a(b)(args)
+  );
 }

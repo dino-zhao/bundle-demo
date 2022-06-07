@@ -9,6 +9,10 @@ import Dnd from './ReactDnd'
 import RenderOrder from './RenderOrder'
 const tabList: TabItem[] = [
   {
+    name: '拖拽排序',
+    component: Dnd,
+  },
+  {
     name: '父子组件执行顺序',
     component: RenderOrder,
   },
@@ -16,10 +20,7 @@ const tabList: TabItem[] = [
     name: 'rxjs',
     component: RxFc,
   },
-  {
-    name: '拖拽排序',
-    component: Dnd,
-  },
+
   { name: '自定义组件', component: DinoD },
   { name: '虚拟列表', component: VisualList },
   { name: '动态高度虚拟列表', component: DynamicVisualList },

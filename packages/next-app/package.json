@@ -5,7 +5,7 @@
   "description": "",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && next export",
     "start": "next start",
     "lint": "next lint",
     "extract": "formatjs extract pages/**/*.{ts,tsx} --out-file lang/en.json --id-interpolation-pattern [sha512:contenthash:base64:6]",
