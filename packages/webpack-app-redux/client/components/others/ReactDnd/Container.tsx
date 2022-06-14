@@ -2,7 +2,6 @@ import { FC, useState } from 'react'
 import Card from './Card'
 import { useImmer } from 'use-immer'
 import { Checkbox } from 'antd'
-import type { CheckboxValueType } from 'antd/es/checkbox/Group'
 
 const style = {
   width: '100%',
