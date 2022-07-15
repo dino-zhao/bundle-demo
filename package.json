@@ -6,7 +6,7 @@
   "repository": "git@github.com:dino-zhao/bundle-demo.git",
   "author": "dino <dino.zhao@outlook.com>",
   "workspaces": [
-    "packages/*"
+    "packages/webpack-app-redux"
   ],
   "license": "MIT",
   "scripts": {
