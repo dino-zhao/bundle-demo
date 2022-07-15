@@ -1,5 +1,6 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const ESLintPlugin = require("eslint-webpack-plugin");
 module.exports = {
   entry: "./src/index.jsx",
   output: {
@@ -8,7 +9,13 @@ module.exports = {
     clean: true,
   },
   devtool: "inline-source-map",
-  plugins: [new HtmlWebpackPlugin({ template: "./public/index.html" })],
+  plugins: [
+    new HtmlWebpackPlugin({ template: "./public/index.html" }),
+    new ESLintPlugin({
+      fix: true,
+      extensions: ["jsx"],
+    }),
+  ],
   module: {
     rules: [
       {
@@ -23,6 +30,10 @@ module.exports = {
           },
         ],
         include: path.resolve(__dirname, "src"),
+      },
+      {
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"],
       },
     ],
   },
