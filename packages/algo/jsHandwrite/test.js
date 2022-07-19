@@ -1,5 +1,9 @@
-Function.prototype.apply = function (ctx, ...params) {
-  const context = ctx ?? globalThis;
-  context.fn = this;
-  return context.fn(...params);
-};
+function create(C, ...args) {
+  const obj = {};
+
+  Object.setPrototypeOf(obj, C.prototype);
+
+  const res = C.apply(obj, args);
+
+  return typeof 
+}
