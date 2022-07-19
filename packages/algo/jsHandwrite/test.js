@@ -1,7 +1,5 @@
-function compose(arr) {
-  return arr.reduce(
-    (a, b) =>
-      (...args) =>
-        a(b)(args)
-  );
-}
+Function.prototype.apply = function (ctx, ...params) {
+  const context = ctx ?? globalThis;
+  context.fn = this;
+  return context.fn(...params);
+};
