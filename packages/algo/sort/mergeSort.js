@@ -12,9 +12,7 @@ module.exports = (arr) => {
     while (arr1.length && arr2.length) {
       arr.push(arr1[0] > arr2[0] ? arr2.shift() : arr1.shift());
     }
-
-    arr.push(...arr1, ...arr2);
-    return arr;
+    return arr.concat(arr1.length ? arr1 : arr2);
   }
 
   return sort(arr);

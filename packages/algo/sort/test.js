@@ -1,35 +1,19 @@
 const arr = [1, 4, 52, 1, 32, 434, 4566, 0, 7, 8, 54, 5343, 2, 23, 5, 6, 7];
 
 function sort(arr) {
-  arr.unshift(0);
-  buildHeap(arr);
-  for (let i = arr.length - 1; i > 0; i--) {
-    [arr[1], arr[i]] = [arr[i], arr[1]];
-    ajustHeap(arr, 1, i - 1);
+  if (arr.length < 2) {
+    return arr;
   }
-  arr.shift();
-  return arr;
+  let mid = Math.floor((arr.length - 1) / 2);
+  return merge(sort(arr.slice(0, mid + 1)), sort(arr.slice(mid + 1)));
 }
 
-function buildHeap(arr) {
-  for (let i = Math.floor((arr.length - 1) / 2); i > 0; i--) {
-    ajustHeap(arr, i, arr.length - 1);
+function merge(arr1, arr2) {
+  const arr = [];
+  while (arr1.length && arr2.length) {
+    arr.push(arr1[0] < arr2[0] ? arr1.shift() : arr2.shift());
   }
-}
-function ajustHeap(arr, k, end) {
-  arr[0] = arr[k];
-  for (let i = 2 * k; i <= end; i *= 2) {
-    if (i < end && arr[i] < arr[i + 1]) {
-      i++;
-    }
-    if (arr[0] >= arr[i]) {
-      break;
-    } else {
-      arr[k] = arr[i];
-      k = i;
-    }
-  }
-  arr[k] = arr[0];
+  return arr.concat(arr1.length ? arr1 : arr2);
 }
 
 console.log(sort(arr));
